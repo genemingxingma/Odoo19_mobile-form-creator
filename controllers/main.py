@@ -91,6 +91,51 @@ class MobileFormController(http.Controller):
         }
         return request.render("mobile_form_builder.mobile_form_closed_page", values)
 
+    def _encode_prefill(self, form_values_multi):
+        payload = {}
+        for key, vals in (form_values_multi or {}).items():
+            if not key:
+                continue
+            payload[key] = [((v or "").strip()) for v in (vals or []) if str(v).strip()]
+        raw = json.dumps(payload, ensure_ascii=False).encode("utf-8")
+        return base64.urlsafe_b64encode(raw).decode("ascii")
+
+    def _decode_prefill(self, token_text):
+        token_text = (token_text or "").strip()
+        if not token_text:
+            return {}, {}, False
+        try:
+            raw = base64.urlsafe_b64decode(token_text.encode("ascii"))
+            data = json.loads(raw.decode("utf-8"))
+            if not isinstance(data, dict):
+                return {}, {}, False
+        except Exception:
+            return {}, {}, False
+        values_multi = {}
+        values = {}
+        for key, vals in data.items():
+            if not isinstance(key, str) or not key:
+                continue
+            if not isinstance(vals, list):
+                vals = [vals]
+            normalized = [((v or "").strip()) for v in vals if str(v).strip()]
+            values_multi[key] = normalized
+            values[key] = normalized[0] if normalized else ""
+        return values, values_multi, bool(values_multi)
+
+    def _render_duplicate_page(self, form, token, posted_values_multi):
+        msg = (form.duplicate_message or "The submitted unique field value already exists.").strip()
+        prefill = self._encode_prefill(posted_values_multi or {})
+        return_url_keep = f"/mform/{token}?prefill={prefill}" if prefill else f"/mform/{token}"
+        return_url_clear = f"/mform/{token}"
+        values = {
+            "form": form,
+            "duplicate_message": msg,
+            "return_url_keep": return_url_keep,
+            "return_url_clear": return_url_clear,
+        }
+        return request.render("mobile_form_builder.mobile_form_duplicate_page", values)
+
     @http.route(["/mform/<string:token>"], type="http", auth="public", website=True)
     def public_form(self, token, **post):
         form = request.env["x_mobile.form"].sudo().search([("access_token", "=", token)], limit=1)
@@ -101,6 +146,9 @@ class MobileFormController(http.Controller):
             client_id, cookie_created = self._get_or_create_client_id()
             return self._set_client_cookie_if_needed(response, cookie_created, client_id)
         client_id, cookie_created = self._get_or_create_client_id()
+        prefill_values, prefill_values_multi, has_prefill = self._decode_prefill(
+            request.httprequest.args.get("prefill")
+        )
 
         if request.httprequest.method == "POST":
             posted_values, posted_values_multi = self._build_posted_values(request.httprequest.form)
@@ -233,6 +281,35 @@ class MobileFormController(http.Controller):
                 confirm_key1 = ""
                 confirm_key2 = ""
 
+            unique_key1 = ""
+            unique_key2 = ""
+            try:
+                u1 = form.unique_component_id_1
+                u2 = form.unique_component_id_2
+                if u1 and u1.key:
+                    unique_key1 = str(answer_payload.get(u1.key) or "").strip()
+                if u2 and u2.key:
+                    unique_key2 = str(answer_payload.get(u2.key) or "").strip()
+            except Exception:
+                unique_key1 = ""
+                unique_key2 = ""
+
+            if unique_key1:
+                existed = request.env["x_mobile.form.submission"].sudo().search_count(
+                    [("form_id", "=", form.id), ("unique_key1_value", "=", unique_key1)]
+                )
+                if existed:
+                    response = self._render_duplicate_page(form, token, posted_values_multi)
+                    return self._set_client_cookie_if_needed(response, cookie_created, client_id)
+
+            if unique_key2:
+                existed = request.env["x_mobile.form.submission"].sudo().search_count(
+                    [("form_id", "=", form.id), ("unique_key2_value", "=", unique_key2)]
+                )
+                if existed:
+                    response = self._render_duplicate_page(form, token, posted_values_multi)
+                    return self._set_client_cookie_if_needed(response, cookie_created, client_id)
+
             submission = request.env["x_mobile.form.submission"].sudo().create(
                 {
                     "form_id": form.id,
@@ -241,13 +318,20 @@ class MobileFormController(http.Controller):
                     "line_ids": [(0, 0, line) for line in submission_vals],
                     "confirm_key1_value": confirm_key1,
                     "confirm_key2_value": confirm_key2,
+                    "unique_key1_value": unique_key1,
+                    "unique_key2_value": unique_key2,
                 }
             )
             values = {"form": form, "submission": submission}
             response = request.render("mobile_form_builder.mobile_form_thanks", values)
             return self._set_client_cookie_if_needed(response, cookie_created, client_id)
 
-        response = self._render_form_page(form)
+        response = self._render_form_page(
+            form,
+            form_values=prefill_values,
+            form_values_multi=prefill_values_multi,
+            has_form_values=has_prefill,
+        )
         return self._set_client_cookie_if_needed(response, cookie_created, client_id)
 
     @http.route(

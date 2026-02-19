@@ -39,6 +39,8 @@
 	                            <field name="active"/>
 	                            <field name="confirm_component_id_1"/>
 	                            <field name="confirm_component_id_2"/>
+	                            <field name="unique_component_id_1"/>
+	                            <field name="unique_component_id_2"/>
 	                        </group>
 	                        <group>
 	                            <field name="access_token" readonly="1"/>
@@ -50,6 +52,7 @@
                         <field name="description"/>
                         <field name="success_message" placeholder="Shown after successful submission"/>
                         <field name="closed_message" placeholder="Shown when the public form is closed"/>
+                        <field name="duplicate_message" placeholder="Shown when unique-check value already exists"/>
                     </group>
                     <notebook>
                         <page string="Components">
@@ -192,6 +195,8 @@
 	                        <field name="confirmed_by" invisible="not is_confirmed"/>
 	                        <field name="confirm_key1_value" invisible="not confirm_key1_value"/>
 	                        <field name="confirm_key2_value" invisible="not confirm_key2_value"/>
+	                        <field name="unique_key1_value" invisible="not unique_key1_value"/>
+	                        <field name="unique_key2_value" invisible="not unique_key2_value"/>
 	                    </group>
                     <notebook>
                         <page string="Form View">

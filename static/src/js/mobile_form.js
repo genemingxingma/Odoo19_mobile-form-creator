@@ -720,7 +720,7 @@
             decoderMissing: "Server decoder unavailable. Install pyzbar/zbar on server.",
             payloadLarge: "Capture frame too large for server decode.",
             placeholder: "Scan required (manual input disabled)",
-            button: "Scan Barcode or QR / สแกนบาร์โค้ดหรือคิวอาร์",
+            button: "Scan Barcode or QR",
             tip: "Manual barcode entry is disabled. If a permission dialog appears, tap Allow and align with the red lines.",
         };
 

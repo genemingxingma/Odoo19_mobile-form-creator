@@ -71,6 +71,11 @@ class MobileForm(models.Model):
         default="This form is currently closed.",
         help="Message shown to public users when this form is not enabled for public access.",
     )
+    duplicate_message = fields.Text(
+        string="Duplicate Submission Message",
+        default="The submitted unique field value already exists.",
+        help="Message shown when a submission is blocked due to duplicate unique-check field values.",
+    )
     confirm_component_id_1 = fields.Many2one(
         "x_mobile.form.component",
         string="Confirmation Field 1",
@@ -82,6 +87,18 @@ class MobileForm(models.Model):
         string="Confirmation Field 2",
         domain="[('form_id', '=', id), ('component_type', 'not in', ('display','image','section','signature','file_upload','checkbox'))]",
         help="Optional second confirmation field. Either field can match during confirmation.",
+    )
+    unique_component_id_1 = fields.Many2one(
+        "x_mobile.form.component",
+        string="Unique Check Field 1",
+        domain="[('form_id', '=', id), ('component_type', 'not in', ('display','image','section','signature','file_upload','checkbox'))]",
+        help="If set, this field value must be unique within this form.",
+    )
+    unique_component_id_2 = fields.Many2one(
+        "x_mobile.form.component",
+        string="Unique Check Field 2",
+        domain="[('form_id', '=', id), ('component_type', 'not in', ('display','image','section','signature','file_upload','checkbox'))]",
+        help="Optional second unique field. Submission is blocked if either unique field value already exists.",
     )
     access_token = fields.Char(readonly=True, copy=False, index=True)
     share_url = fields.Char(compute="_compute_share_url", readonly=True, compute_sudo=True)
@@ -121,6 +138,15 @@ class MobileForm(models.Model):
         v2 = self._normalize_confirm_value(answers.get(c2.key)) if c2 and c2.key else ""
         return v1, v2
 
+    def _compute_unique_values_from_answers(self, answers):
+        self.ensure_one()
+        answers = answers or {}
+        u1 = self.unique_component_id_1
+        u2 = self.unique_component_id_2
+        v1 = self._normalize_confirm_value(answers.get(u1.key)) if u1 and u1.key else ""
+        v2 = self._normalize_confirm_value(answers.get(u2.key)) if u2 and u2.key else ""
+        return v1, v2
+
     def _recompute_confirm_keys_for_submissions(self):
         """Backfill confirm_key*_value for existing submissions based on answer_json."""
         import json
@@ -136,14 +162,40 @@ class MobileForm(models.Model):
                 except Exception:
                     answers = {}
                 v1, v2 = form._compute_confirm_values_from_answers(answers)
-                sub.sudo().write({"confirm_key1_value": v1, "confirm_key2_value": v2})
+                u1, u2 = form._compute_unique_values_from_answers(answers)
+                sub.sudo().write(
+                    {
+                        "confirm_key1_value": v1,
+                        "confirm_key2_value": v2,
+                        "unique_key1_value": u1,
+                        "unique_key2_value": u2,
+                    }
+                )
 
     def write(self, vals):
-        recompute = any(k in vals for k in ("confirm_component_id_1", "confirm_component_id_2"))
+        recompute = any(
+            k in vals
+            for k in (
+                "confirm_component_id_1",
+                "confirm_component_id_2",
+                "unique_component_id_1",
+                "unique_component_id_2",
+            )
+        )
         res = super().write(vals)
         if recompute:
             self._recompute_confirm_keys_for_submissions()
         return res
+
+    @api.constrains("unique_component_id_1", "unique_component_id_2")
+    def _check_unique_component_pairs(self):
+        for record in self:
+            if (
+                record.unique_component_id_1
+                and record.unique_component_id_2
+                and record.unique_component_id_1 == record.unique_component_id_2
+            ):
+                raise ValidationError(_("Unique Check Field 1 and Unique Check Field 2 cannot be the same field."))
 
     def _compute_submission_count(self):
         grouped = self.env["x_mobile.form.submission"].read_group(
@@ -987,6 +1039,8 @@ class MobileFormSubmission(models.Model):
     line_ids = fields.One2many("x_mobile.form.submission.line", "submission_id")
     confirm_key1_value = fields.Char(index=True, copy=False)
     confirm_key2_value = fields.Char(index=True, copy=False)
+    unique_key1_value = fields.Char(index=True, copy=False)
+    unique_key2_value = fields.Char(index=True, copy=False)
     is_confirmed = fields.Boolean(default=False, index=True, copy=False)
     confirmed_at = fields.Datetime(readonly=True, copy=False)
     confirmed_by = fields.Many2one("res.users", readonly=True, copy=False)

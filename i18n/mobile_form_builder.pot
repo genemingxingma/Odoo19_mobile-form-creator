@@ -1,0 +1,1549 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* mobile_form_builder
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0-20260217\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-02-19 07:36+0000\n"
+"PO-Revision-Date: 2026-02-19 07:36+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: mobile_form_builder
+#: model:ir.actions.report,print_report_name:mobile_form_builder.action_report_mobile_form_submission
+msgid "'Submission_%s' % (object.name or 'Form')"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_form_component_settings_form
+msgid ".pdf,.jpg,image/*,application/pdf"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_form_component_settings_form
+msgid "000-00-000-0"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_page
+msgid "<option value=\"\">Please select</option>"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_page
+msgid ""
+"<small class=\"mform-camera-tip\">Manual barcode entry is disabled. If a permission dialog appears, tap Allow and align barcode with the red line.</small>\n"
+"                                        <small class=\"mform-scan-status\"/>"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.report_mobile_form_submission_document
+msgid "<strong>Client ID</strong>:"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.report_mobile_form_submission_document
+msgid "<strong>Confirmed At</strong>:"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.report_mobile_form_submission_document
+msgid "<strong>Confirmed</strong>:"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.report_mobile_form_submission_document
+msgid "<strong>Form</strong>:"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.report_mobile_form_submission_document
+msgid "<strong>Submission No.</strong>:"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.report_mobile_form_submission_document
+msgid "<strong>Submitted At</strong>:"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__access_token
+msgid "Access Token"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_confirm_wizard__action
+msgid "Action"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__active
+msgid "Active"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__validation_mode
+msgid "Advanced Validation"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__age_auto
+msgid "Age (Auto)"
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+msgid "Age is above the maximum requirement."
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+msgid "Age is below the minimum requirement."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__linked_date_component_id
+msgid "Age will be automatically calculated from this date component."
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+msgid "All Match Options must belong to the selected Visibility Source."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__allow_repeat_client_submit
+msgid "Allow Repeated Submit From Same Client"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__file_accept
+msgid "Allowed File Types"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_page
+msgid "Allowed:"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__answer_json
+msgid "Answer Json"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_submission_form
+msgid "Answer Json (double-click to expand/collapse)"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__answer_preview
+msgid "Answer Preview"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.report_mobile_form_submission_document
+msgid "Application Form"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_mform_submission_confirm_wizard_form
+msgid "Apply"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_line__attachment_id
+msgid "Attachment"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_page
+msgid "Auto calculated"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_thanks
+msgid "Back to Form"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_duplicate_page
+msgid "Back to Form (Keep Data)"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__age_max_action__block
+#: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__age_min_action__block
+msgid "Block Submission"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__barcode_scan
+msgid "Camera Barcode Scan"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_mform_submission_confirm_wizard_form
+msgid "Cancel"
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+msgid "Cannot delete form '%s' because it already has submitted records."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__case_mode
+msgid "Case Limit"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__checkbox
+msgid "Checkbox"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component_option__child_option_ids
+msgid "Child Options"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_page
+msgid "Clear Signature"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_duplicate_page
+msgid "Clear and Back to Form"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__client_identifier
+msgid "Client Identifier"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_page
+msgid "Close"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_confirm_wizard__code
+msgid "Code"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__visibility_match_values
+msgid ""
+"Comma or line separated values. Rule matches when source contains any of "
+"these values."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component_option__component_id
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_line__component_id
+msgid "Component"
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_form_component_settings_form
+msgid "Component Settings"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__component_type
+msgid "Component Type"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_line__component_type_snapshot
+msgid "Component Type Snapshot"
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+msgid "Component cannot use itself as Visibility Source."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.constraint,message:mobile_form_builder.constraint_x_mobile_form_component_key_form_uniq
+msgid "Component key must be unique per form."
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+msgid ""
+"Component key must start with a letter and contain only letters, numbers, or"
+" _."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__component_ids
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_form_form
+msgid "Components"
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-javascript
+#: code:addons/mobile_form_builder/static/src/xml/submission_list_confirm.xml:0
+#: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_submission_confirm_wizard__action__confirm
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_submission_form
+msgid "Confirm"
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-javascript
+#. odoo-python
+#: code:addons/mobile_form_builder/models/confirm_wizard.py:0
+#: code:addons/mobile_form_builder/static/src/js/submission_list_confirm.js:0
+msgid "Confirm Failed"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__confirm_key1_value
+msgid "Confirm Key1 Value"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__confirm_key2_value
+msgid "Confirm Key2 Value"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.actions.act_window,name:mobile_form_builder.action_mform_submission_confirm_wizard
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_mform_submission_confirm_wizard_form
+msgid "Confirm Submission"
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-javascript
+#: code:addons/mobile_form_builder/static/src/xml/submission_list_confirm.xml:0
+msgid "Confirm by code..."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__confirm_component_id_1
+msgid "Confirmation Field 1"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__confirm_component_id_2
+msgid "Confirmation Field 2"
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/confirm_wizard.py:0
+msgid "Confirmed"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__confirmed_at
+msgid "Confirmed At"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__confirmed_by
+msgid "Confirmed By"
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/confirm_wizard.py:0
+msgid "Conflict: multiple submissions match this code."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__create_uid
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__create_uid
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component_option__create_uid
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__create_uid
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_confirm_wizard__create_uid
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_line__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__create_date
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__create_date
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component_option__create_date
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__create_date
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_confirm_wizard__create_date
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_line__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__custom_regex
+#: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__validation_mode__custom_regex
+msgid "Custom Regex"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_form_component_settings_form
+msgid ""
+"Custom regex example: use ^ for start and $ for end. Example "
+"^[A-Z]{2}\\d{6}$ means 2 uppercase letters + 6 digits (e.g. AB123456)."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__date_format__ddmmyyyy
+msgid "DDMMYYYY"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__date
+msgid "Date"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__date_format
+msgid "Date Format"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component_option__is_default
+msgid "Default"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__default_options_text
+msgid "Default Selection(s)"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__number_wheel_default
+msgid "Default selected value for Number Wheel."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__description
+msgid "Description"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__display_name
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__display_name
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component_option__display_name
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__display_name
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_confirm_wizard__display_name
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_line__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__display_text
+msgid "Display Text"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__display_text
+msgid "Display content for text display block"
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-javascript
+#: code:addons/mobile_form_builder/static/src/js/submission_list_confirm.js:0
+msgid "Done"
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-javascript
+#: code:addons/mobile_form_builder/static/src/js/submission_list_confirm.js:0
+msgid "Done."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_duplicate_page
+msgid "Duplicate Information"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__duplicate_message
+msgid "Duplicate Submission Message"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_submission_form
+msgid "Edit Data"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__email
+#: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__validation_mode__email
+msgid "Email"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__use_conditional_options
+msgid "Enable Cascading Options"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__visibility_enabled
+msgid "Enable Visibility Rule"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__is_enabled
+msgid "Enabled for Public"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_form_component_settings_form
+msgid "Example: ^[A-Z]{2}\\\\d{6}$"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__file_accept
+msgid "Examples: .pdf,.jpg,image/*,application/pdf"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_submission_tree
+msgid "Export Excel"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_submission_tree
+msgid "Export PDF"
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+msgid "Field '%s' cannot exceed %s characters."
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+msgid "Field '%s' does not match custom regex."
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+msgid "Field '%s' exceeds max file size %.2f MB."
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+msgid "Field '%s' file type is not allowed. Allowed: %s"
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+msgid "Field '%s' must be a valid email address."
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+msgid "Field '%s' must be a valid mobile phone number."
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+msgid "Field '%s' must be an integer."
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+msgid "Field '%s' must be at least %s characters."
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+msgid "Field '%s' must be between %s and %s."
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+msgid "Field '%s' must follow step %s."
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+msgid "Field '%s' must match format '%s'."
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+msgid "Field '%s' only allows digits."
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+msgid "Field '%s' only allows letters and numbers."
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+msgid "Field '%s' only allows letters."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__file_upload
+msgid "File Upload"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__options_text
+msgid "For radio/select/checkbox: one option per line"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__default_options_text
+msgid ""
+"For radio/select: one default option. For checkbox: multiple values split by"
+" comma or line."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__form_id
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__form_id
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_confirm_wizard__form_id
+msgid "Form"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_closed
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_closed_page
+msgid "Form Closed"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__form_preview_html
+msgid "Form Preview Html"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.actions.act_window,name:mobile_form_builder.action_x_mobile_submission
+msgid "Form Submissions"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_submission_form
+msgid "Form View"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__formatted_number
+msgid "Formatted Number"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.ui.menu,name:mobile_form_builder.menu_x_mobile_form
+msgid "Forms"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__help_text
+msgid "Help Text"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__visibility_mode__hide_if_match
+msgid "Hide If Match"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__date_format
+msgid ""
+"How the date value is stored/exported (input stays the standard HTML date "
+"control)."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__id
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__id
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component_option__id
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__id
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_confirm_wizard__id
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_line__id
+msgid "ID"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form__allow_repeat_client_submit
+msgid "If disabled, the same browser client can submit this form only once."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__include_in_export
+msgid "If enabled, this field will be exported as a column in Excel."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__age_max
+msgid "If set, ages above this value will trigger the configured action."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__age_min
+msgid "If set, ages below this value will trigger the configured action."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form__unique_component_id_1
+msgid "If set, this field value must be unique within this form."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__image
+#: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__image
+msgid "Image"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__image_filename
+msgid "Image Filename"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__image_url
+msgid "Image Url"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__include_in_export
+msgid "Include in Excel Export"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__input
+msgid "Input"
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+msgid "Invalid custom regex on '%s': %s"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__is_confirmed
+msgid "Is Confirmed"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__key
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_line__key
+msgid "Key"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__name
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_line__label
+msgid "Label"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__write_uid
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__write_uid
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component_option__write_uid
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__write_uid
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_confirm_wizard__write_uid
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_line__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__write_date
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__write_date
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component_option__write_date
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__write_date
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_confirm_wizard__write_date
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_line__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__validation_mode__alnum
+msgid "Letters + Numbers"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__validation_mode__alpha
+msgid "Letters Only"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__line_ids
+msgid "Line"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__linked_date_component_id
+msgid "Linked Date Component"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__case_mode__lower
+msgid "Lowercase"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_page
+msgid "MB."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__date_format__mmddyyyy
+msgid "MMDDYYYY"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__visibility_match_option_ids
+msgid "Match Options"
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+msgid "Match Options is required when visibility rule is enabled."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__visibility_match_values
+msgid "Match Values"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__file_max_mb
+msgid "Max File Size (MB)"
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+msgid "Max File Size (MB) cannot be negative."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__max_length
+msgid "Max Length"
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+msgid "Max Length cannot be negative."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_page
+msgid "Max size:"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__age_max
+msgid "Maximum Age"
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+msgid "Maximum Age cannot be negative."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form__success_message
+msgid "Message shown after user submits the form."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form__closed_message
+msgid ""
+"Message shown to public users when this form is not enabled for public "
+"access."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form__duplicate_message
+msgid ""
+"Message shown when a submission is blocked due to duplicate unique-check "
+"field values."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__min_length
+msgid "Min Length"
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+msgid "Min Length cannot be greater than Max Length."
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+msgid "Min Length cannot be negative."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__age_min
+msgid "Minimum Age"
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+msgid "Minimum Age cannot be greater than Maximum Age."
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+msgid "Minimum Age cannot be negative."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model,name:mobile_form_builder.model_x_mobile_form
+msgid "Mobile Collection Form"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:res.groups,name:mobile_form_builder.group_mobile_form_admin
+msgid "Mobile Form Administrator"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model,name:mobile_form_builder.model_x_mobile_form_component
+msgid "Mobile Form Component"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model,name:mobile_form_builder.model_x_mobile_form_component_option
+msgid "Mobile Form Component Option"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model,name:mobile_form_builder.model_x_mobile_form_submission
+msgid "Mobile Form Submission"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model,name:mobile_form_builder.model_x_mobile_form_submission_confirm_wizard
+msgid "Mobile Form Submission Confirmation Wizard"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model,name:mobile_form_builder.model_x_mobile_form_submission_line
+msgid "Mobile Form Submission Line"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.actions.report,name:mobile_form_builder.action_report_mobile_form_submission
+msgid "Mobile Form Submission PDF"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:res.groups,name:mobile_form_builder.group_mobile_form_user
+msgid "Mobile Form User"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.actions.act_window,name:mobile_form_builder.action_x_mobile_form
+#: model:ir.ui.menu,name:mobile_form_builder.menu_x_mobile_root
+msgid "Mobile Forms"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__validation_mode__phone
+msgid "Mobile Phone"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__multiline_text
+msgid "Multiline Text"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__name
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component_option__name
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__name
+msgid "Name"
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-javascript
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+#: code:addons/mobile_form_builder/static/src/xml/submission_list_confirm.xml:0
+msgid "New"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__age_max_action__none
+#: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__age_min_action__none
+msgid "No Check"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__validation_mode__none
+msgid "No Extra Validation"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__case_mode__none
+msgid "No Limit"
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/confirm_wizard.py:0
+msgid "No submission found for this code."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__number_format_pattern
+msgid "Number Format Pattern"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__number_wheel
+msgid "Number Wheel"
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+msgid ""
+"Number Wheel has too many values. Please reduce range or increase step."
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+msgid "Number format pattern must include at least one 0 placeholder."
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+msgid "Number format pattern only supports 0 and separators: - space . / ( )"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__only_digits
+msgid "Only Digits"
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+msgid "Only one default option is allowed for radio/select."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_form_form
+msgid "Open Public Form"
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+msgid "Option 1"
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+msgid "Option 2"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__option_ids
+msgid "Option Lines"
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+msgid "Option cannot reference itself as parent."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.constraint,message:mobile_form_builder.constraint_x_mobile_form_component_option_option_name_component_uniq
+msgid "Option names must be unique per component."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__image_url
+msgid "Optional external image URL"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form__confirm_component_id_2
+msgid ""
+"Optional second confirmation field. Either field can match during "
+"confirmation."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form__unique_component_id_2
+msgid ""
+"Optional second unique field. Submission is blocked if either unique field "
+"value already exists."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__options_text
+msgid "Options Text"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__age_max_action
+msgid "Over Maximum Action"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__age_max_message
+msgid "Over Maximum Message"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component_option__parent_option_id
+msgid "Parent Option"
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+msgid "Parent option must belong to the same component."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__placeholder
+msgid "Placeholder"
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-javascript
+#: code:addons/mobile_form_builder/static/src/js/submission_list_confirm.js:0
+msgid "Please check the code and try again."
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/confirm_wizard.py:0
+msgid "Please input a code."
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+msgid "Please select at least one submission."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__closed_message
+msgid "Public Form Closed Message"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__custom_regex
+msgid "Python regex used with full match, e.g. ^[A-Z]{2}\\d{6}$"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__qr_code_fallback_html
+msgid "Qr Code Fallback Html"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__radio
+msgid "Radio"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_thanks
+msgid "Reference:"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__related_partner_id
+msgid "Related Party"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form__related_partner_id
+msgid "Related company or individual from contacts."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__required
+msgid "Required"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_page
+msgid "Scan Barcode or QR"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_mform_submission_confirm_wizard_form
+msgid "Scan or type code"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_submission_confirm_wizard__code
+msgid "Scan or type the confirmation code."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_page
+msgid "Scan required (manual input disabled)"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__searchable_content
+msgid "Searchable Content"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__section
+msgid "Section"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__select
+msgid "Select"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__visibility_match_option_ids
+msgid "Select source options that trigger this visibility rule."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__sequence
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component_option__sequence
+msgid "Sequence"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_line__sequence_snapshot
+msgid "Sequence Snapshot"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_form_component_settings_form
+msgid ""
+"Set options in the table above. Tick Default for pre-selected values. For "
+"radio/select only one default is allowed. To build cascading options, enable"
+" Cascading Options and set Parent Option for child rows."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__share_url
+msgid "Share Url"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__visibility_mode__show_if_match
+msgid "Show If Match"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__use_conditional_options
+msgid "Show next-level options based on the selected option."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__visibility_enabled
+msgid "Show or hide this component based on another component selection."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_form_form
+msgid "Shown after successful submission"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_form_form
+msgid "Shown when the public form is closed"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_form_form
+msgid "Shown when unique-check value already exists"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__signature
+msgid "Signature"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_line__submission_id
+msgid "Submission"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__submission_count
+msgid "Submission Count"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__success_message
+msgid "Submission Success Message"
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/confirm_wizard.py:0
+msgid "Submission confirmed."
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/confirm_wizard.py:0
+msgid "Submission unconfirmed."
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__submission_ids
+#: model:ir.ui.menu,name:mobile_form_builder.menu_x_mobile_submission
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_form_form
+msgid "Submissions"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_page
+msgid "Submit"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__submit_date
+msgid "Submit Date"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_thanks
+msgid "Submitted Successfully"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__display
+msgid "Text Display"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__textarea
+msgid "Textarea"
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+msgid "Unable to build share URL."
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-javascript
+#: code:addons/mobile_form_builder/static/src/xml/submission_list_confirm.xml:0
+#: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_submission_confirm_wizard__action__unconfirm
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_submission_form
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_submission_tree
+msgid "Unconfirm"
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/confirm_wizard.py:0
+msgid "Unconfirmed"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__age_min_action
+msgid "Under Minimum Action"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__age_min_message
+msgid "Under Minimum Message"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__unique_component_id_1
+msgid "Unique Check Field 1"
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+msgid ""
+"Unique Check Field 1 and Unique Check Field 2 cannot be the same field."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__unique_component_id_2
+msgid "Unique Check Field 2"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__unique_key1_value
+msgid "Unique Key1 Value"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__unique_key2_value
+msgid "Unique Key2 Value"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__key
+msgid "Unique key in form submission payload"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__case_mode__upper
+msgid "Uppercase"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__number_format_pattern
+msgid "Use 0 as digit placeholder, e.g. 000-00-000-0"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form__confirm_component_id_1
+msgid ""
+"Used for staff confirmation by scanning/entering a code. The value will be "
+"copied onto the submission record."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_line__value_text
+msgid "Value Text"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__visibility_mode
+msgid "Visibility Mode"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__visibility_source_component_id
+msgid "Visibility Source"
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+msgid "Visibility Source is required when visibility rule is enabled."
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+msgid "Visibility Source must be in the same form."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__age_max_action__warn
+#: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__age_min_action__warn
+msgid "Warn Only"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__number_wheel_default
+msgid "Wheel Default"
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+msgid "Wheel Default must be between Wheel Min and Wheel Max."
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+msgid "Wheel Default must follow Wheel Step."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__number_wheel_max
+msgid "Wheel Max"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__number_wheel_min
+msgid "Wheel Min"
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+msgid "Wheel Min cannot be greater than Wheel Max."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__number_wheel_step
+msgid "Wheel Step"
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+msgid "Wheel Step must be greater than 0."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__date_format__yyyymmdd
+msgid "YYYYMMDD"
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+msgid "form_id"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_page
+msgid "image"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.report_mobile_form_submission_document
+msgid "signature"
+msgstr ""
+
+#. module: mobile_form_builder
+#. odoo-python
+#: code:addons/mobile_form_builder/models/form_builder.py:0
+msgid "xlsxwriter is required for Excel export."
+msgstr ""
