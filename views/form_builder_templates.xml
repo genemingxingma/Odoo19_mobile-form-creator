@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="mobile_form_page" name="Mobile Form Page">
+        <t t-call="website.layout">
+            <div class="mform-wrapper">
+                <div class="mform-card">
+                    <h1><t t-esc="form.name"/></h1>
+                    <p t-if="form.description" class="mform-description"><t t-esc="form.description"/></p>
+
+                    <t t-if="error">
+                        <div class="alert alert-danger" role="alert"><t t-esc="error"/></div>
+                    </t>
+
+                    <form method="post" enctype="multipart/form-data" class="mform-form">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                        <t t-foreach="components" t-as="component">
+                            <div
+                                class="mform-field"
+                                t-attf-class="mform-field mform-#{component.component_type}"
+                                t-att-data-vis-enabled="component.visibility_enabled and '1' or '0'"
+                                t-att-data-vis-source-key="component.visibility_source_component_id.key if component.visibility_source_component_id else ''"
+                                t-att-data-vis-source-type="component.visibility_source_component_id.component_type if component.visibility_source_component_id else ''"
+                                t-att-data-vis-mode="component.visibility_mode or 'show_if_match'"
+                                t-att-data-vis-values="component.get_visibility_match_values_text()"
+                            >
+                                <label t-if="component.component_type not in ['display', 'image', 'section']" class="mform-label">
+                                    <t t-esc="component.name"/>
+                                    <span t-if="component.required" class="required-mark">*</span>
+                                </label>
+
+                                <t t-if="component.component_type == 'section'">
+                                    <div class="mform-section">
+                                        <div class="mform-section-title"><t t-esc="component.name"/></div>
+                                        <div t-if="component.help_text" class="mform-section-note"><t t-esc="component.help_text"/></div>
+                                    </div>
+                                </t>
+
+                                <t t-if="component.component_type == 'display'">
+                                    <div class="mform-display"><t t-esc="component.display_text or component.name"/></div>
+                                </t>
+
+                                <t t-if="component.component_type == 'image'">
+                                    <img t-if="component.image" t-att-src="'/web/image/x_mobile.form.component/%s/image' % component.id" class="mform-image" alt="image"/>
+                                    <img t-if="not component.image and component.image_url" t-att-src="component.image_url" class="mform-image" alt="image"/>
+                                </t>
+
+                                <t t-if="component.component_type == 'input'">
+                                    <input
+                                        type="text"
+                                        t-att-name="component.key"
+                                        t-att-value="form_values.get(component.key) if has_form_values else None"
+                                        t-att-placeholder="component.placeholder or ''"
+                                        t-att-required="component.required or None"
+                                        t-att-maxlength="component.max_length or None"
+                                        t-att-minlength="component.min_length or None"
+                                        t-att-inputmode="'numeric' if component.only_digits else None"
+                                        t-att-pattern="'[0-9]+' if component.only_digits else (component.get_front_pattern() or None)"
+                                        t-att-title="component.get_front_pattern_hint() or None"
+                                        t-att-data-only-digits="'1' if component.only_digits else None"
+                                        t-att-data-case-mode="component.case_mode or 'none'"
+                                        t-att-data-validation-mode="component.validation_mode or 'none'"
+                                        t-att-data-custom-regex="component.custom_regex or None"
+                                        class="form-control"
+                                    />
+                                </t>
+
+                                <t t-if="component.component_type == 'email'">
+                                    <input
+                                        type="email"
+                                        t-att-name="component.key"
+                                        t-att-value="form_values.get(component.key) if has_form_values else None"
+                                        t-att-placeholder="component.placeholder or ''"
+                                        t-att-required="component.required or None"
+                                        t-att-maxlength="component.max_length or None"
+                                        t-att-minlength="component.min_length or None"
+                                        autocomplete="email"
+                                        class="form-control"
+                                    />
+                                </t>
+
+                                <t t-if="component.component_type == 'formatted_number'">
+                                    <input
+                                        type="text"
+                                        t-att-name="component.key"
+                                        t-att-value="form_values.get(component.key) if has_form_values else None"
+                                        t-att-placeholder="component.placeholder or component.number_format_pattern or ''"
+                                        t-att-required="component.required or None"
+                                        t-att-data-number-format="component.number_format_pattern or ''"
+                                        inputmode="numeric"
+                                        class="form-control mform-number-format"
+                                    />
+                                </t>
+
+                                <t t-if="component.component_type == 'number_wheel'">
+                                    <select t-att-name="component.key" t-att-required="component.required or None" class="form-select mform-number-wheel">
+                                        <option value="">Please select</option>
+                                        <t t-foreach="component.get_number_wheel_values()" t-as="numval">
+                                            <option t-att-value="numval" t-att-selected="((('%s' % numval) == form_values.get(component.key)) if has_form_values else (numval == component.number_wheel_default)) and 'selected' or None"><t t-esc="numval"/></option>
+                                        </t>
+                                    </select>
+                                </t>
+
+                                <t t-if="component.component_type == 'textarea'">
+                                    <textarea
+                                        t-att-name="component.key"
+                                        t-att-placeholder="component.placeholder or ''"
+                                        t-att-required="component.required or None"
+                                        t-att-maxlength="component.max_length or None"
+                                        t-att-minlength="component.min_length or None"
+                                        t-att-pattern="component.get_front_pattern() or None"
+                                        t-att-title="component.get_front_pattern_hint() or None"
+                                        t-att-data-only-digits="'1' if component.only_digits else None"
+                                        t-att-data-case-mode="component.case_mode or 'none'"
+                                        t-att-data-validation-mode="component.validation_mode or 'none'"
+                                        t-att-data-custom-regex="component.custom_regex or None"
+                                        class="form-control"
+                                        rows="4"
+                                    ><t t-esc="form_values.get(component.key) if has_form_values else ''"/></textarea>
+                                </t>
+
+                                <t t-if="component.component_type == 'multiline_text'">
+                                    <textarea
+                                        t-att-name="component.key"
+                                        t-att-placeholder="component.placeholder or ''"
+                                        t-att-required="component.required or None"
+                                        t-att-maxlength="component.max_length or None"
+                                        t-att-minlength="component.min_length or None"
+                                        t-att-data-only-digits="'1' if component.only_digits else None"
+                                        t-att-data-case-mode="component.case_mode or 'none'"
+                                        t-att-data-validation-mode="component.validation_mode or 'none'"
+                                        t-att-data-custom-regex="component.custom_regex or None"
+                                        class="form-control"
+                                        rows="6"
+                                    ><t t-esc="form_values.get(component.key) if has_form_values else ''"/></textarea>
+                                </t>
+
+                                <t t-if="component.component_type == 'file_upload'">
+                                    <input
+                                        type="file"
+                                        t-att-name="component.key"
+                                        t-att-required="component.required or None"
+                                        t-att-accept="component.file_accept or None"
+                                        class="form-control"
+                                    />
+                                    <small class="text-muted">
+                                        <t t-if="component.file_accept">
+                                            Allowed: <t t-esc="component.file_accept"/>. 
+                                        </t>
+                                        <t t-if="component.file_max_mb">
+                                            Max size: <t t-esc="component.file_max_mb"/> MB.
+                                        </t>
+                                    </small>
+                                </t>
+
+                                <t t-if="component.component_type == 'date'">
+                                    <input
+                                        type="date"
+                                        t-att-name="component.key"
+                                        t-att-value="form_values.get(component.key) if has_form_values else None"
+                                        t-att-required="component.required or None"
+                                        class="form-control"
+                                        autocomplete="off"
+                                    />
+                                </t>
+
+                                <t t-if="component.component_type == 'age_auto'">
+                                    <input
+                                        type="text"
+                                        t-att-name="component.key"
+                                        t-att-value="form_values.get(component.key) if has_form_values else None"
+                                        t-att-data-age-source-key="component.linked_date_component_id.key if component.linked_date_component_id else ''"
+                                        t-att-data-age-min="component.age_min if component.age_min is not None else ''"
+                                        t-att-data-age-min-action="component.age_min_action or 'none'"
+                                        t-att-data-age-min-message="component.age_min_message or ''"
+                                        t-att-data-age-max="component.age_max if component.age_max is not None else ''"
+                                        t-att-data-age-max-action="component.age_max_action or 'none'"
+                                        t-att-data-age-max-message="component.age_max_message or ''"
+                                        class="form-control mform-age-auto"
+                                        readonly="readonly"
+                                        tabindex="-1"
+                                        placeholder="Auto calculated"
+                                    />
+                                </t>
+
+                                <t t-if="component.component_type in ['select', 'radio', 'checkbox'] and component.use_conditional_options">
+                                    <div
+                                        class="mform-cascade"
+                                        t-att-data-component-type="component.component_type"
+                                        t-att-data-options-json="component.get_conditional_options_json()"
+                                        t-att-data-required="component.required and '1' or '0'"
+                                    >
+                                        <input
+                                            type="hidden"
+                                            t-att-name="component.key"
+                                            t-att-value="form_values.get(component.key) if has_form_values else None"
+                                            t-att-required="component.required or None"
+                                            class="mform-cascade-value"
+                                        />
+                                        <div class="mform-cascade-levels"></div>
+                                    </div>
+                                </t>
+
+                                <t t-if="component.component_type == 'select' and not component.use_conditional_options">
+                                    <select t-att-name="component.key" t-att-required="component.required or None" class="form-select">
+                                        <option value="">Please select</option>
+                                        <t t-foreach="component.get_option_list()" t-as="option">
+                                            <option t-att-value="option" t-att-selected="(option == form_values.get(component.key) if has_form_values else option == component.get_default_single_option()) and 'selected' or None"><t t-esc="option"/></option>
+                                        </t>
+                                    </select>
+                                </t>
+
+                                <t t-if="component.component_type == 'radio' and not component.use_conditional_options">
+                                    <div class="mform-options">
+                                        <t t-foreach="component.get_option_list()" t-as="option">
+                                            <label class="mform-option">
+                                                <input type="radio" t-att-name="component.key" t-att-value="option" t-att-checked="(option == form_values.get(component.key) if has_form_values else option == component.get_default_single_option()) and 'checked' or None"/>
+                                                <span><t t-esc="option"/></span>
+                                            </label>
+                                        </t>
+                                    </div>
+                                </t>
+
+                                <t t-if="component.component_type == 'checkbox' and not component.use_conditional_options">
+                                    <div class="mform-options">
+                                        <t t-foreach="component.get_option_list()" t-as="option">
+                                            <label class="mform-option">
+                                                <input type="checkbox" t-att-name="component.key" t-att-value="option" t-att-checked="(option in form_values_multi.get(component.key, []) if has_form_values else option in component.get_default_option_list()) and 'checked' or None"/>
+                                                <span><t t-esc="option"/></span>
+                                            </label>
+                                        </t>
+                                    </div>
+                                </t>
+
+                                <t t-if="component.component_type == 'signature'">
+                                    <div class="mform-sign-wrap" t-att-data-target="component.key">
+                                        <canvas class="mform-sign-canvas"></canvas>
+                                        <input type="hidden" t-att-name="component.key" t-att-value="form_values.get(component.key) if has_form_values else None" class="mform-sign-input"/>
+                                        <button type="button" class="btn btn-secondary btn-sm mform-sign-clear">Clear Signature</button>
+                                    </div>
+                                </t>
+
+                                <t t-if="component.component_type == 'barcode_scan'">
+                                    <div class="mform-barcode" t-att-data-target="component.key">
+                                        <input type="text" t-att-name="component.key" t-att-value="form_values.get(component.key) if has_form_values else None" t-att-required="component.required or None" readonly="readonly" class="form-control mform-barcode-input" placeholder="Scan required (manual input disabled)"/>
+                                        <div class="mform-scan-actions">
+                                            <button type="button" class="btn btn-outline-primary mform-start-scan">Scan Barcode or QR / สแกนบาร์โค้ดหรือคิวอาร์</button>
+                                        </div>
+                                        <small class="mform-camera-tip">Manual barcode entry is disabled. If a permission dialog appears, tap Allow and align barcode with the red line.</small>
+                                        <small class="mform-scan-status"></small>
+                                    </div>
+                                </t>
+
+                                <small t-if="component.help_text" class="text-muted"><t t-esc="component.help_text"/></small>
+                            </div>
+                        </t>
+
+                        <button type="submit" class="btn btn-primary mform-submit">Submit / ส่งแบบฟอร์ม</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Floating scan modal (shared for all barcode components). -->
+            <div class="mform-scan-modal" id="mform-scan-modal" aria-hidden="true">
+                <div class="mform-scan-panel">
+                    <div class="mform-scan-header">
+                        <div class="mform-scan-title">Scan Barcode or QR / สแกนบาร์โค้ดหรือคิวอาร์</div>
+                        <button type="button" class="btn btn-sm btn-light mform-scan-close" aria-label="Close">Close</button>
+                    </div>
+	                    <div class="mform-scan-body">
+	                        <div class="mform-scan-video-wrap">
+	                            <video class="mform-scan-video" playsinline="true"></video>
+	                            <div class="mform-aim-line"></div>
+	                            <div class="mform-aim-line-vert"></div>
+	                        </div>
+	                        <div class="mform-scan-meta">
+	                            <div class="mform-camera-tip mform-scan-tip"></div>
+	                            <div class="mform-scan-status mform-scan-status-modal"></div>
+	                        </div>
+	                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="mobile_form_thanks" name="Mobile Form Thanks">
+        <t t-call="website.layout">
+            <div class="mform-wrapper">
+                <div class="mform-card mform-thanks">
+                    <h2>Submitted Successfully</h2>
+                    <p><t t-esc="form.success_message or 'Thank you for your submission.'"/></p>
+                    <p>Reference: <strong><t t-esc="submission.name"/></strong></p>
+                    <a t-att-href="'/mform/%s' % form.access_token" class="btn btn-secondary">Back to Form</a>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="mobile_form_closed" name="Mobile Form Closed">
+        <t t-call="website.layout">
+            <div class="mform-wrapper">
+                <div class="mform-card mform-thanks">
+                    <h2>Form Closed</h2>
+                    <p><t t-esc="form.closed_message or 'This form is currently closed.'"/></p>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="mobile_form_closed_page" name="Mobile Form Closed Page">
+        <t t-call="website.layout">
+            <div class="mform-wrapper">
+                <div class="mform-card mform-closed-card">
+                    <h1>Form Closed</h1>
+                    <p t-if="form and form.name" class="mform-description">
+                        <t t-esc="form.name"/>
+                    </p>
+                    <div class="mform-closed-message">
+                        <t t-esc="closed_message"/>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

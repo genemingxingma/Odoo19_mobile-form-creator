@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="action_report_mobile_form_submission" model="ir.actions.report">
+        <field name="name">Mobile Form Submission PDF</field>
+        <field name="model">x_mobile.form.submission</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">mobile_form_builder.report_mobile_form_submission_document</field>
+        <field name="report_file">mobile_form_builder.report_mobile_form_submission_document</field>
+        <field name="print_report_name">'Submission_%s' % (object.name or 'Form')</field>
+        <field name="binding_model_id" ref="model_x_mobile_form_submission"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_mobile_form_submission_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="submission">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <style>
+                            .mform-pdf-wrap, .mform-pdf-wrap * {
+                                font-family: "Noto Sans Thai", "Sarabun", "TH Sarabun New", "Tahoma", "DejaVu Sans", sans-serif !important;
+                            }
+                            .mform-pdf-wrap { border: 1px solid #7d8898; border-radius: 6px; padding: 14px; }
+                            .mform-pdf-title { text-align: center; font-size: 22px; font-weight: 700; margin: 0 0 12px 0; }
+                            .mform-pdf-meta { width: 100%; border-collapse: collapse; margin-bottom: 12px; }
+                            .mform-pdf-meta td { border: 1px solid #b8c1ce; padding: 6px 8px; font-size: 12px; }
+                            .mform-pdf-lines { margin-top: 6px; }
+                            .mform-pdf-line { padding: 6px 2px; border-bottom: 1px dashed #d3d9e3; font-size: 13px; line-height: 1.55; }
+                            .mform-pdf-line:last-child { border-bottom: 0; }
+                            .mform-pdf-label { font-weight: 700; }
+                            .mform-pdf-value { white-space: pre-wrap; word-break: break-word; }
+                            .mform-sign-img { max-height: 110px; max-width: 260px; border: 1px solid #c6ceda; }
+                        </style>
+
+                        <div class="mform-pdf-wrap">
+                            <h2 class="mform-pdf-title">Application Form</h2>
+
+                            <table class="mform-pdf-meta">
+	                                <tr>
+	                                    <td><strong>Form</strong>: <span t-esc="submission.form_id.name"/></td>
+	                                    <td><strong>Submission No.</strong>: <span t-esc="submission.name"/></td>
+	                                </tr>
+	                                <tr>
+	                                    <td><strong>Submitted At</strong>: <span t-esc="submission.get_submit_date_company_tz_str()"/></td>
+	                                    <td><strong>Client ID</strong>: <span t-esc="submission.client_identifier or ''"/></td>
+	                                </tr>
+	                                <tr>
+	                                    <td><strong>Confirmed</strong>: <span t-esc="'Yes' if submission.is_confirmed else 'No'"/></td>
+	                                    <td><strong>Confirmed At</strong>: <span t-esc="submission.confirmed_at or ''"/></td>
+	                                </tr>
+	                            </table>
+
+                            <div class="mform-pdf-lines">
+                                <t t-foreach="submission.line_ids" t-as="line">
+                                    <div class="mform-pdf-line">
+                                        <span class="mform-pdf-label" t-esc="line.label"/>：
+                                        <t t-if="(line.component_id and line.component_id.component_type == 'signature') or (line.value_text and line.value_text.startswith('data:image'))">
+                                            <div style="margin-top: 6px;">
+                                                <img t-att-src="line.value_text" class="mform-sign-img" alt="signature"/>
+                                            </div>
+                                        </t>
+                                        <t t-else="">
+                                            <span class="mform-pdf-value" t-esc="line.value_text or ''"/>
+                                        </t>
+                                    </div>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="group_mobile_form_user" model="res.groups">
+        <field name="name">Mobile Form User</field>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+    <record id="group_mobile_form_admin" model="res.groups">
+        <field name="name">Mobile Form Administrator</field>
+        <field name="implied_ids" eval="[(4, ref('mobile_form_builder.group_mobile_form_user'))]"/>
+    </record>
+
+    <record id="base.group_system" model="res.groups">
+        <field name="implied_ids" eval="[(4, ref('mobile_form_builder.group_mobile_form_admin'))]"/>
+    </record>
+
+</odoo>

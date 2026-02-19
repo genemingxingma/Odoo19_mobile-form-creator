@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_x_mobile_form_tree" model="ir.ui.view">
+        <field name="name">x.mobile.form.tree</field>
+        <field name="model">x_mobile.form</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="related_partner_id"/>
+                <field name="is_enabled"/>
+                <field name="active"/>
+                <field name="submission_count"/>
+                <field name="share_url"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_x_mobile_form_form" model="ir.ui.view">
+        <field name="name">x.mobile.form.form</field>
+        <field name="model">x_mobile.form</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_open_public_form" type="object" string="Open Public Form" class="btn-primary"/>
+                    <button name="action_view_submissions" type="object" string="Submissions"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_submissions" type="object" class="oe_stat_button" icon="fa-list">
+                            <field name="submission_count" widget="statinfo" string="Submissions"/>
+                        </button>
+                    </div>
+	                    <group>
+	                        <group>
+	                            <field name="name"/>
+	                            <field name="related_partner_id"/>
+	                            <field name="is_enabled"/>
+	                            <field name="allow_repeat_client_submit"/>
+	                            <field name="active"/>
+	                            <field name="confirm_component_id_1"/>
+	                            <field name="confirm_component_id_2"/>
+	                        </group>
+	                        <group>
+	                            <field name="access_token" readonly="1"/>
+	                            <field name="share_url" widget="url" readonly="1"/>
+	                            <field name="qr_code_fallback_html" widget="html" readonly="1"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="description"/>
+                        <field name="success_message" placeholder="Shown after successful submission"/>
+                        <field name="closed_message" placeholder="Shown when the public form is closed"/>
+                    </group>
+                    <notebook>
+                        <page string="Components">
+                            <field name="component_ids" context="{'default_form_id': id}">
+                                <list editable="bottom" open_form_view="1">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="name"/>
+                                    <field name="key"/>
+                                    <field name="component_type"/>
+                                    <field name="include_in_export"/>
+                                    <field name="required"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_x_mobile_form_component_settings_form" model="ir.ui.view">
+        <field name="name">x.mobile.form.component.settings.form</field>
+        <field name="model">x_mobile.form.component</field>
+        <field name="arch" type="xml">
+            <form string="Component Settings">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="form_id" readonly="1"/>
+                            <field name="sequence"/>
+                            <field name="name"/>
+                            <field name="key"/>
+                            <field name="component_type" readonly="1"/>
+                            <field name="required" invisible="component_type == 'age_auto'"/>
+                            <field name="include_in_export" invisible="component_type in ['display', 'image', 'section']"/>
+                        </group>
+                        <group>
+                            <field name="placeholder" invisible="component_type in ['display', 'image', 'section', 'signature']"/>
+                            <field name="help_text"/>
+                            <field name="only_digits" invisible="component_type not in ['input', 'textarea', 'multiline_text']"/>
+                            <field name="min_length" invisible="component_type not in ['input', 'textarea', 'multiline_text', 'email']"/>
+                            <field name="max_length" invisible="component_type not in ['input', 'textarea', 'multiline_text', 'email']"/>
+                            <field name="case_mode" invisible="component_type not in ['input', 'textarea', 'multiline_text']"/>
+                            <field name="validation_mode" invisible="component_type not in ['input', 'textarea', 'multiline_text']"/>
+                            <field name="custom_regex" placeholder="Example: ^[A-Z]{2}\\d{6}$" invisible="component_type not in ['input', 'textarea', 'multiline_text'] or validation_mode != 'custom_regex'"/>
+                            <field name="number_format_pattern" placeholder="000-00-000-0" invisible="component_type != 'formatted_number'"/>
+                            <field name="number_wheel_min" invisible="component_type != 'number_wheel'"/>
+                            <field name="number_wheel_max" invisible="component_type != 'number_wheel'"/>
+                            <field name="number_wheel_step" invisible="component_type != 'number_wheel'"/>
+                            <field name="number_wheel_default" invisible="component_type != 'number_wheel'"/>
+                            <field name="file_accept" placeholder=".pdf,.jpg,image/*,application/pdf" invisible="component_type != 'file_upload'"/>
+                            <field name="file_max_mb" invisible="component_type != 'file_upload'"/>
+                            <field name="date_format" invisible="component_type != 'date'"/>
+                            <field name="visibility_enabled"/>
+                            <field name="visibility_source_component_id" invisible="not visibility_enabled"/>
+                            <field name="visibility_mode" invisible="not visibility_enabled"/>
+                            <field name="visibility_match_option_ids" widget="many2many_tags" options="{'no_create': True, 'no_create_edit': True}" invisible="not visibility_enabled"/>
+                            <field name="visibility_match_values" invisible="1"/>
+                            <field name="use_conditional_options" invisible="component_type not in ['radio', 'select', 'checkbox']"/>
+                            <field name="linked_date_component_id" invisible="component_type != 'age_auto'"/>
+                            <field name="age_min" invisible="component_type != 'age_auto'"/>
+                            <field name="age_min_action" invisible="component_type != 'age_auto'"/>
+                            <field name="age_min_message" invisible="component_type != 'age_auto' or age_min_action == 'none'"/>
+                            <field name="age_max" invisible="component_type != 'age_auto'"/>
+                            <field name="age_max_action" invisible="component_type != 'age_auto'"/>
+                            <field name="age_max_message" invisible="component_type != 'age_auto' or age_max_action == 'none'"/>
+                            <field name="options_text" invisible="1"/>
+                            <field name="default_options_text" invisible="1"/>
+                            <field name="option_ids" invisible="component_type not in ['radio', 'select', 'checkbox']">
+                                <list editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="name"/>
+                                    <field name="parent_option_id"/>
+                                    <field name="is_default"/>
+                                </list>
+                            </field>
+                            <field name="display_text" invisible="component_type != 'display'"/>
+                            <field name="image" filename="image_filename" invisible="component_type != 'image'"/>
+                            <field name="image_url" invisible="component_type != 'image'"/>
+                        </group>
+                    </group>
+                    <group invisible="component_type not in ['radio', 'select', 'checkbox']">
+                        <div class="o_form_label">Set options in the table above. Tick Default for pre-selected values. For radio/select only one default is allowed. To build cascading options, enable Cascading Options and set Parent Option for child rows.</div>
+                    </group>
+                    <group invisible="component_type not in ['input', 'textarea']">
+                        <div class="o_form_label">Custom regex example: use ^ for start and $ for end. Example ^[A-Z]{2}\d{6}$ means 2 uppercase letters + 6 digits (e.g. AB123456).</div>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+	    <record id="view_x_mobile_submission_tree" model="ir.ui.view">
+        <field name="name">x.mobile.form.submission.tree</field>
+        <field name="model">x_mobile.form.submission</field>
+	        <field name="arch" type="xml">
+	            <list js_class="mform_submission_list" create="false">
+	                <header>
+	                    <button name="action_unconfirm" type="object" string="Unconfirm" class="btn-secondary"/>
+	                    <button name="action_export_selected_xlsx" type="object" string="Export Excel"/>
+	                    <button name="action_export_selected_pdf" type="object" string="Export PDF"/>
+	                </header>
+	                <field name="is_confirmed"/>
+	                <field name="name"/>
+	                <field name="form_id"/>
+	                <field name="submit_date"/>
+	                <field name="answer_preview"/>
+	            </list>
+	        </field>
+	    </record>
+
+    <record id="view_x_mobile_submission_search" model="ir.ui.view">
+        <field name="name">x.mobile.form.submission.search</field>
+        <field name="model">x_mobile.form.submission</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="searchable_content"/>
+                <field name="name"/>
+                <field name="form_id"/>
+            </search>
+        </field>
+    </record>
+
+	    <record id="view_x_mobile_submission_form" model="ir.ui.view">
+        <field name="name">x.mobile.form.submission.form</field>
+        <field name="model">x_mobile.form.submission</field>
+	        <field name="arch" type="xml">
+	            <form>
+	                <header>
+	                    <button name="action_confirm" type="object" string="Confirm" class="btn-primary" invisible="is_confirmed"/>
+	                    <button name="action_unconfirm" type="object" string="Unconfirm" class="btn-secondary" invisible="not is_confirmed"/>
+	                </header>
+	                <sheet>
+	                    <group>
+	                        <field name="name"/>
+	                        <field name="form_id"/>
+	                        <field name="submit_date"/>
+	                        <field name="is_confirmed"/>
+	                        <field name="confirmed_at" invisible="not is_confirmed"/>
+	                        <field name="confirmed_by" invisible="not is_confirmed"/>
+	                        <field name="confirm_key1_value" invisible="not confirm_key1_value"/>
+	                        <field name="confirm_key2_value" invisible="not confirm_key2_value"/>
+	                    </group>
+                    <notebook>
+                        <page string="Form View">
+                            <field name="form_preview_html" widget="html" readonly="1"/>
+                        </page>
+                        <page string="Edit Data">
+                            <group>
+                                <div class="o_form_label">Answer Json (double-click to expand/collapse)</div>
+                                <field name="answer_json" widget="text" class="mform-back-collapsible-answer"/>
+                            </group>
+                            <field name="line_ids">
+                                <list editable="bottom">
+                                    <field name="sequence_snapshot" readonly="1"/>
+                                    <field name="component_type_snapshot" readonly="1"/>
+                                    <field name="attachment_id"/>
+                                    <field name="key"/>
+                                    <field name="label"/>
+                                    <field name="value_text"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_x_mobile_form" model="ir.actions.act_window">
+        <field name="name">Mobile Forms</field>
+        <field name="res_model">x_mobile.form</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'active_test': False}</field>
+    </record>
+
+    <record id="action_x_mobile_submission" model="ir.actions.act_window">
+        <field name="name">Form Submissions</field>
+        <field name="res_model">x_mobile.form.submission</field>
+        <field name="view_mode">list,form</field>
+        <!-- Force the action to open our list view (with inline confirm-by-code box). -->
+        <field name="view_id" ref="view_x_mobile_submission_tree"/>
+        <field name="search_view_id" ref="view_x_mobile_submission_search"/>
+        <field name="context">{'create': False}</field>
+    </record>
+
+    <menuitem id="menu_x_mobile_root" name="Mobile Forms" sequence="25" web_icon="mobile_form_builder,static/description/icon.png" groups="mobile_form_builder.group_mobile_form_admin,mobile_form_builder.group_mobile_form_user"/>
+    <menuitem id="menu_x_mobile_form" name="Forms" parent="menu_x_mobile_root" action="action_x_mobile_form" sequence="10" groups="mobile_form_builder.group_mobile_form_admin"/>
+    <menuitem id="menu_x_mobile_submission" name="Submissions" parent="menu_x_mobile_root" action="action_x_mobile_submission" sequence="20" groups="mobile_form_builder.group_mobile_form_admin,mobile_form_builder.group_mobile_form_user"/>
+</odoo>

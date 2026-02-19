@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_mform_submission_confirm_wizard_form" model="ir.ui.view">
+        <field name="name">x.mobile.form.submission.confirm.wizard.form</field>
+        <field name="model">x_mobile.form.submission.confirm.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Confirm Submission">
+                <sheet>
+                    <group col="1">
+                        <!-- Put code first so the dialog opens ready for scanner input. -->
+                        <field name="code" placeholder="Scan or type code"/>
+                        <field name="action"/>
+                        <!-- Keep form context (optional) without stealing focus. -->
+                        <field name="form_id" readonly="1" invisible="1"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_apply" type="object" string="Apply" class="btn-primary" data-hotkey="enter"/>
+                    <button string="Cancel" special="cancel" class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_mform_submission_confirm_wizard" model="ir.actions.act_window">
+        <field name="name">Confirm Submission</field>
+        <field name="res_model">x_mobile.form.submission.confirm.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="context">{'default_form_id': context.get('default_form_id')}</field>
+    </record>
+</odoo>

@@ -1,0 +1,31 @@
+.mform-back-collapsible-answer textarea,
+.mform-back-collapsible-answer .o_input {
+    max-height: 92px;
+    overflow: hidden;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.mform-back-collapsible-answer.is-expanded textarea,
+.mform-back-collapsible-answer.is-expanded .o_input {
+    max-height: none;
+    overflow: auto;
+}
+
+td[data-name="value_text"] .o_field_widget,
+td[data-name="value_text"] textarea,
+td[data-name="value_text"] .o_input {
+    max-height: 38px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+}
+
+td[data-name="value_text"].mform-expanded .o_field_widget,
+td[data-name="value_text"].mform-expanded textarea,
+td[data-name="value_text"].mform-expanded .o_input {
+    max-height: none;
+    overflow: auto;
+    white-space: pre-wrap;
+}

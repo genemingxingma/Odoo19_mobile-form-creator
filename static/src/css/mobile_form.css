@@ -1,0 +1,417 @@
+.mform-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 16px;
+    padding-bottom: calc(16px + env(safe-area-inset-bottom));
+    padding-left: calc(16px + env(safe-area-inset-left));
+    padding-right: calc(16px + env(safe-area-inset-right));
+    background: linear-gradient(180deg, #f2f6fb 0%, #ffffff 100%);
+    min-height: 75vh;
+    -webkit-text-size-adjust: 100%;
+}
+
+.mform-card {
+    width: 100%;
+    max-width: 520px;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 8px 30px rgba(26, 44, 71, 0.08);
+    padding: 18px;
+}
+
+.mform-description {
+    color: #526581;
+    margin-bottom: 16px;
+}
+
+.mform-closed-card {
+    text-align: center;
+}
+
+.mform-closed-message {
+    margin-top: 6px;
+    padding: 12px;
+    border: 1px solid #e4e8ef;
+    border-radius: 10px;
+    background: #f8fbff;
+    color: #1f334d;
+    line-height: 1.6;
+    white-space: pre-line;
+}
+
+
+.mform-field {
+    margin-bottom: 14px;
+}
+
+.mform-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.required-mark {
+    color: #dd1f26;
+}
+
+.mform-display {
+    background: #f8f9fb;
+    border: 1px solid #e4e8ef;
+    border-radius: 8px;
+    padding: 10px;
+    color: #42526b;
+}
+
+.mform-section {
+    position: relative;
+    margin: 4px 0 8px;
+    padding: 2px 0 10px;
+    border-bottom: 0;
+}
+
+.mform-section::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: #d7e0eb;
+}
+
+.mform-section-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1f334d;
+    line-height: 1.35;
+}
+
+.mform-section-note {
+    margin-top: 4px;
+    font-size: 12px;
+    color: #607088;
+}
+
+.mform-image {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #e7ebf1;
+}
+
+.mform-options {
+    display: grid;
+    gap: 8px;
+}
+
+.mform-cascade-levels {
+    display: grid;
+    gap: 8px;
+}
+
+.mform-cascade-level .form-select {
+    min-height: 42px;
+}
+
+.mform-number-wheel {
+    min-height: 44px;
+}
+
+.mform-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.mform-sign-canvas {
+    width: 100%;
+    height: 160px;
+    display: block;
+    border: 1px dashed #8ea0b8;
+    border-radius: 8px;
+    touch-action: none;
+    -ms-touch-action: none;
+    background: #fff;
+    cursor: crosshair;
+    pointer-events: auto;
+}
+
+.mform-sign-wrap {
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+}
+
+.mform-sign-clear {
+    margin-top: 8px;
+}
+
+.mform-video {
+    width: 100%;
+    max-width: 520px;
+    height: 144px;
+    margin-top: 10px;
+    object-fit: cover;
+    object-position: center center;
+    border: 1px solid #d7dee9;
+    border-radius: 8px;
+    background: #000;
+    display: none;
+}
+
+.mform-video-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 520px;
+}
+
+.mform-aim-line {
+    position: absolute;
+    left: 8px;
+    right: 8px;
+    top: 50%;
+    height: 2px;
+    margin-top: -1px;
+    background: #d92027;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.28);
+    pointer-events: none;
+    display: none;
+}
+
+.mform-aim-line-vert {
+    position: absolute;
+    top: 8px;
+    bottom: 8px;
+    left: 50%;
+    width: 2px;
+    margin-left: -1px;
+    background: #d92027;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.28);
+    pointer-events: none;
+    display: none;
+}
+
+.mform-scan-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 14, 22, 0.72);
+    display: none;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 14px;
+    padding-top: calc(14px + env(safe-area-inset-top));
+    z-index: 1200;
+}
+
+.mform-scan-modal.is-open {
+    display: flex;
+}
+
+.mform-scan-panel {
+    width: 100%;
+    max-width: 720px;
+    background: #0b0f17;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+    overflow: hidden;
+}
+
+.mform-scan-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.mform-scan-title {
+    color: #eaf0ff;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.2;
+}
+
+.mform-scan-close {
+    border-radius: 10px;
+}
+
+.mform-scan-body {
+    padding: 12px;
+}
+
+.mform-scan-video-wrap {
+    position: relative;
+    width: 100%;
+}
+
+.mform-scan-video {
+    width: 100%;
+    height: min(56vh, 520px);
+    object-fit: cover;
+    object-position: center center;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: #000;
+    display: block;
+}
+
+.mform-scan-meta {
+    margin-top: 10px;
+}
+
+.mform-scan-tip,
+.mform-scan-status-modal {
+    display: block;
+    color: rgba(234, 240, 255, 0.88);
+}
+
+.mform-scan-status-modal {
+    margin-top: 4px;
+    color: rgba(234, 240, 255, 0.78);
+}
+
+.mform-submit {
+    width: 100%;
+    border-radius: 10px;
+    padding: 10px;
+    min-height: 44px;
+}
+
+.mform-thanks {
+    text-align: center;
+}
+
+.mform-date-trigger {
+    text-align: left;
+    background: #fff;
+}
+
+.mform-wheel-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(20, 27, 39, 0.48);
+    display: none;
+    align-items: flex-end;
+    justify-content: center;
+    z-index: 1100;
+}
+
+.mform-wheel-modal.is-open {
+    display: flex;
+}
+
+.mform-wheel-panel {
+    width: 100%;
+    max-width: 560px;
+    background: #fff;
+    border-radius: 18px 18px 0 0;
+    padding: 14px;
+}
+
+.mform-wheel-title {
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.mform-wheel-columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.mform-wheel-label {
+    font-size: 12px;
+    color: #607088;
+    margin-bottom: 4px;
+}
+
+.mform-wheel-select {
+    width: 100%;
+    height: 180px;
+    border: 1px solid #d8e1ec;
+    border-radius: 10px;
+    font-size: 16px;
+    text-align: center;
+    background: linear-gradient(180deg, #f8fbff 0%, #ffffff 55%, #f8fbff 100%);
+}
+
+.mform-wheel-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.mform-scan-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+}
+
+.mform-start-scan {
+    min-height: 72px;
+    padding: 0 20px;
+    font-size: 18px;
+    font-weight: 700;
+    border-width: 2px;
+    border-radius: 12px;
+}
+
+.mform-camera-tip {
+    display: block;
+    margin-top: 6px;
+    font-size: 12px;
+    color: #5f6f86;
+}
+
+.mform-camera-tip.is-active {
+    color: #114a8d;
+    font-weight: 600;
+}
+
+.mform-scan-status {
+    display: block;
+    margin-top: 4px;
+    font-size: 12px;
+    color: #4f5d72;
+}
+
+.mform-card input,
+.mform-card select,
+.mform-card textarea,
+.mform-card button {
+    font-size: 16px;
+}
+
+.mform-invalid {
+    border-color: #d93025 !important;
+    box-shadow: 0 0 0 0.18rem rgba(217, 48, 37, 0.16);
+}
+
+.mform-field-error {
+    margin-top: 6px;
+    color: #c5221f;
+    font-size: 12px;
+    line-height: 1.35;
+}
+
+@media (max-width: 480px) {
+    .mform-card {
+        padding: 14px;
+        border-radius: 12px;
+    }
+
+    .mform-wheel-panel {
+        padding: 12px;
+    }
+
+    .mform-wheel-select {
+        height: 160px;
+    }
+
+    .mform-video {
+        height: 126px;
+    }
+}

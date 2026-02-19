@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="seq_x_mobile_form_submission" model="ir.sequence">
+        <field name="name">Mobile Form Submission</field>
+        <field name="code">x_mobile.form.submission</field>
+        <field name="prefix">MFS%(y)s%(month)s-</field>
+        <field name="padding">5</field>
+        <field name="company_id" eval="False"/>
+    </record>
+</odoo>
