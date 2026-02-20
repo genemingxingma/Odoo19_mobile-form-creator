@@ -14,6 +14,7 @@
         "security/ir.model.access.csv",
         "views/confirm_wizard_views.xml",
         "views/form_builder_views.xml",
+        "views/res_users_views.xml",
         "views/form_builder_templates.xml",
         "views/form_builder_report.xml",
     ],

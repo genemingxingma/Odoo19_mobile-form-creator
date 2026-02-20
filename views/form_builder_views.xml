@@ -152,8 +152,9 @@
 	            <list js_class="mform_submission_list" create="false">
 	                <header>
 	                    <button name="action_unconfirm" type="object" string="Unconfirm" class="btn-secondary"/>
-	                    <button name="action_export_selected_xlsx" type="object" string="Export Excel"/>
-	                    <button name="action_export_selected_pdf" type="object" string="Export PDF"/>
+	                    <button name="action_export_selected_xlsx" type="object" string="Export Excel" groups="mobile_form_builder.group_mobile_form_admin,mobile_form_builder.group_mobile_form_user"/>
+	                    <button name="action_export_selected_pdf" type="object" string="Export PDF (Merged)" groups="mobile_form_builder.group_mobile_form_admin,mobile_form_builder.group_mobile_form_user"/>
+	                    <button name="action_export_selected_pdf_single" type="object" string="Export PDF (Single Docs)" groups="mobile_form_builder.group_mobile_form_admin,mobile_form_builder.group_mobile_form_user"/>
 	                </header>
 	                <field name="is_confirmed"/>
 	                <field name="name"/>

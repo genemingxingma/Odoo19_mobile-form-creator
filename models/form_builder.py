@@ -1175,17 +1175,45 @@ class MobileFormSubmission(models.Model):
 
     def action_export_selected_pdf(self):
         records = self._get_selected_records().sorted("submit_date")
-        return self.env.ref("mobile_form_builder.action_report_mobile_form_submission").report_action(records)
+        ids_str = ",".join(str(x) for x in records.ids)
+        return {
+            "type": "ir.actions.act_url",
+            "url": f"/mform/export_selected_pdf?ids={ids_str}&mode=merged",
+            "target": "self",
+        }
+
+    def action_export_selected_pdf_single(self):
+        records = self._get_selected_records().sorted("submit_date")
+        ids_str = ",".join(str(x) for x in records.ids)
+        return {
+            "type": "ir.actions.act_url",
+            "url": f"/mform/export_selected_pdf?ids={ids_str}&mode=single",
+            "target": "self",
+        }
 
     def action_confirm(self):
+        self.check_access_rights("read")
+        self.check_access_rule("read")
+        if not (
+            self.env.user.has_group("mobile_form_builder.group_mobile_form_admin")
+            or self.env.user.has_group("mobile_form_builder.group_mobile_form_user")
+        ):
+            raise UserError(_("You do not have permission to confirm submissions."))
         now = fields.Datetime.now()
         for rec in self:
-            rec.write({"is_confirmed": True, "confirmed_at": now, "confirmed_by": self.env.user.id})
+            rec.sudo().write({"is_confirmed": True, "confirmed_at": now, "confirmed_by": self.env.user.id})
         return True
 
     def action_unconfirm(self):
+        self.check_access_rights("read")
+        self.check_access_rule("read")
+        if not (
+            self.env.user.has_group("mobile_form_builder.group_mobile_form_admin")
+            or self.env.user.has_group("mobile_form_builder.group_mobile_form_user")
+        ):
+            raise UserError(_("You do not have permission to unconfirm submissions."))
         for rec in self:
-            rec.write({"is_confirmed": False, "confirmed_at": False, "confirmed_by": False})
+            rec.sudo().write({"is_confirmed": False, "confirmed_at": False, "confirmed_by": False})
         return True
 
     def get_submit_date_company_tz_str(self):

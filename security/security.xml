@@ -14,4 +14,61 @@
         <field name="implied_ids" eval="[(4, ref('mobile_form_builder.group_mobile_form_admin'))]"/>
     </record>
 
+    <!-- Submission visibility for normal users:
+         only submissions linked to the user's contact or its company. -->
+    <record id="rule_mobile_submission_user_contact_scope" model="ir.rule">
+        <field name="name">Mobile Submission User Contact Scope</field>
+        <field name="model_id" ref="model_x_mobile_form_submission"/>
+        <field name="groups" eval="[(4, ref('mobile_form_builder.group_mobile_form_user'))]"/>
+        <field name="domain_force">
+            ['|',
+                ('form_id.related_partner_id', '=', user.partner_id.id),
+                ('form_id.related_partner_id', '=', user.partner_id.commercial_partner_id.id)
+            ]
+        </field>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="0"/>
+        <field name="perm_create" eval="0"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+
+    <record id="rule_mobile_submission_line_user_contact_scope" model="ir.rule">
+        <field name="name">Mobile Submission Line User Contact Scope</field>
+        <field name="model_id" ref="model_x_mobile_form_submission_line"/>
+        <field name="groups" eval="[(4, ref('mobile_form_builder.group_mobile_form_user'))]"/>
+        <field name="domain_force">
+            ['|',
+                ('submission_id.form_id.related_partner_id', '=', user.partner_id.id),
+                ('submission_id.form_id.related_partner_id', '=', user.partner_id.commercial_partner_id.id)
+            ]
+        </field>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="0"/>
+        <field name="perm_create" eval="0"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+
+    <!-- Admins can see all submissions/lines. -->
+    <record id="rule_mobile_submission_admin_all" model="ir.rule">
+        <field name="name">Mobile Submission Admin All</field>
+        <field name="model_id" ref="model_x_mobile_form_submission"/>
+        <field name="groups" eval="[(4, ref('mobile_form_builder.group_mobile_form_admin'))]"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+    </record>
+
+    <record id="rule_mobile_submission_line_admin_all" model="ir.rule">
+        <field name="name">Mobile Submission Line Admin All</field>
+        <field name="model_id" ref="model_x_mobile_form_submission_line"/>
+        <field name="groups" eval="[(4, ref('mobile_form_builder.group_mobile_form_admin'))]"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+    </record>
+
 </odoo>

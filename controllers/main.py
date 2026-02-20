@@ -1,12 +1,14 @@
 import base64
 import io
 import json
+import secrets
 import threading
 import time
 import uuid
+import zipfile
 
 from odoo import http
-from odoo.exceptions import ValidationError
+from odoo.exceptions import UserError, ValidationError
 from odoo.http import request, content_disposition
 
 from ..models.form_builder import build_xlsx_content, build_xlsx_for_submissions
@@ -14,6 +16,13 @@ from ..models.form_builder import build_xlsx_content, build_xlsx_for_submissions
 
 class MobileFormController(http.Controller):
     CLIENT_COOKIE_KEY = "mform_client_id"
+    PREFILL_SESSION_KEY = "mform_prefill_store"
+    PREFILL_SESSION_TTL_SECONDS = 30 * 60
+    PREFILL_SESSION_MAX_ITEMS = 30
+    PDF_ZIP_THRESHOLD = 40
+    PDF_BATCH_SIZE = 25
+    PDF_MODE_MERGED = "merged"
+    PDF_MODE_SINGLE = "single"
     DECODE_RATE_WINDOW_SECONDS = 60
     DECODE_RATE_MAX_REQUESTS = 90
     _decode_rate_lock = threading.Lock()
@@ -91,26 +100,68 @@ class MobileFormController(http.Controller):
         }
         return request.render("mobile_form_builder.mobile_form_closed_page", values)
 
-    def _encode_prefill(self, form_values_multi):
+    def _normalize_prefill_payload(self, form_values_multi):
         payload = {}
         for key, vals in (form_values_multi or {}).items():
             if not key:
                 continue
             payload[key] = [((v or "").strip()) for v in (vals or []) if str(v).strip()]
+        return payload
+
+    def _encode_prefill(self, form_values_multi):
+        payload = self._normalize_prefill_payload(form_values_multi)
         raw = json.dumps(payload, ensure_ascii=False).encode("utf-8")
         return base64.urlsafe_b64encode(raw).decode("ascii")
 
-    def _decode_prefill(self, token_text):
-        token_text = (token_text or "").strip()
-        if not token_text:
-            return {}, {}, False
-        try:
-            raw = base64.urlsafe_b64decode(token_text.encode("ascii"))
-            data = json.loads(raw.decode("utf-8"))
-            if not isinstance(data, dict):
+    def _store_prefill_ref(self, form_values_multi):
+        payload = self._normalize_prefill_payload(form_values_multi)
+        if not payload:
+            return ""
+
+        now = int(time.time())
+        bag = request.session.get(self.PREFILL_SESSION_KEY) or {}
+        if not isinstance(bag, dict):
+            bag = {}
+
+        min_ts = now - self.PREFILL_SESSION_TTL_SECONDS
+        cleaned = {
+            key: item
+            for key, item in bag.items()
+            if isinstance(item, dict) and int(item.get("ts", 0)) >= min_ts and isinstance(item.get("data"), dict)
+        }
+        ref = secrets.token_urlsafe(12)
+        cleaned[ref] = {"ts": now, "data": payload}
+
+        if len(cleaned) > self.PREFILL_SESSION_MAX_ITEMS:
+            ordered = sorted(cleaned.items(), key=lambda x: int(x[1].get("ts", 0)), reverse=True)
+            cleaned = dict(ordered[: self.PREFILL_SESSION_MAX_ITEMS])
+
+        request.session[self.PREFILL_SESSION_KEY] = cleaned
+        return ref
+
+    def _decode_prefill(self, token_text, prefill_ref=None):
+        data = None
+
+        ref = (prefill_ref or "").strip()
+        if ref:
+            bag = request.session.get(self.PREFILL_SESSION_KEY) or {}
+            item = bag.get(ref) if isinstance(bag, dict) else None
+            if isinstance(item, dict) and isinstance(item.get("data"), dict):
+                data = item["data"]
+
+        if data is None:
+            token_text = (token_text or "").strip()
+            if not token_text:
                 return {}, {}, False
-        except Exception:
-            return {}, {}, False
+            try:
+                raw = base64.urlsafe_b64decode(token_text.encode("ascii"))
+                parsed = json.loads(raw.decode("utf-8"))
+                if not isinstance(parsed, dict):
+                    return {}, {}, False
+                data = parsed
+            except Exception:
+                return {}, {}, False
+
         values_multi = {}
         values = {}
         for key, vals in data.items():
@@ -123,18 +174,129 @@ class MobileFormController(http.Controller):
             values[key] = normalized[0] if normalized else ""
         return values, values_multi, bool(values_multi)
 
-    def _render_duplicate_page(self, form, token, posted_values_multi):
+    def _render_duplicate_page(self, form, token, posted_values_multi, duplicate_fields=None):
         msg = (form.duplicate_message or "The submitted unique field value already exists.").strip()
-        prefill = self._encode_prefill(posted_values_multi or {})
-        return_url_keep = f"/mform/{token}?prefill={prefill}" if prefill else f"/mform/{token}"
+        prefill_ref = self._store_prefill_ref(posted_values_multi or {})
+        return_url_keep = f"/mform/{token}?prefill_ref={prefill_ref}" if prefill_ref else f"/mform/{token}"
         return_url_clear = f"/mform/{token}"
         values = {
             "form": form,
             "duplicate_message": msg,
+            "duplicate_fields": duplicate_fields or [],
             "return_url_keep": return_url_keep,
             "return_url_clear": return_url_clear,
         }
         return request.render("mobile_form_builder.mobile_form_duplicate_page", values)
+
+    def _report_tz(self):
+        company = request.env.company
+        tz = ""
+        try:
+            tz = (getattr(company, "tz", "") or "").strip()
+        except Exception:
+            tz = ""
+        if not tz:
+            try:
+                tz = (getattr(company.partner_id, "tz", "") or "").strip()
+            except Exception:
+                tz = ""
+        return tz or (request.env.user.tz or "UTC")
+
+    def _render_pdf_for_submissions(self, submissions, tz):
+        report_ref = "mobile_form_builder.action_report_mobile_form_submission"
+        pdf, _ = (
+            request.env["ir.actions.report"]
+            .with_context(tz=tz)
+            .sudo()
+            ._render_qweb_pdf(report_ref, submissions.ids)
+        )
+        return pdf
+
+    def _build_single_docs_zip(self, submissions, filename_base, tz):
+        zip_buffer = io.BytesIO()
+        with zipfile.ZipFile(zip_buffer, "w", zipfile.ZIP_DEFLATED) as zf:
+            for sub in submissions:
+                pdf = self._render_pdf_for_submissions(sub, tz)
+                zf.writestr(f"{filename_base}_{sub.name or sub.id}.pdf", pdf)
+        payload = zip_buffer.getvalue()
+        headers = [
+            ("Content-Type", "application/zip"),
+            ("Content-Length", len(payload)),
+            ("Content-Disposition", content_disposition(f"{filename_base}.zip")),
+        ]
+        return request.make_response(payload, headers=headers)
+
+    def _build_merged_zip_with_adaptive_chunks(self, submissions, filename_base, tz):
+        chunk_size = min(self.PDF_BATCH_SIZE, len(submissions))
+        while chunk_size >= 1:
+            zip_buffer = io.BytesIO()
+            ok = True
+            try:
+                with zipfile.ZipFile(zip_buffer, "w", zipfile.ZIP_DEFLATED) as zf:
+                    part = 1
+                    for offset in range(0, len(submissions), chunk_size):
+                        chunk = submissions[offset : offset + chunk_size]
+                        pdf = self._render_pdf_for_submissions(chunk, tz)
+                        zf.writestr(f"{filename_base}_part_{part:03d}.pdf", pdf)
+                        part += 1
+            except Exception:
+                ok = False
+            if ok:
+                payload = zip_buffer.getvalue()
+                headers = [
+                    ("Content-Type", "application/zip"),
+                    ("Content-Length", len(payload)),
+                    ("Content-Disposition", content_disposition(f"{filename_base}.zip")),
+                ]
+                return request.make_response(payload, headers=headers)
+            chunk_size = chunk_size // 2
+
+        # Last resort: generate one PDF per submission to avoid wkhtmltopdf memory blowups.
+        return self._build_single_docs_zip(submissions, filename_base, tz)
+
+    def _export_submissions_pdf_response(self, submissions, filename_base, mode=None):
+        submissions = submissions.sorted("submit_date")
+        if not submissions:
+            return request.not_found()
+
+        mode = (mode or self.PDF_MODE_MERGED).strip().lower()
+        if mode not in (self.PDF_MODE_MERGED, self.PDF_MODE_SINGLE):
+            mode = self.PDF_MODE_MERGED
+        tz = self._report_tz()
+
+        # Single-doc mode: one submission per PDF.
+        if mode == self.PDF_MODE_SINGLE:
+            if len(submissions) == 1:
+                one = submissions[0]
+                pdf = self._render_pdf_for_submissions(one, tz)
+                headers = [
+                    ("Content-Type", "application/pdf"),
+                    ("Content-Length", len(pdf)),
+                    ("Content-Disposition", content_disposition(f"{filename_base}_{one.name or one.id}.pdf")),
+                ]
+                return request.make_response(pdf, headers=headers)
+
+            return self._build_single_docs_zip(submissions, filename_base, tz)
+
+        # Merged mode: keep previous batching behavior.
+        if len(submissions) <= self.PDF_ZIP_THRESHOLD:
+            try:
+                pdf = self._render_pdf_for_submissions(submissions, tz)
+                headers = [
+                    ("Content-Type", "application/pdf"),
+                    ("Content-Length", len(pdf)),
+                    ("Content-Disposition", content_disposition(f"{filename_base}.pdf")),
+                ]
+                return request.make_response(pdf, headers=headers)
+            except Exception:
+                pass
+
+        try:
+            return self._build_merged_zip_with_adaptive_chunks(submissions, filename_base, tz)
+        except Exception:
+            raise UserError(
+                "PDF generation failed after fallback. Try 'Export PDF (Single Docs)' or reduce record count."
+            )
 
     @http.route(["/mform/<string:token>"], type="http", auth="public", website=True)
     def public_form(self, token, **post):
@@ -147,7 +309,8 @@ class MobileFormController(http.Controller):
             return self._set_client_cookie_if_needed(response, cookie_created, client_id)
         client_id, cookie_created = self._get_or_create_client_id()
         prefill_values, prefill_values_multi, has_prefill = self._decode_prefill(
-            request.httprequest.args.get("prefill")
+            request.httprequest.args.get("prefill"),
+            request.httprequest.args.get("prefill_ref"),
         )
 
         if request.httprequest.method == "POST":
@@ -294,21 +457,34 @@ class MobileFormController(http.Controller):
                 unique_key1 = ""
                 unique_key2 = ""
 
+            duplicate_fields = []
             if unique_key1:
                 existed = request.env["x_mobile.form.submission"].sudo().search_count(
                     [("form_id", "=", form.id), ("unique_key1_value", "=", unique_key1)]
                 )
                 if existed:
-                    response = self._render_duplicate_page(form, token, posted_values_multi)
-                    return self._set_client_cookie_if_needed(response, cookie_created, client_id)
+                    duplicate_fields.append(
+                        {
+                            "name": (form.unique_component_id_1.name or form.unique_component_id_1.key),
+                            "value": unique_key1,
+                        }
+                    )
 
             if unique_key2:
                 existed = request.env["x_mobile.form.submission"].sudo().search_count(
                     [("form_id", "=", form.id), ("unique_key2_value", "=", unique_key2)]
                 )
                 if existed:
-                    response = self._render_duplicate_page(form, token, posted_values_multi)
-                    return self._set_client_cookie_if_needed(response, cookie_created, client_id)
+                    duplicate_fields.append(
+                        {
+                            "name": (form.unique_component_id_2.name or form.unique_component_id_2.key),
+                            "value": unique_key2,
+                        }
+                    )
+
+            if duplicate_fields:
+                response = self._render_duplicate_page(form, token, posted_values_multi, duplicate_fields=duplicate_fields)
+                return self._set_client_cookie_if_needed(response, cookie_created, client_id)
 
             submission = request.env["x_mobile.form.submission"].sudo().create(
                 {
@@ -434,35 +610,8 @@ class MobileFormController(http.Controller):
         form.check_access_rights("read")
         form.check_access_rule("read")
 
-        submissions = form.submission_ids.sorted("submit_date")
-        if not submissions:
-            return request.not_found()
-
-        report_ref = "mobile_form_builder.action_report_mobile_form_submission"
-        company = request.env.company
-        tz = ""
-        try:
-            tz = (getattr(company, "tz", "") or "").strip()
-        except Exception:
-            tz = ""
-        if not tz:
-            try:
-                tz = (getattr(company.partner_id, "tz", "") or "").strip()
-            except Exception:
-                tz = ""
-        tz = tz or (request.env.user.tz or "UTC")
-        pdf, _ = (
-            request.env["ir.actions.report"]
-            .with_context(tz=tz)
-            .sudo()
-            ._render_qweb_pdf(report_ref, submissions.ids)
-        )
-        headers = [
-            ("Content-Type", "application/pdf"),
-            ("Content-Length", len(pdf)),
-            ("Content-Disposition", content_disposition(f"{form.name}_submissions.pdf")),
-        ]
-        return request.make_response(pdf, headers=headers)
+        mode = (kwargs.get("mode") or "").strip().lower()
+        return self._export_submissions_pdf_response(form.submission_ids, f"{form.name}_submissions", mode=mode)
 
     @http.route(["/mform/export_selected_xlsx"], type="http", auth="user")
     def export_selected_xlsx(self, ids=None, **kwargs):
@@ -482,6 +631,19 @@ class MobileFormController(http.Controller):
         ]
         return request.make_response(content, headers=headers)
 
+    @http.route(["/mform/export_selected_pdf"], type="http", auth="user")
+    def export_selected_pdf(self, ids=None, **kwargs):
+        id_list = []
+        if ids:
+            id_list = [int(x) for x in ids.split(",") if x.strip().isdigit()]
+        submissions = request.env["x_mobile.form.submission"].browse(id_list).exists()
+        if not submissions:
+            return request.not_found()
+        submissions.check_access_rights("read")
+        submissions.check_access_rule("read")
+        mode = (kwargs.get("mode") or "").strip().lower()
+        return self._export_submissions_pdf_response(submissions, "selected_submissions", mode=mode)
+
     @http.route(["/mform/decode_barcode"], type="http", auth="public", methods=["POST"], csrf=False)
     def decode_barcode(self, **kwargs):
         if not self._allow_decode_request():
@@ -496,6 +658,7 @@ class MobileFormController(http.Controller):
         image_data = (payload.get("image_data") or "").strip()
         use_deep = bool(payload.get("deep"))
         prefer_1d = bool(payload.get("prefer_1d"))
+        diag = bool(payload.get("diag"))
         if image_data.startswith("data:image"):
             parts = image_data.split(",", 1)
             image_data = parts[1] if len(parts) == 2 else ""
@@ -509,6 +672,10 @@ class MobileFormController(http.Controller):
         except Exception:
             return request.make_json_response({"ok": False, "reason": "invalid_base64"})
 
+        pyzbar_runtime_error = None
+        pyzbar_symbol_count = 0
+        zxing_runtime_error = None
+
         # 1) Try pyzbar first (fast path).
         try:
             from PIL import Image, ImageOps
@@ -520,8 +687,9 @@ class MobileFormController(http.Controller):
             candidates.append(ImageOps.autocontrast(img))
             symbol_names = ["CODE128", "CODE39", "CODE93", "CODABAR", "EAN13", "EAN8", "UPCA", "UPCE", "I25", "DATABAR"]
             if not prefer_1d:
-                symbol_names.extend(["DATABAR_EXP", "PDF417", "QRCODE"])
+                symbol_names.extend(["DATABAR_EXP", "PDF417", "QRCODE", "DATAMATRIX", "AZTEC", "MAXICODE"])
             symbols = [getattr(ZBarSymbol, name) for name in symbol_names if hasattr(ZBarSymbol, name)]
+            pyzbar_symbol_count = len(symbols)
             for cand in candidates:
                 found = zbar_decode(cand, symbols=symbols or None)
                 if found:
@@ -547,8 +715,8 @@ class MobileFormController(http.Controller):
                         value = (found[0].data or b"").decode("utf-8", errors="ignore").strip()
                         if value:
                             return request.make_json_response({"ok": True, "value": value, "engine": "pyzbar_deep"})
-        except Exception:
-            pass
+        except Exception as exc:
+            pyzbar_runtime_error = str(exc or "")
 
         # 2) Optional zxing-cpp fallback (only on deep attempts to keep fast response).
         if not use_deep:
@@ -562,10 +730,19 @@ class MobileFormController(http.Controller):
             result = zxingcpp.read_barcode(img)
             if result and getattr(result, "text", ""):
                 return request.make_json_response({"ok": True, "value": result.text, "engine": "zxingcpp"})
-        except Exception:
-            pass
+        except Exception as exc:
+            zxing_runtime_error = str(exc or "")
 
-        # If no decoder package is available, return explicit hint.
+        # If decoder package/runtime is unavailable, return explicit hint.
+        if pyzbar_runtime_error and ("zbar" in pyzbar_runtime_error.lower() or "pyzbar" in pyzbar_runtime_error.lower()):
+            return request.make_json_response(
+                {
+                    "ok": False,
+                    "reason": "decoder_unavailable",
+                    "message": pyzbar_runtime_error[:220],
+                }
+            )
+
         try:
             import pyzbar  # noqa: F401
             decoder_available = True
@@ -577,6 +754,20 @@ class MobileFormController(http.Controller):
                     "ok": False,
                     "reason": "decoder_unavailable",
                     "message": "Server barcode decoder is not installed.",
+                }
+            )
+        if diag:
+            return request.make_json_response(
+                {
+                    "ok": False,
+                    "reason": "not_found",
+                    "diag": {
+                        "pyzbar_error": pyzbar_runtime_error,
+                        "pyzbar_symbol_count": pyzbar_symbol_count,
+                        "zxing_error": zxing_runtime_error,
+                        "use_deep": use_deep,
+                        "prefer_1d": prefer_1d,
+                    },
                 }
             )
         return request.make_json_response({"ok": False, "reason": "not_found"})

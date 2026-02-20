@@ -334,6 +334,15 @@
                     <div class="mform-closed-message">
                         <t t-esc="duplicate_message"/>
                     </div>
+                    <div t-if="duplicate_fields" class="mform-closed-message mt-2">
+                        <p class="mb-2"><strong>Duplicated field(s):</strong></p>
+                        <ul class="mb-0">
+                            <li t-foreach="duplicate_fields" t-as="dup" t-key="dup.get('name') + ':' + dup.get('value', '')">
+                                <t t-esc="dup.get('name')"/>:
+                                <t t-esc="dup.get('value')"/>
+                            </li>
+                        </ul>
+                    </div>
                     <div class="mt-3 d-flex gap-2 justify-content-center flex-wrap">
                         <a t-att-href="return_url_keep" class="btn btn-primary">Back to Form (Keep Data)</a>
                         <a t-att-href="return_url_clear" class="btn btn-secondary">Clear and Back to Form</a>
