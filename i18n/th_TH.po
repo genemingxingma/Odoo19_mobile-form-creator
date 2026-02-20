@@ -236,7 +236,7 @@ msgstr ""
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_page
 msgid "Close"
-msgstr ""
+msgstr "ปิด"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_confirm_wizard__code
@@ -460,13 +460,13 @@ msgstr ""
 #. odoo-javascript
 #: code:addons/mobile_form_builder/static/src/js/submission_list_confirm.js:0
 msgid "Done"
-msgstr ""
+msgstr "เสร็จสิ้น"
 
 #. module: mobile_form_builder
 #. odoo-javascript
 #: code:addons/mobile_form_builder/static/src/js/submission_list_confirm.js:0
 msgid "Done."
-msgstr ""
+msgstr "เสร็จสิ้น"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_duplicate_page
@@ -1151,7 +1151,62 @@ msgstr ""
 #. odoo-javascript
 #: code:addons/mobile_form_builder/static/src/js/submission_list_confirm.js:0
 msgid "Please check the code and try again."
-msgstr ""
+msgstr "โปรดตรวจสอบรหัสแล้วลองอีกครั้ง"
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.MFormSubmissionListView
+msgid "Scan Code"
+msgstr "สแกนรหัส"
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.MFormSubmissionListView
+msgid "Auto scanning... align the code with the red cross lines."
+msgstr "กำลังสแกนอัตโนมัติ... จัดบาร์โค้ดให้อยู่ตรงเส้นกากบาทสีแดง"
+
+#. module: mobile_form_builder
+#. odoo-javascript
+#: code:addons/mobile_form_builder/static/src/js/submission_list_confirm.js:0
+msgid "Scan failed. Please try again."
+msgstr "สแกนไม่สำเร็จ กรุณาลองใหม่"
+
+#. module: mobile_form_builder
+#. odoo-javascript
+#: code:addons/mobile_form_builder/static/src/js/submission_list_confirm.js:0
+msgid "No barcode/QR code detected."
+msgstr "ไม่พบบาร์โค้ด/คิวอาร์โค้ด"
+
+#. module: mobile_form_builder
+#. odoo-javascript
+#: code:addons/mobile_form_builder/static/src/js/submission_list_confirm.js:0
+msgid "Code scanned."
+msgstr "สแกนรหัสแล้ว"
+
+#. module: mobile_form_builder
+#. odoo-javascript
+#: code:addons/mobile_form_builder/static/src/js/submission_list_confirm.js:0
+msgid "Captured image too large. Move closer and keep barcode centered."
+msgstr "ภาพที่จับมีขนาดใหญ่เกินไป กรุณาขยับเข้าใกล้และให้บาร์โค้ดอยู่กึ่งกลาง"
+
+#. module: mobile_form_builder
+#. odoo-javascript
+#: code:addons/mobile_form_builder/static/src/js/submission_list_confirm.js:0
+msgid "Server decoder unavailable. Please install pyzbar/zbar on server."
+msgstr "ตัวถอดรหัสบนเซิร์ฟเวอร์ไม่พร้อมใช้งาน โปรดติดตั้ง pyzbar/zbar บนเซิร์ฟเวอร์"
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_res_users__visible_app_ids
+msgid "Visible Apps"
+msgstr "แอปที่มองเห็นได้"
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_users_form_mobile_form_visibility
+msgid "Leave empty to show all apps"
+msgstr "เว้นว่างไว้เพื่อแสดงทุกแอป"
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_mobile_form_submission_tree
+msgid "Export PDF (Single Docs)"
+msgstr "ส่งออก PDF (เอกสารแยกไฟล์)"
 
 #. module: mobile_form_builder
 #. odoo-python
