@@ -1045,6 +1045,22 @@ class MobileFormSubmission(models.Model):
     confirmed_at = fields.Datetime(readonly=True, copy=False)
     confirmed_by = fields.Many2one("res.users", readonly=True, copy=False)
 
+    def init(self):
+        """Add composite indexes to speed code confirmation lookup under load."""
+        super().init()
+        self._cr.execute(
+            """
+            CREATE INDEX IF NOT EXISTS x_mform_sub_form_ck1_idx
+            ON x_mobile_form_submission (form_id, confirm_key1_value)
+            """
+        )
+        self._cr.execute(
+            """
+            CREATE INDEX IF NOT EXISTS x_mform_sub_form_ck2_idx
+            ON x_mobile_form_submission (form_id, confirm_key2_value)
+            """
+        )
+
     @api.model_create_multi
     def create(self, vals_list):
         seq = self.env["ir.sequence"].sudo()

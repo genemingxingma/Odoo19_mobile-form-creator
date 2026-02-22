@@ -1,4 +1,5 @@
 import base64
+import hashlib
 import io
 import json
 import secrets
@@ -27,6 +28,10 @@ class MobileFormController(http.Controller):
     DECODE_RATE_MAX_REQUESTS = 90
     _decode_rate_lock = threading.Lock()
     _decode_rate_by_ip = {}
+    _decode_cache_lock = threading.Lock()
+    _decode_result_cache = {}
+    DECODE_CACHE_TTL_SECONDS = 3
+    DECODE_CACHE_MAX_ITEMS = 1200
     EMPTY_PNG = base64.b64decode(
         "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAusB9s0l4wAAAABJRU5ErkJggg=="
     )
@@ -80,6 +85,35 @@ class MobileFormController(http.Controller):
             bucket.append(now)
             self._decode_rate_by_ip[ip] = bucket
         return True
+
+    def _decode_cache_get(self, cache_key):
+        now = time.time()
+        with self._decode_cache_lock:
+            item = self._decode_result_cache.get(cache_key)
+            if not item:
+                return None
+            if float(item.get("exp", 0.0)) < now:
+                self._decode_result_cache.pop(cache_key, None)
+                return None
+            return item.get("resp")
+
+    def _decode_cache_set(self, cache_key, response_json):
+        now = time.time()
+        with self._decode_cache_lock:
+            # periodic lazy cleanup to keep cache bounded
+            if len(self._decode_result_cache) >= self.DECODE_CACHE_MAX_ITEMS:
+                dead_keys = [k for k, v in self._decode_result_cache.items() if float(v.get("exp", 0.0)) < now]
+                for k in dead_keys[: max(1, len(dead_keys))]:
+                    self._decode_result_cache.pop(k, None)
+                if len(self._decode_result_cache) >= self.DECODE_CACHE_MAX_ITEMS:
+                    # drop oldest-ish key if still full
+                    first_key = next(iter(self._decode_result_cache.keys()), None)
+                    if first_key:
+                        self._decode_result_cache.pop(first_key, None)
+            self._decode_result_cache[cache_key] = {
+                "exp": now + self.DECODE_CACHE_TTL_SECONDS,
+                "resp": response_json,
+            }
 
     def _render_form_page(self, form, error=False, form_values=None, form_values_multi=None, has_form_values=False):
         values = {
@@ -667,6 +701,12 @@ class MobileFormController(http.Controller):
         if len(image_data) > 8 * 1024 * 1024:
             return request.make_json_response({"ok": False, "reason": "payload_too_large"})
 
+        digest = hashlib.sha1(image_data.encode("ascii", errors="ignore")).hexdigest()
+        cache_key = f"{digest}:{int(use_deep)}:{int(prefer_1d)}"
+        cached = self._decode_cache_get(cache_key)
+        if cached is not None:
+            return request.make_json_response(cached)
+
         try:
             raw = base64.b64decode(image_data)
         except Exception:
@@ -695,7 +735,9 @@ class MobileFormController(http.Controller):
                 if found:
                     value = (found[0].data or b"").decode("utf-8", errors="ignore").strip()
                     if value:
-                        return request.make_json_response({"ok": True, "value": value, "engine": "pyzbar"})
+                        resp = {"ok": True, "value": value, "engine": "pyzbar"}
+                        self._decode_cache_set(cache_key, resp)
+                        return request.make_json_response(resp)
 
             # Deep path is expensive; run only on selected attempts from frontend.
             if use_deep:
@@ -714,13 +756,17 @@ class MobileFormController(http.Controller):
                     if found:
                         value = (found[0].data or b"").decode("utf-8", errors="ignore").strip()
                         if value:
-                            return request.make_json_response({"ok": True, "value": value, "engine": "pyzbar_deep"})
+                            resp = {"ok": True, "value": value, "engine": "pyzbar_deep"}
+                            self._decode_cache_set(cache_key, resp)
+                            return request.make_json_response(resp)
         except Exception as exc:
             pyzbar_runtime_error = str(exc or "")
 
         # 2) Optional zxing-cpp fallback (only on deep attempts to keep fast response).
         if not use_deep:
-            return request.make_json_response({"ok": False, "reason": "not_found"})
+            resp = {"ok": False, "reason": "not_found"}
+            self._decode_cache_set(cache_key, resp)
+            return request.make_json_response(resp)
 
         try:
             import zxingcpp
@@ -729,19 +775,21 @@ class MobileFormController(http.Controller):
             img = Image.open(io.BytesIO(raw)).convert("RGB")
             result = zxingcpp.read_barcode(img)
             if result and getattr(result, "text", ""):
-                return request.make_json_response({"ok": True, "value": result.text, "engine": "zxingcpp"})
+                resp = {"ok": True, "value": result.text, "engine": "zxingcpp"}
+                self._decode_cache_set(cache_key, resp)
+                return request.make_json_response(resp)
         except Exception as exc:
             zxing_runtime_error = str(exc or "")
 
         # If decoder package/runtime is unavailable, return explicit hint.
         if pyzbar_runtime_error and ("zbar" in pyzbar_runtime_error.lower() or "pyzbar" in pyzbar_runtime_error.lower()):
-            return request.make_json_response(
-                {
-                    "ok": False,
-                    "reason": "decoder_unavailable",
-                    "message": pyzbar_runtime_error[:220],
-                }
-            )
+            resp = {
+                "ok": False,
+                "reason": "decoder_unavailable",
+                "message": pyzbar_runtime_error[:220],
+            }
+            self._decode_cache_set(cache_key, resp)
+            return request.make_json_response(resp)
 
         try:
             import pyzbar  # noqa: F401
@@ -749,25 +797,27 @@ class MobileFormController(http.Controller):
         except Exception:
             decoder_available = False
         if not decoder_available:
-            return request.make_json_response(
-                {
-                    "ok": False,
-                    "reason": "decoder_unavailable",
-                    "message": "Server barcode decoder is not installed.",
-                }
-            )
+            resp = {
+                "ok": False,
+                "reason": "decoder_unavailable",
+                "message": "Server barcode decoder is not installed.",
+            }
+            self._decode_cache_set(cache_key, resp)
+            return request.make_json_response(resp)
         if diag:
-            return request.make_json_response(
-                {
-                    "ok": False,
-                    "reason": "not_found",
-                    "diag": {
-                        "pyzbar_error": pyzbar_runtime_error,
-                        "pyzbar_symbol_count": pyzbar_symbol_count,
-                        "zxing_error": zxing_runtime_error,
-                        "use_deep": use_deep,
-                        "prefer_1d": prefer_1d,
-                    },
-                }
-            )
-        return request.make_json_response({"ok": False, "reason": "not_found"})
+            resp = {
+                "ok": False,
+                "reason": "not_found",
+                "diag": {
+                    "pyzbar_error": pyzbar_runtime_error,
+                    "pyzbar_symbol_count": pyzbar_symbol_count,
+                    "zxing_error": zxing_runtime_error,
+                    "use_deep": use_deep,
+                    "prefer_1d": prefer_1d,
+                },
+            }
+            self._decode_cache_set(cache_key, resp)
+            return request.make_json_response(resp)
+        resp = {"ok": False, "reason": "not_found"}
+        self._decode_cache_set(cache_key, resp)
+        return request.make_json_response(resp)

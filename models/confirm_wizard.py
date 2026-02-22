@@ -35,14 +35,11 @@ class MobileFormSubmissionConfirmWizard(models.TransientModel):
             return self.env["x_mobile.form.submission"].search(dom, limit=2)
 
         subs = _search()
-        # If confirm keys were configured after submissions were already collected, the columns may
-        # be empty. Backfill once and retry.
-        if not subs and self.form_id:
-            try:
-                self.form_id.sudo()._recompute_confirm_keys_for_submissions()
-            except Exception:
-                pass
-            subs = _search()
+        # NOTE:
+        # Avoid doing full-table backfill in this hot path.
+        # On large datasets, recomputing confirm keys here turns a single miss
+        # into seconds of blocking time and causes heavy contention under load.
+        # Backfill is already handled when form confirm fields are changed.
 
         if not subs:
             raise UserError(_("No submission found for this code."))
