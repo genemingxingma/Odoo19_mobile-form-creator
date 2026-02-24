@@ -159,6 +159,8 @@
                                         t-att-name="component.key"
                                         t-att-value="form_values.get(component.key) if has_form_values else None"
                                         t-att-required="component.required or None"
+                                        data-date-picker-only="1"
+                                        inputmode="none"
                                         class="form-control"
                                         autocomplete="off"
                                     />

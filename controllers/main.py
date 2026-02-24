@@ -452,7 +452,7 @@ class MobileFormController(http.Controller):
                     )
                     return self._set_client_cookie_if_needed(response, cookie_created, client_id)
 
-                answer_payload[key] = value
+                answer_payload[key] = value_text if (is_visible and component.component_type == "date") else value
                 submission_vals.append(
                     {
                         "component_id": component.id,

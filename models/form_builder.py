@@ -391,6 +391,11 @@ class MobileFormComponent(models.Model):
         string="Number Format Pattern",
         help="Use 0 as digit placeholder, e.g. 000-00-000-0",
     )
+    formatted_number_keep_dash = fields.Boolean(
+        string="Keep '-' In Saved Value",
+        default=True,
+        help="For Formatted Number only. If disabled, '-' will be removed when saving submission values.",
+    )
     number_wheel_min = fields.Integer(
         string="Wheel Min",
         default=0,
@@ -578,6 +583,8 @@ class MobileFormComponent(models.Model):
                 record.required = False
             if record.component_type == "formatted_number" and not (record.number_format_pattern or "").strip():
                 record.number_format_pattern = "000-00-000-0"
+            if record.component_type == "date":
+                record.date_format = "ddmmyyyy"
             if record.component_type == "number_wheel":
                 if record.number_wheel_step <= 0:
                     record.number_wheel_step = 1
@@ -593,12 +600,23 @@ class MobileFormComponent(models.Model):
 
     @api.model_create_multi
     def create(self, vals_list):
+        for vals in vals_list:
+            if vals.get("component_type") == "date":
+                vals["date_format"] = "ddmmyyyy"
         records = super().create(vals_list)
         records.with_context(mobile_form_skip_log=True)._ensure_option_lines_from_text()
         return records
 
     def write(self, vals):
+        vals = dict(vals or {})
+        if vals.get("component_type") == "date":
+            vals["date_format"] = "ddmmyyyy"
         result = super().write(vals)
+        # Enforce date storage format for existing date components as well.
+        if "date_format" in vals or vals.get("component_type") == "date":
+            date_components = self.filtered(lambda c: c.component_type == "date" and c.date_format != "ddmmyyyy")
+            if date_components:
+                date_components.with_context(mobile_form_skip_log=True).write({"date_format": "ddmmyyyy"})
         fields_touched = set(vals.keys())
         if fields_touched.intersection({"options_text", "component_type"}):
             self.with_context(mobile_form_skip_log=True)._ensure_option_lines_from_text()
@@ -805,6 +823,8 @@ class MobileFormComponent(models.Model):
                         else:
                             out.append(ch)
                     normalized = "".join(out)
+            if not self.formatted_number_keep_dash and normalized:
+                normalized = normalized.replace("-", "")
             return normalized
 
         if self.case_mode == "upper":
@@ -908,7 +928,7 @@ class MobileFormComponent(models.Model):
         return {"block": False, "message": "", "warn": ""}
 
     def format_date_value(self, date_value):
-        """Format ISO date (YYYY-MM-DD) to configured string format."""
+        """Format ISO date (YYYY-MM-DD) to DD/MM/YYYY for saved submission values."""
         self.ensure_one()
         val = (date_value or "").strip()
         if not val:
@@ -919,11 +939,7 @@ class MobileFormComponent(models.Model):
             d = None
         if not d:
             return val
-        if self.date_format == "mmddyyyy":
-            return f"{d.month:02d}{d.day:02d}{d.year:04d}"
-        if self.date_format == "ddmmyyyy":
-            return f"{d.day:02d}{d.month:02d}{d.year:04d}"
-        return f"{d.year:04d}{d.month:02d}{d.day:02d}"
+        return f"{d.day:02d}/{d.month:02d}/{d.year:04d}"
 
     def get_number_wheel_values(self):
         self.ensure_one()

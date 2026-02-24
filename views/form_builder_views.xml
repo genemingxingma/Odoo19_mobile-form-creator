@@ -99,13 +99,13 @@
                             <field name="validation_mode" invisible="component_type not in ['input', 'textarea', 'multiline_text']"/>
                             <field name="custom_regex" placeholder="Example: ^[A-Z]{2}\\d{6}$" invisible="component_type not in ['input', 'textarea', 'multiline_text'] or validation_mode != 'custom_regex'"/>
                             <field name="number_format_pattern" placeholder="000-00-000-0" invisible="component_type != 'formatted_number'"/>
+                            <field name="formatted_number_keep_dash" invisible="component_type != 'formatted_number'"/>
                             <field name="number_wheel_min" invisible="component_type != 'number_wheel'"/>
                             <field name="number_wheel_max" invisible="component_type != 'number_wheel'"/>
                             <field name="number_wheel_step" invisible="component_type != 'number_wheel'"/>
                             <field name="number_wheel_default" invisible="component_type != 'number_wheel'"/>
                             <field name="file_accept" placeholder=".pdf,.jpg,image/*,application/pdf" invisible="component_type != 'file_upload'"/>
                             <field name="file_max_mb" invisible="component_type != 'file_upload'"/>
-                            <field name="date_format" invisible="component_type != 'date'"/>
                             <field name="visibility_enabled"/>
                             <field name="visibility_source_component_id" invisible="not visibility_enabled"/>
                             <field name="visibility_mode" invisible="not visibility_enabled"/>
@@ -173,7 +173,34 @@
                 <field name="searchable_content"/>
                 <field name="name"/>
                 <field name="form_id"/>
+                <separator/>
+                <filter name="group_by_submit_day" string="Day" context="{'group_by': 'submit_date:day'}"/>
+                <filter name="group_by_form" string="Form" context="{'group_by': 'form_id'}"/>
             </search>
+        </field>
+    </record>
+
+    <record id="view_x_mobile_submission_graph_daily" model="ir.ui.view">
+        <field name="name">x.mobile.form.submission.graph.daily</field>
+        <field name="model">x_mobile.form.submission</field>
+        <field name="arch" type="xml">
+            <graph string="Daily Submission Statistics" type="line">
+                <field name="submit_date" interval="day" type="row"/>
+                <field name="form_id" type="col"/>
+                <field name="id" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="view_x_mobile_submission_pivot_daily" model="ir.ui.view">
+        <field name="name">x.mobile.form.submission.pivot.daily</field>
+        <field name="model">x_mobile.form.submission</field>
+        <field name="arch" type="xml">
+            <pivot string="Daily Submission Statistics">
+                <field name="submit_date" interval="day" type="row"/>
+                <field name="form_id" type="col"/>
+                <field name="id" type="measure"/>
+            </pivot>
         </field>
     </record>
 
@@ -242,7 +269,17 @@
         <field name="context">{'create': False}</field>
     </record>
 
+    <record id="action_x_mobile_submission_statistics" model="ir.actions.act_window">
+        <field name="name">Submission Statistics</field>
+        <field name="res_model">x_mobile.form.submission</field>
+        <field name="view_mode">graph,pivot</field>
+        <field name="view_id" ref="view_x_mobile_submission_graph_daily"/>
+        <field name="search_view_id" ref="view_x_mobile_submission_search"/>
+        <field name="context">{'create': False, 'search_default_group_by_submit_day': 1, 'search_default_group_by_form': 1}</field>
+    </record>
+
     <menuitem id="menu_x_mobile_root" name="Mobile Forms" sequence="25" web_icon="mobile_form_builder,static/description/icon.png" groups="mobile_form_builder.group_mobile_form_admin,mobile_form_builder.group_mobile_form_user"/>
     <menuitem id="menu_x_mobile_form" name="Forms" parent="menu_x_mobile_root" action="action_x_mobile_form" sequence="10" groups="mobile_form_builder.group_mobile_form_admin"/>
     <menuitem id="menu_x_mobile_submission" name="Submissions" parent="menu_x_mobile_root" action="action_x_mobile_submission" sequence="20" groups="mobile_form_builder.group_mobile_form_admin,mobile_form_builder.group_mobile_form_user"/>
+    <menuitem id="menu_x_mobile_submission_statistics" name="Statistics" parent="menu_x_mobile_root" action="action_x_mobile_submission_statistics" sequence="30" groups="mobile_form_builder.group_mobile_form_admin,mobile_form_builder.group_mobile_form_user"/>
 </odoo>

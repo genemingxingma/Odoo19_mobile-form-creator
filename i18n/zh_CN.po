@@ -1603,3 +1603,55 @@ msgstr ""
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "xlsxwriter is required for Excel export."
 msgstr ""
+
+#. module: mobile_form_builder
+msgid "Sample Type Source"
+msgstr "样本类型来源"
+
+#. module: mobile_form_builder
+msgid "Fixed Sample Type (Manual Fallback)"
+msgstr "固定样本类型（手动备用）"
+
+#. module: mobile_form_builder
+msgid "Fixed Sample Type (From LIS Metadata)"
+msgstr "固定样本类型（来自LIS元数据）"
+
+#. module: mobile_form_builder
+msgid "Service Code (Manual Fallback)"
+msgstr "检验项目编码（手动备用）"
+
+#. module: mobile_form_builder
+msgid "Profile Code (Manual Fallback)"
+msgstr "组合编码（手动备用）"
+
+#. module: mobile_form_builder
+msgid "Service (From LIS Metadata)"
+msgstr "检验项目（来自LIS元数据）"
+
+#. module: mobile_form_builder
+msgid "Profile (From LIS Metadata)"
+msgstr "检验组合（来自LIS元数据）"
+
+#. module: mobile_form_builder
+msgid "Specimen Sample Type Source"
+msgstr "标本样本类型来源"
+
+#. module: mobile_form_builder
+msgid "Fixed Specimen Sample Type (Manual Fallback)"
+msgstr "固定标本样本类型（手动备用）"
+
+#. module: mobile_form_builder
+msgid "Fixed Specimen Sample Type (From LIS Metadata)"
+msgstr "固定标本样本类型（来自LIS元数据）"
+
+#. module: mobile_form_builder
+msgid "Used when source is Fixed and no metadata item is selected."
+msgstr "当来源为固定且未选择元数据项时使用。"
+
+#. module: mobile_form_builder
+msgid "Recommended: choose from LIS metadata. If empty, manual fallback value is used."
+msgstr "建议从LIS元数据中选择；若为空则使用手动备用值。"
+
+#. module: mobile_form_builder
+msgid "Recommended: choose from LIS metadata. If empty, manual fallback code is used."
+msgstr "建议从LIS元数据中选择；若为空则使用手动备用编码。"

@@ -1603,3 +1603,55 @@ msgstr ""
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "xlsxwriter is required for Excel export."
 msgstr ""
+
+#. module: mobile_form_builder
+msgid "Sample Type Source"
+msgstr "แหล่งที่มาประเภทตัวอย่าง"
+
+#. module: mobile_form_builder
+msgid "Fixed Sample Type (Manual Fallback)"
+msgstr "ประเภทตัวอย่างคงที่ (สำรองแบบกำหนดเอง)"
+
+#. module: mobile_form_builder
+msgid "Fixed Sample Type (From LIS Metadata)"
+msgstr "ประเภทตัวอย่างคงที่ (จาก LIS Metadata)"
+
+#. module: mobile_form_builder
+msgid "Service Code (Manual Fallback)"
+msgstr "รหัสบริการ (สำรองแบบกำหนดเอง)"
+
+#. module: mobile_form_builder
+msgid "Profile Code (Manual Fallback)"
+msgstr "รหัสโปรไฟล์ (สำรองแบบกำหนดเอง)"
+
+#. module: mobile_form_builder
+msgid "Service (From LIS Metadata)"
+msgstr "บริการ (จาก LIS Metadata)"
+
+#. module: mobile_form_builder
+msgid "Profile (From LIS Metadata)"
+msgstr "โปรไฟล์ (จาก LIS Metadata)"
+
+#. module: mobile_form_builder
+msgid "Specimen Sample Type Source"
+msgstr "แหล่งที่มาประเภทสิ่งส่งตรวจ"
+
+#. module: mobile_form_builder
+msgid "Fixed Specimen Sample Type (Manual Fallback)"
+msgstr "ประเภทสิ่งส่งตรวจคงที่ (สำรองแบบกำหนดเอง)"
+
+#. module: mobile_form_builder
+msgid "Fixed Specimen Sample Type (From LIS Metadata)"
+msgstr "ประเภทสิ่งส่งตรวจคงที่ (จาก LIS Metadata)"
+
+#. module: mobile_form_builder
+msgid "Used when source is Fixed and no metadata item is selected."
+msgstr "ใช้เมื่อแหล่งที่มาเป็น Fixed และยังไม่ได้เลือก metadata"
+
+#. module: mobile_form_builder
+msgid "Recommended: choose from LIS metadata. If empty, manual fallback value is used."
+msgstr "แนะนำให้เลือกจาก LIS metadata หากว่างจะใช้ค่าที่กำหนดเองแทน"
+
+#. module: mobile_form_builder
+msgid "Recommended: choose from LIS metadata. If empty, manual fallback code is used."
+msgstr "แนะนำให้เลือกจาก LIS metadata หากว่างจะใช้รหัสที่กำหนดเองแทน"

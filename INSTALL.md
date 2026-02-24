@@ -121,3 +121,25 @@ Then restart Odoo:
 ```bash
 /Users/mingxingmac/Documents/Codex/.local/restart_odoo19.sh
 ```
+
+## 9) LIS Integration (Metadata + Push)
+
+1. In LIS module (`laboratory_management`), configure external endpoint:
+   - `Enable External Lab API`
+   - `Allow Request Push`
+   - `Allow Metadata Query`
+2. In `Mobile Forms > LIS Integration > LIS Endpoints`, create endpoint with same:
+   - `base_url`
+   - `endpoint_code`
+   - auth credentials
+3. Click `Sync Metadata` on LIS endpoint form.
+4. Open `Mobile Forms > LIS Integration > LIS Mappings`:
+   - select `Form`
+   - select `Endpoint`
+   - configure patient/physician/clinical note field mapping
+   - configure request line mapping with service/profile metadata
+5. Open `Mobile Forms > LIS Push Center`, select submissions, click `Push to LIS`.
+
+Expected:
+- `lis_push_state=success`
+- `lis_request_no` is populated on submission.

@@ -219,6 +219,29 @@
         });
     }
 
+    function initDatePickerOnly() {
+        const fields = document.querySelectorAll("input[type='date'][data-date-picker-only='1']");
+        fields.forEach((field) => {
+            const blockTyping = (evt) => {
+                evt.preventDefault();
+            };
+            ["keydown", "keypress", "beforeinput", "paste", "drop"].forEach((evtName) => {
+                field.addEventListener(evtName, blockTyping);
+            });
+            const openPicker = () => {
+                if (typeof field.showPicker === "function") {
+                    try {
+                        field.showPicker();
+                    } catch (e) {
+                        // ignore unsupported runtime errors
+                    }
+                }
+            };
+            field.addEventListener("focus", openPicker);
+            field.addEventListener("click", openPicker);
+        });
+    }
+
     function initCascadingOptions() {
         const wrappers = document.querySelectorAll(".mform-cascade[data-options-json]");
         wrappers.forEach((wrapper) => {
@@ -1010,6 +1033,7 @@
 
     const boot = () => {
         initInputRules();
+        initDatePickerOnly();
         initFormattedNumberInputs();
         initCascadingOptions();
         initVisibilityRules();
