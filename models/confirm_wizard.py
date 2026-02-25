@@ -29,7 +29,12 @@ class MobileFormSubmissionConfirmWizard(models.TransientModel):
             raise UserError(_("Please input a code."))
 
         def _search():
-            dom = ["|", ("confirm_key1_value", "=", code), ("confirm_key2_value", "=", code)]
+            dom = [
+                ("active", "=", True),
+                "|",
+                ("confirm_key1_value", "=", code),
+                ("confirm_key2_value", "=", code),
+            ]
             if self.form_id:
                 dom = [("form_id", "=", self.form_id.id)] + dom
             return self.env["x_mobile.form.submission"].search(dom, limit=2)

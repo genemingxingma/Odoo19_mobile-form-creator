@@ -2,6 +2,7 @@ import base64
 import hashlib
 import io
 import json
+import re
 import secrets
 import threading
 import time
@@ -35,6 +36,68 @@ class MobileFormController(http.Controller):
     EMPTY_PNG = base64.b64decode(
         "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAusB9s0l4wAAAABJRU5ErkJggg=="
     )
+
+    def _parse_browser_name_version(self, ua_text):
+        ua = (ua_text or "").strip()
+        if not ua:
+            return "Unknown", ""
+        rules = [
+            (r"Edg/([\d\.]+)", "Edge"),
+            (r"OPR/([\d\.]+)", "Opera"),
+            (r"CriOS/([\d\.]+)", "Chrome"),
+            (r"Chrome/([\d\.]+)", "Chrome"),
+            (r"FxiOS/([\d\.]+)", "Firefox"),
+            (r"Firefox/([\d\.]+)", "Firefox"),
+            (r"Version/([\d\.]+).*Safari/", "Safari"),
+            (r"Safari/([\d\.]+)", "Safari"),
+            (r"MSIE ([\d\.]+)", "Internet Explorer"),
+            (r"Trident/.*rv:([\d\.]+)", "Internet Explorer"),
+        ]
+        for pattern, name in rules:
+            m = re.search(pattern, ua, re.IGNORECASE)
+            if m:
+                return name, (m.group(1) or "").strip()
+        return "Unknown", ""
+
+    def _parse_os_name(self, ua_text):
+        ua = (ua_text or "").lower()
+        if not ua:
+            return "Unknown"
+        if "android" in ua:
+            return "Android"
+        if "iphone" in ua or "ipad" in ua or "ipod" in ua:
+            return "iOS"
+        if "windows" in ua:
+            return "Windows"
+        if "mac os x" in ua or "macintosh" in ua:
+            return "macOS"
+        if "linux" in ua:
+            return "Linux"
+        return "Unknown"
+
+    def _parse_device_type(self, ua_text):
+        ua = (ua_text or "").lower()
+        if not ua:
+            return "unknown"
+        if "bot" in ua or "spider" in ua or "crawler" in ua:
+            return "bot"
+        if "ipad" in ua or "tablet" in ua:
+            return "tablet"
+        if "mobile" in ua or "iphone" in ua or "android" in ua:
+            return "phone"
+        if "windows" in ua or "macintosh" in ua or "linux" in ua:
+            return "desktop"
+        return "unknown"
+
+    def _collect_client_env(self):
+        ua = request.httprequest.headers.get("User-Agent", "") or ""
+        browser_name, browser_version = self._parse_browser_name_version(ua)
+        return {
+            "device_type": self._parse_device_type(ua),
+            "os_name": self._parse_os_name(ua),
+            "browser_name": browser_name,
+            "browser_version": browser_version,
+        }
 
     def _get_or_create_client_id(self):
         client_id = (request.httprequest.cookies.get(self.CLIENT_COOKIE_KEY) or "").strip()
@@ -530,6 +593,7 @@ class MobileFormController(http.Controller):
                     "confirm_key2_value": confirm_key2,
                     "unique_key1_value": unique_key1,
                     "unique_key2_value": unique_key2,
+                    **self._collect_client_env(),
                 }
             )
             values = {"form": form, "submission": submission}

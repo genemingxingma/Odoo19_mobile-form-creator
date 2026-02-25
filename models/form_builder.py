@@ -1045,9 +1045,19 @@ class MobileFormSubmission(models.Model):
     _order = "submit_date desc, id desc"
 
     form_id = fields.Many2one("x_mobile.form", required=True, ondelete="cascade")
+    active = fields.Boolean(default=True, index=True)
     name = fields.Char(default=lambda self: _("New"), readonly=True)
     submit_date = fields.Datetime(default=fields.Datetime.now, required=True)
     client_identifier = fields.Char(index=True, readonly=True)
+    device_type = fields.Selection(
+        [("phone", "Phone"), ("tablet", "Tablet"), ("desktop", "Desktop"), ("bot", "Bot"), ("unknown", "Unknown")],
+        default="unknown",
+        readonly=True,
+        index=True,
+    )
+    os_name = fields.Char(readonly=True)
+    browser_name = fields.Char(readonly=True)
+    browser_version = fields.Char(readonly=True)
     answer_json = fields.Text()
     searchable_content = fields.Char(readonly=True)
     answer_preview = fields.Char(compute="_compute_answer_preview")
@@ -1231,6 +1241,9 @@ class MobileFormSubmission(models.Model):
             or self.env.user.has_group("mobile_form_builder.group_mobile_form_user")
         ):
             raise UserError(_("You do not have permission to confirm submissions."))
+        archived = self.filtered(lambda r: not r.active)
+        if archived:
+            raise UserError(_("Archived submissions cannot be confirmed. Please unarchive first."))
         now = fields.Datetime.now()
         for rec in self:
             rec.sudo().write({"is_confirmed": True, "confirmed_at": now, "confirmed_by": self.env.user.id})
@@ -1244,8 +1257,23 @@ class MobileFormSubmission(models.Model):
             or self.env.user.has_group("mobile_form_builder.group_mobile_form_user")
         ):
             raise UserError(_("You do not have permission to unconfirm submissions."))
+        archived = self.filtered(lambda r: not r.active)
+        if archived:
+            raise UserError(_("Archived submissions cannot be unconfirmed. Please unarchive first."))
         for rec in self:
             rec.sudo().write({"is_confirmed": False, "confirmed_at": False, "confirmed_by": False})
+        return True
+
+    def action_archive(self):
+        self.check_access_rights("write")
+        self.check_access_rule("write")
+        self.sudo().write({"active": False})
+        return True
+
+    def action_unarchive(self):
+        self.check_access_rights("write")
+        self.check_access_rule("write")
+        self.sudo().write({"active": True})
         return True
 
     def get_submit_date_company_tz_str(self):
