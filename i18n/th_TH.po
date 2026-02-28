@@ -19,22 +19,22 @@ msgstr ""
 #. module: mobile_form_builder
 #: model:ir.actions.report,print_report_name:mobile_form_builder.action_report_mobile_form_submission
 msgid "'Submission_%s' % (object.name or 'Form')"
-msgstr ""
+msgstr "'Submission_%s' % (object.name or 'Form')"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_form_component_settings_form
 msgid ".pdf,.jpg,image/*,application/pdf"
-msgstr ""
+msgstr ".pdf,.jpg,image/*,application/pdf"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_form_component_settings_form
 msgid "000-00-000-0"
-msgstr ""
+msgstr "000-00-000-0"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_page
 msgid "<option value=\"\">Please select</option>"
-msgstr ""
+msgstr "<option value=\"\">กรุณาเลือก</option>"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_page
@@ -42,84 +42,85 @@ msgid ""
 "<small class=\"mform-camera-tip\">Manual barcode entry is disabled. If a permission dialog appears, tap Allow and align barcode with the red line.</small>\n"
 "                                        <small class=\"mform-scan-status\"/>"
 msgstr ""
+"<small class=\"mform-camera-tip\">ปิดการกรอกบาร์โค้ดด้วยตนเองแล้ว หากมีหน้าต่างขอสิทธิ์ ให้แตะ อนุญาต และจัดบาร์โค้ดให้อยู่บนเส้นสีแดง</small>\n                                        <small class=\"mform-scan-status\"/>"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.report_mobile_form_submission_document
 msgid "<strong>Client ID</strong>:"
-msgstr ""
+msgstr "<strong>รหัสลูกค้า</strong>:"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.report_mobile_form_submission_document
 msgid "<strong>Confirmed At</strong>:"
-msgstr ""
+msgstr "<strong>ยืนยันเมื่อ</strong>:"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.report_mobile_form_submission_document
 msgid "<strong>Confirmed</strong>:"
-msgstr ""
+msgstr "<strong>ยืนยันแล้ว</strong>:"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.report_mobile_form_submission_document
 msgid "<strong>Form</strong>:"
-msgstr ""
+msgstr "<strong>แบบฟอร์ม</strong>:"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.report_mobile_form_submission_document
 msgid "<strong>Submission No.</strong>:"
-msgstr ""
+msgstr "<strong>เลขที่ส่ง</strong>:"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.report_mobile_form_submission_document
 msgid "<strong>Submitted At</strong>:"
-msgstr ""
+msgstr "<strong>ส่งเมื่อ</strong>:"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__access_token
 msgid "Access Token"
-msgstr ""
+msgstr "โทเค็นการเข้าถึง"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_confirm_wizard__action
 msgid "Action"
-msgstr ""
+msgstr "การดำเนินการ"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__active
 msgid "Active"
-msgstr ""
+msgstr "ใช้งาน"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__validation_mode
 msgid "Advanced Validation"
-msgstr ""
+msgstr "การตรวจสอบขั้นสูง"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__age_auto
 msgid "Age (Auto)"
-msgstr ""
+msgstr "อายุ (อัตโนมัติ)"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Age is above the maximum requirement."
-msgstr ""
+msgstr "อายุสูงกว่าค่าที่กำหนดสูงสุด"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Age is below the minimum requirement."
-msgstr ""
+msgstr "อายุต่ำกว่าค่าที่กำหนดต่ำสุด"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__linked_date_component_id
 msgid "Age will be automatically calculated from this date component."
-msgstr ""
+msgstr "อายุจะคำนวณอัตโนมัติจากฟิลด์วันที่นี้"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "All Match Options must belong to the selected Visibility Source."
-msgstr ""
+msgstr "All Match Options must belong to the selected Visibility Source."
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__allow_repeat_client_submit
@@ -129,47 +130,47 @@ msgstr "อนุญาตให้ส่งซ้ำจากอุปกรณ
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__file_accept
 msgid "Allowed File Types"
-msgstr ""
+msgstr "ชนิดไฟล์ที่อนุญาต"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_page
 msgid "Allowed:"
-msgstr ""
+msgstr "อนุญาต:"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__answer_json
 msgid "Answer Json"
-msgstr ""
+msgstr "คำตอบ JSON"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_submission_form
 msgid "Answer Json (double-click to expand/collapse)"
-msgstr ""
+msgstr "Answer Json (double-click to expand/collapse)"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__answer_preview
 msgid "Answer Preview"
-msgstr ""
+msgstr "ตัวอย่างคำตอบ"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.report_mobile_form_submission_document
 msgid "Application Form"
-msgstr ""
+msgstr "แบบฟอร์มใบสมัคร"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_mform_submission_confirm_wizard_form
 msgid "Apply"
-msgstr ""
+msgstr "นำไปใช้"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_line__attachment_id
 msgid "Attachment"
-msgstr ""
+msgstr "ไฟล์แนบ"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_page
 msgid "Auto calculated"
-msgstr ""
+msgstr "คำนวณอัตโนมัติ"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_thanks
@@ -185,43 +186,43 @@ msgstr "กลับไปที่ฟอร์ม (เก็บข้อมู�
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__age_max_action__block
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__age_min_action__block
 msgid "Block Submission"
-msgstr ""
+msgstr "บล็อกการส่ง"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__barcode_scan
 msgid "Camera Barcode Scan"
-msgstr ""
+msgstr "สแกนบาร์โค้ดด้วยกล้อง"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_mform_submission_confirm_wizard_form
 msgid "Cancel"
-msgstr ""
+msgstr "ยกเลิก"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Cannot delete form '%s' because it already has submitted records."
-msgstr ""
+msgstr "Cannot delete form '%s' because it already has submitted records."
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__case_mode
 msgid "Case Limit"
-msgstr ""
+msgstr "ข้อจำกัดตัวพิมพ์"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__checkbox
 msgid "Checkbox"
-msgstr ""
+msgstr "เช็กบ็อกซ์"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component_option__child_option_ids
 msgid "Child Options"
-msgstr ""
+msgstr "ตัวเลือกย่อย"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_page
 msgid "Clear Signature"
-msgstr ""
+msgstr "ล้างลายเซ็น"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_duplicate_page
@@ -231,7 +232,7 @@ msgstr "ล้างข้อมูลและกลับไปที่ฟอ
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__client_identifier
 msgid "Client Identifier"
-msgstr ""
+msgstr "รหัสไคลเอนต์"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_page
@@ -241,7 +242,7 @@ msgstr "ปิด"
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_confirm_wizard__code
 msgid "Code"
-msgstr ""
+msgstr "รหัส"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__visibility_match_values
@@ -249,40 +250,41 @@ msgid ""
 "Comma or line separated values. Rule matches when source contains any of "
 "these values."
 msgstr ""
+"ค่าที่คั่นด้วยจุลภาคหรือขึ้นบรรทัดใหม่ กฎจะตรงเมื่อแหล่งข้อมูลมีค่าใดค่าหนึ่งเหล่านี้"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component_option__component_id
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_line__component_id
 msgid "Component"
-msgstr ""
+msgstr "คอมโพเนนต์"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_form_component_settings_form
 msgid "Component Settings"
-msgstr ""
+msgstr "ตั้งค่าคอมโพเนนต์"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__component_type
 msgid "Component Type"
-msgstr ""
+msgstr "ประเภทคอมโพเนนต์"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_line__component_type_snapshot
 msgid "Component Type Snapshot"
-msgstr ""
+msgstr "Component Type Snapshot"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Component cannot use itself as Visibility Source."
-msgstr ""
+msgstr "Component cannot use itself as Visibility Source."
 
 #. module: mobile_form_builder
 #: model:ir.model.constraint,message:mobile_form_builder.constraint_x_mobile_form_component_key_form_uniq
 msgid "Component key must be unique per form."
-msgstr ""
+msgstr "Component key must be unique per form."
 
 #. module: mobile_form_builder
 #. odoo-python
@@ -291,12 +293,13 @@ msgid ""
 "Component key must start with a letter and contain only letters, numbers, or"
 " _."
 msgstr ""
+"คีย์คอมโพเนนต์ต้องขึ้นต้นด้วยตัวอักษร และมีได้เฉพาะตัวอักษร ตัวเลข หรือ _ เท่านั้น"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__component_ids
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_form_form
 msgid "Components"
-msgstr ""
+msgstr "คอมโพเนนต์"
 
 #. module: mobile_form_builder
 #. odoo-javascript
@@ -304,7 +307,7 @@ msgstr ""
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_submission_confirm_wizard__action__confirm
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_submission_form
 msgid "Confirm"
-msgstr ""
+msgstr "ยืนยัน"
 
 #. module: mobile_form_builder
 #. odoo-javascript
@@ -312,17 +315,17 @@ msgstr ""
 #: code:addons/mobile_form_builder/models/confirm_wizard.py:0
 #: code:addons/mobile_form_builder/static/src/js/submission_list_confirm.js:0
 msgid "Confirm Failed"
-msgstr ""
+msgstr "ยืนยันไม่สำเร็จ"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__confirm_key1_value
 msgid "Confirm Key1 Value"
-msgstr ""
+msgstr "Confirm Key1 Value"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__confirm_key2_value
 msgid "Confirm Key2 Value"
-msgstr ""
+msgstr "Confirm Key2 Value"
 
 #. module: mobile_form_builder
 #: model:ir.actions.act_window,name:mobile_form_builder.action_mform_submission_confirm_wizard
@@ -334,7 +337,7 @@ msgstr "ยืนยันการส่ง"
 #. odoo-javascript
 #: code:addons/mobile_form_builder/static/src/xml/submission_list_confirm.xml:0
 msgid "Confirm by code..."
-msgstr ""
+msgstr "ยืนยันด้วยรหัส..."
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__confirm_component_id_1
@@ -350,23 +353,23 @@ msgstr "ฟิลด์ยืนยัน 2"
 #. odoo-python
 #: code:addons/mobile_form_builder/models/confirm_wizard.py:0
 msgid "Confirmed"
-msgstr ""
+msgstr "ยืนยันแล้ว"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__confirmed_at
 msgid "Confirmed At"
-msgstr ""
+msgstr "เวลายืนยัน"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__confirmed_by
 msgid "Confirmed By"
-msgstr ""
+msgstr "ยืนยันโดย"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/confirm_wizard.py:0
 msgid "Conflict: multiple submissions match this code."
-msgstr ""
+msgstr "Conflict: multiple submissions match this code."
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__create_uid
@@ -376,7 +379,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_confirm_wizard__create_uid
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_line__create_uid
 msgid "Created by"
-msgstr ""
+msgstr "สร้างโดย"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__create_date
@@ -386,13 +389,13 @@ msgstr ""
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_confirm_wizard__create_date
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_line__create_date
 msgid "Created on"
-msgstr ""
+msgstr "สร้างเมื่อ"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__custom_regex
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__validation_mode__custom_regex
 msgid "Custom Regex"
-msgstr ""
+msgstr "Regex กำหนดเอง"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_form_component_settings_form
@@ -400,41 +403,42 @@ msgid ""
 "Custom regex example: use ^ for start and $ for end. Example "
 "^[A-Z]{2}\\d{6}$ means 2 uppercase letters + 6 digits (e.g. AB123456)."
 msgstr ""
+"ตัวอย่าง regex แบบกำหนดเอง: ใช้ ^ สำหรับจุดเริ่ม และ $ สำหรับจุดจบ ตัวอย่าง ^[A-Z]{2}\\d{6}$ หมายถึงตัวอักษรพิมพ์ใหญ่ 2 ตัว + ตัวเลข 6 หลัก (เช่น AB123456)"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__date_format__ddmmyyyy
 msgid "DDMMYYYY"
-msgstr ""
+msgstr "DDMMYYYY"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__date
 msgid "Date"
-msgstr ""
+msgstr "วันที่"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__date_format
 msgid "Date Format"
-msgstr ""
+msgstr "รูปแบบวันที่"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component_option__is_default
 msgid "Default"
-msgstr ""
+msgstr "ค่าเริ่มต้น"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__default_options_text
 msgid "Default Selection(s)"
-msgstr ""
+msgstr "ค่าที่เลือกเริ่มต้น"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__number_wheel_default
 msgid "Default selected value for Number Wheel."
-msgstr ""
+msgstr "Default selected value for Number Wheel."
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__description
 msgid "Description"
-msgstr ""
+msgstr "คำอธิบาย"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__display_name
@@ -444,17 +448,17 @@ msgstr ""
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_confirm_wizard__display_name
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_line__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "ชื่อที่แสดง"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__display_text
 msgid "Display Text"
-msgstr ""
+msgstr "ข้อความแสดงผล"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__display_text
 msgid "Display content for text display block"
-msgstr ""
+msgstr "Display content for text display block"
 
 #. module: mobile_form_builder
 #. odoo-javascript
@@ -481,23 +485,23 @@ msgstr "ข้อความแจ้งเมื่อข้อมูลซ้
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_submission_form
 msgid "Edit Data"
-msgstr ""
+msgstr "แก้ไขข้อมูล"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__email
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__validation_mode__email
 msgid "Email"
-msgstr ""
+msgstr "อีเมล"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__use_conditional_options
 msgid "Enable Cascading Options"
-msgstr ""
+msgstr "เปิดใช้ตัวเลือกแบบลำดับชั้น"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__visibility_enabled
 msgid "Enable Visibility Rule"
-msgstr ""
+msgstr "เปิดใช้กฎการมองเห็น"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__is_enabled
@@ -507,116 +511,116 @@ msgstr "เปิดใช้สำหรับสาธารณะ"
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_form_component_settings_form
 msgid "Example: ^[A-Z]{2}\\\\d{6}$"
-msgstr ""
+msgstr "Example: ^[A-Z]{2}\\\\d{6}$"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__file_accept
 msgid "Examples: .pdf,.jpg,image/*,application/pdf"
-msgstr ""
+msgstr "Examples: .pdf,.jpg,image/*,application/pdf"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_submission_tree
 msgid "Export Excel"
-msgstr ""
+msgstr "ส่งออก Excel"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_submission_tree
 msgid "Export PDF"
-msgstr ""
+msgstr "ส่งออก PDF"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Field '%s' cannot exceed %s characters."
-msgstr ""
+msgstr "Field '%s' cannot exceed %s characters."
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Field '%s' does not match custom regex."
-msgstr ""
+msgstr "Field '%s' does not match custom regex."
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Field '%s' exceeds max file size %.2f MB."
-msgstr ""
+msgstr "Field '%s' exceeds max file size %.2f MB."
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Field '%s' file type is not allowed. Allowed: %s"
-msgstr ""
+msgstr "Field '%s' file type is not allowed. Allowed: %s"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Field '%s' must be a valid email address."
-msgstr ""
+msgstr "Field '%s' must be a valid email address."
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Field '%s' must be a valid mobile phone number."
-msgstr ""
+msgstr "Field '%s' must be a valid mobile phone number."
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Field '%s' must be an integer."
-msgstr ""
+msgstr "Field '%s' must be an integer."
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Field '%s' must be at least %s characters."
-msgstr ""
+msgstr "Field '%s' must be at least %s characters."
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Field '%s' must be between %s and %s."
-msgstr ""
+msgstr "Field '%s' must be between %s and %s."
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Field '%s' must follow step %s."
-msgstr ""
+msgstr "Field '%s' must follow step %s."
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Field '%s' must match format '%s'."
-msgstr ""
+msgstr "Field '%s' must match format '%s'."
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Field '%s' only allows digits."
-msgstr ""
+msgstr "Field '%s' only allows digits."
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Field '%s' only allows letters and numbers."
-msgstr ""
+msgstr "Field '%s' only allows letters and numbers."
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Field '%s' only allows letters."
-msgstr ""
+msgstr "Field '%s' only allows letters."
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__file_upload
 msgid "File Upload"
-msgstr ""
+msgstr "อัปโหลดไฟล์"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__options_text
 msgid "For radio/select/checkbox: one option per line"
-msgstr ""
+msgstr "For radio/select/checkbox: one option per line"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__default_options_text
@@ -624,13 +628,14 @@ msgid ""
 "For radio/select: one default option. For checkbox: multiple values split by"
 " comma or line."
 msgstr ""
+"สำหรับ radio/select: ตั้งค่าเริ่มต้นได้หนึ่งค่า สำหรับ checkbox: ตั้งได้หลายค่าโดยคั่นด้วยจุลภาคหรือขึ้นบรรทัดใหม่"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__form_id
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__form_id
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_confirm_wizard__form_id
 msgid "Form"
-msgstr ""
+msgstr "แบบฟอร์ม"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_closed
@@ -641,7 +646,7 @@ msgstr "ปิดฟอร์มแล้ว"
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__form_preview_html
 msgid "Form Preview Html"
-msgstr ""
+msgstr "Form Preview Html"
 
 #. module: mobile_form_builder
 #: model:ir.actions.act_window,name:mobile_form_builder.action_x_mobile_submission
@@ -651,12 +656,12 @@ msgstr "การส่งแบบฟอร์ม"
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_submission_form
 msgid "Form View"
-msgstr ""
+msgstr "มุมมองแบบฟอร์ม"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__formatted_number
 msgid "Formatted Number"
-msgstr ""
+msgstr "ตัวเลขแบบจัดรูปแบบ"
 
 #. module: mobile_form_builder
 #: model:ir.ui.menu,name:mobile_form_builder.menu_x_mobile_form
@@ -666,12 +671,12 @@ msgstr "ฟอร์ม"
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__help_text
 msgid "Help Text"
-msgstr ""
+msgstr "ข้อความช่วยเหลือ"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__visibility_mode__hide_if_match
 msgid "Hide If Match"
-msgstr ""
+msgstr "ซ่อนเมื่อเงื่อนไขตรง"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__date_format
@@ -679,6 +684,7 @@ msgid ""
 "How the date value is stored/exported (input stays the standard HTML date "
 "control)."
 msgstr ""
+"กำหนดรูปแบบการเก็บ/ส่งออกค่าวันที่ (ช่องกรอกยังใช้ตัวควบคุมวันที่มาตรฐานของ HTML)"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__id
@@ -688,81 +694,81 @@ msgstr ""
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_confirm_wizard__id
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_line__id
 msgid "ID"
-msgstr ""
+msgstr "รหัส"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form__allow_repeat_client_submit
 msgid "If disabled, the same browser client can submit this form only once."
-msgstr ""
+msgstr "If disabled, the same browser client can submit this form only once."
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__include_in_export
 msgid "If enabled, this field will be exported as a column in Excel."
-msgstr ""
+msgstr "If enabled, this field will be exported as a column in Excel."
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__age_max
 msgid "If set, ages above this value will trigger the configured action."
-msgstr ""
+msgstr "If set, ages above this value will trigger the configured action."
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__age_min
 msgid "If set, ages below this value will trigger the configured action."
-msgstr ""
+msgstr "If set, ages below this value will trigger the configured action."
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form__unique_component_id_1
 msgid "If set, this field value must be unique within this form."
-msgstr ""
+msgstr "If set, this field value must be unique within this form."
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__image
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__image
 msgid "Image"
-msgstr ""
+msgstr "รูปภาพ"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__image_filename
 msgid "Image Filename"
-msgstr ""
+msgstr "ชื่อไฟล์รูปภาพ"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__image_url
 msgid "Image Url"
-msgstr ""
+msgstr "URL รูปภาพ"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__include_in_export
 msgid "Include in Excel Export"
-msgstr ""
+msgstr "รวมในการส่งออก Excel"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__input
 msgid "Input"
-msgstr ""
+msgstr "อินพุต"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Invalid custom regex on '%s': %s"
-msgstr ""
+msgstr "Invalid custom regex on '%s': %s"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__is_confirmed
 msgid "Is Confirmed"
-msgstr ""
+msgstr "ยืนยันแล้วหรือไม่"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__key
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_line__key
 msgid "Key"
-msgstr ""
+msgstr "คีย์"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__name
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_line__label
 msgid "Label"
-msgstr ""
+msgstr "ป้ายกำกับ"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__write_uid
@@ -772,7 +778,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_confirm_wizard__write_uid
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_line__write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "อัปเดตล่าสุดโดย"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__write_date
@@ -782,101 +788,101 @@ msgstr ""
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_confirm_wizard__write_date
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_line__write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "อัปเดตล่าสุดเมื่อ"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__validation_mode__alnum
 msgid "Letters + Numbers"
-msgstr ""
+msgstr "ตัวอักษร + ตัวเลข"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__validation_mode__alpha
 msgid "Letters Only"
-msgstr ""
+msgstr "เฉพาะตัวอักษร"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__line_ids
 msgid "Line"
-msgstr ""
+msgstr "บรรทัด"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__linked_date_component_id
 msgid "Linked Date Component"
-msgstr ""
+msgstr "คอมโพเนนต์วันที่ที่เชื่อมโยง"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__case_mode__lower
 msgid "Lowercase"
-msgstr ""
+msgstr "ตัวพิมพ์เล็ก"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_page
 msgid "MB."
-msgstr ""
+msgstr "MB."
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__date_format__mmddyyyy
 msgid "MMDDYYYY"
-msgstr ""
+msgstr "MMDDYYYY"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__visibility_match_option_ids
 msgid "Match Options"
-msgstr ""
+msgstr "ตัวเลือกที่ตรง"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Match Options is required when visibility rule is enabled."
-msgstr ""
+msgstr "Match Options is required when visibility rule is enabled."
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__visibility_match_values
 msgid "Match Values"
-msgstr ""
+msgstr "ค่าที่ตรง"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__file_max_mb
 msgid "Max File Size (MB)"
-msgstr ""
+msgstr "ขนาดไฟล์สูงสุด (MB)"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Max File Size (MB) cannot be negative."
-msgstr ""
+msgstr "Max File Size (MB) cannot be negative."
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__max_length
 msgid "Max Length"
-msgstr ""
+msgstr "ความยาวสูงสุด"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Max Length cannot be negative."
-msgstr ""
+msgstr "Max Length cannot be negative."
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_page
 msgid "Max size:"
-msgstr ""
+msgstr "Max size:"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__age_max
 msgid "Maximum Age"
-msgstr ""
+msgstr "อายุสูงสุด"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Maximum Age cannot be negative."
-msgstr ""
+msgstr "Maximum Age cannot be negative."
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form__success_message
 msgid "Message shown after user submits the form."
-msgstr ""
+msgstr "Message shown after user submits the form."
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form__closed_message
@@ -884,6 +890,7 @@ msgid ""
 "Message shown to public users when this form is not enabled for public "
 "access."
 msgstr ""
+"ข้อความที่แสดงแก่ผู้ใช้สาธารณะเมื่อแบบฟอร์มนี้ยังไม่เปิดให้เข้าถึงแบบสาธารณะ"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form__duplicate_message
@@ -891,85 +898,86 @@ msgid ""
 "Message shown when a submission is blocked due to duplicate unique-check "
 "field values."
 msgstr ""
+"ข้อความที่แสดงเมื่อการส่งถูกบล็อกเพราะค่าฟิลด์ตรวจสอบความซ้ำซ้อนมีอยู่แล้ว"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__min_length
 msgid "Min Length"
-msgstr ""
+msgstr "ความยาวต่ำสุด"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Min Length cannot be greater than Max Length."
-msgstr ""
+msgstr "Min Length cannot be greater than Max Length."
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Min Length cannot be negative."
-msgstr ""
+msgstr "Min Length cannot be negative."
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__age_min
 msgid "Minimum Age"
-msgstr ""
+msgstr "อายุต่ำสุด"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Minimum Age cannot be greater than Maximum Age."
-msgstr ""
+msgstr "Minimum Age cannot be greater than Maximum Age."
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Minimum Age cannot be negative."
-msgstr ""
+msgstr "Minimum Age cannot be negative."
 
 #. module: mobile_form_builder
 #: model:ir.model,name:mobile_form_builder.model_x_mobile_form
 msgid "Mobile Collection Form"
-msgstr ""
+msgstr "แบบฟอร์มเก็บข้อมูลบนมือถือ"
 
 #. module: mobile_form_builder
 #: model:res.groups,name:mobile_form_builder.group_mobile_form_admin
 msgid "Mobile Form Administrator"
-msgstr ""
+msgstr "ผู้ดูแลแบบฟอร์มมือถือ"
 
 #. module: mobile_form_builder
 #: model:ir.model,name:mobile_form_builder.model_x_mobile_form_component
 msgid "Mobile Form Component"
-msgstr ""
+msgstr "คอมโพเนนต์แบบฟอร์มมือถือ"
 
 #. module: mobile_form_builder
 #: model:ir.model,name:mobile_form_builder.model_x_mobile_form_component_option
 msgid "Mobile Form Component Option"
-msgstr ""
+msgstr "ตัวเลือกคอมโพเนนต์แบบฟอร์มมือถือ"
 
 #. module: mobile_form_builder
 #: model:ir.model,name:mobile_form_builder.model_x_mobile_form_submission
 msgid "Mobile Form Submission"
-msgstr ""
+msgstr "การส่งแบบฟอร์มมือถือ"
 
 #. module: mobile_form_builder
 #: model:ir.model,name:mobile_form_builder.model_x_mobile_form_submission_confirm_wizard
 msgid "Mobile Form Submission Confirmation Wizard"
-msgstr ""
+msgstr "วิซาร์ดยืนยันการส่งแบบฟอร์มมือถือ"
 
 #. module: mobile_form_builder
 #: model:ir.model,name:mobile_form_builder.model_x_mobile_form_submission_line
 msgid "Mobile Form Submission Line"
-msgstr ""
+msgstr "บรรทัดการส่งแบบฟอร์มมือถือ"
 
 #. module: mobile_form_builder
 #: model:ir.actions.report,name:mobile_form_builder.action_report_mobile_form_submission
 msgid "Mobile Form Submission PDF"
-msgstr ""
+msgstr "PDF การส่งแบบฟอร์มมือถือ"
 
 #. module: mobile_form_builder
 #: model:res.groups,name:mobile_form_builder.group_mobile_form_user
 msgid "Mobile Form User"
-msgstr ""
+msgstr "ผู้ใช้แบบฟอร์มมือถือ"
 
 #. module: mobile_form_builder
 #: model:ir.actions.act_window,name:mobile_form_builder.action_x_mobile_form
@@ -980,19 +988,19 @@ msgstr "ฟอร์มมือถือ"
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__validation_mode__phone
 msgid "Mobile Phone"
-msgstr ""
+msgstr "โทรศัพท์มือถือ"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__multiline_text
 msgid "Multiline Text"
-msgstr ""
+msgstr "ข้อความหลายบรรทัด"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__name
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component_option__name
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__name
 msgid "Name"
-msgstr ""
+msgstr "ชื่อ"
 
 #. module: mobile_form_builder
 #. odoo-javascript
@@ -1000,39 +1008,39 @@ msgstr ""
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 #: code:addons/mobile_form_builder/static/src/xml/submission_list_confirm.xml:0
 msgid "New"
-msgstr ""
+msgstr "ใหม่"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__age_max_action__none
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__age_min_action__none
 msgid "No Check"
-msgstr ""
+msgstr "ไม่ตรวจสอบ"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__validation_mode__none
 msgid "No Extra Validation"
-msgstr ""
+msgstr "ไม่มีการตรวจสอบเพิ่มเติม"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__case_mode__none
 msgid "No Limit"
-msgstr ""
+msgstr "ไม่จำกัด"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/confirm_wizard.py:0
 msgid "No submission found for this code."
-msgstr ""
+msgstr "No submission found for this code."
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__number_format_pattern
 msgid "Number Format Pattern"
-msgstr ""
+msgstr "รูปแบบตัวเลข"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__number_wheel
 msgid "Number Wheel"
-msgstr ""
+msgstr "วงล้อตัวเลข"
 
 #. module: mobile_form_builder
 #. odoo-python
@@ -1040,29 +1048,30 @@ msgstr ""
 msgid ""
 "Number Wheel has too many values. Please reduce range or increase step."
 msgstr ""
+"วงล้อตัวเลขมีค่ามากเกินไป กรุณาลดช่วงหรือเพิ่มค่า step"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Number format pattern must include at least one 0 placeholder."
-msgstr ""
+msgstr "Number format pattern must include at least one 0 placeholder."
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Number format pattern only supports 0 and separators: - space . / ( )"
-msgstr ""
+msgstr "Number format pattern only supports 0 and separators: - space . / ( )"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__only_digits
 msgid "Only Digits"
-msgstr ""
+msgstr "เฉพาะตัวเลข"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Only one default option is allowed for radio/select."
-msgstr ""
+msgstr "Only one default option is allowed for radio/select."
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_form_form
@@ -1073,34 +1082,34 @@ msgstr "เปิดฟอร์มสาธารณะ"
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Option 1"
-msgstr ""
+msgstr "ตัวเลือก 1"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Option 2"
-msgstr ""
+msgstr "ตัวเลือก 2"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__option_ids
 msgid "Option Lines"
-msgstr ""
+msgstr "บรรทัดตัวเลือก"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Option cannot reference itself as parent."
-msgstr ""
+msgstr "Option cannot reference itself as parent."
 
 #. module: mobile_form_builder
 #: model:ir.model.constraint,message:mobile_form_builder.constraint_x_mobile_form_component_option_option_name_component_uniq
 msgid "Option names must be unique per component."
-msgstr ""
+msgstr "Option names must be unique per component."
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__image_url
 msgid "Optional external image URL"
-msgstr ""
+msgstr "Optional external image URL"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form__confirm_component_id_2
@@ -1108,6 +1117,7 @@ msgid ""
 "Optional second confirmation field. Either field can match during "
 "confirmation."
 msgstr ""
+"ฟิลด์ยืนยันที่สอง (ไม่บังคับ) ระหว่างยืนยันสามารถตรงได้จากฟิลด์ใดฟิลด์หนึ่ง"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form__unique_component_id_2
@@ -1115,37 +1125,38 @@ msgid ""
 "Optional second unique field. Submission is blocked if either unique field "
 "value already exists."
 msgstr ""
+"ฟิลด์ unique ที่สอง (ไม่บังคับ) จะบล็อกการส่งหากค่าของฟิลด์ unique ใดฟิลด์หนึ่งมีอยู่แล้ว"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__options_text
 msgid "Options Text"
-msgstr ""
+msgstr "ข้อความตัวเลือก"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__age_max_action
 msgid "Over Maximum Action"
-msgstr ""
+msgstr "Over Maximum Action"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__age_max_message
 msgid "Over Maximum Message"
-msgstr ""
+msgstr "Over Maximum Message"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component_option__parent_option_id
 msgid "Parent Option"
-msgstr ""
+msgstr "ตัวเลือกแม่"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Parent option must belong to the same component."
-msgstr ""
+msgstr "Parent option must belong to the same component."
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__placeholder
 msgid "Placeholder"
-msgstr ""
+msgstr "ข้อความตัวอย่าง"
 
 #. module: mobile_form_builder
 #. odoo-javascript
@@ -1212,13 +1223,13 @@ msgstr "ส่งออก PDF (เอกสารแยกไฟล์)"
 #. odoo-python
 #: code:addons/mobile_form_builder/models/confirm_wizard.py:0
 msgid "Please input a code."
-msgstr ""
+msgstr "กรุณากรอกรหัส"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Please select at least one submission."
-msgstr ""
+msgstr "กรุณาเลือกอย่างน้อยหนึ่งรายการส่ง"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__closed_message
@@ -1228,37 +1239,37 @@ msgstr "ข้อความเมื่อปิดฟอร์มสาธา
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__custom_regex
 msgid "Python regex used with full match, e.g. ^[A-Z]{2}\\d{6}$"
-msgstr ""
+msgstr "Python regex used with full match, e.g. ^[A-Z]{2}\\d{6}$"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__qr_code_fallback_html
 msgid "Qr Code Fallback Html"
-msgstr ""
+msgstr "Qr Code Fallback Html"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__radio
 msgid "Radio"
-msgstr ""
+msgstr "ปุ่มตัวเลือก"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_thanks
 msgid "Reference:"
-msgstr ""
+msgstr "อ้างอิง:"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__related_partner_id
 msgid "Related Party"
-msgstr ""
+msgstr "ผู้ติดต่อที่เกี่ยวข้อง"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form__related_partner_id
 msgid "Related company or individual from contacts."
-msgstr ""
+msgstr "Related company or individual from contacts."
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__required
 msgid "Required"
-msgstr ""
+msgstr "จำเป็น"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_page
@@ -1268,48 +1279,48 @@ msgstr "สแกนบาร์โค้ดหรือคิวอาร์"
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_mform_submission_confirm_wizard_form
 msgid "Scan or type code"
-msgstr ""
+msgstr "สแกนหรือพิมพ์รหัส"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_submission_confirm_wizard__code
 msgid "Scan or type the confirmation code."
-msgstr ""
+msgstr "สแกนหรือพิมพ์รหัสยืนยัน"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_page
 msgid "Scan required (manual input disabled)"
-msgstr ""
+msgstr "ต้องสแกน (ปิดการกรอกด้วยตนเอง)"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__searchable_content
 msgid "Searchable Content"
-msgstr ""
+msgstr "เนื้อหาที่ค้นหาได้"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__section
 msgid "Section"
-msgstr ""
+msgstr "ส่วน"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__select
 msgid "Select"
-msgstr ""
+msgstr "เลือก"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__visibility_match_option_ids
 msgid "Select source options that trigger this visibility rule."
-msgstr ""
+msgstr "Select source options that trigger this visibility rule."
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__sequence
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component_option__sequence
 msgid "Sequence"
-msgstr ""
+msgstr "ลำดับ"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_line__sequence_snapshot
 msgid "Sequence Snapshot"
-msgstr ""
+msgstr "Sequence Snapshot"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_form_component_settings_form
@@ -1318,56 +1329,57 @@ msgid ""
 "radio/select only one default is allowed. To build cascading options, enable"
 " Cascading Options and set Parent Option for child rows."
 msgstr ""
+"ตั้งค่าตัวเลือกในตารางด้านบน ติ๊ก Default สำหรับค่าที่เลือกไว้ล่วงหน้า สำหรับ radio/select อนุญาตค่าเริ่มต้นได้เพียงหนึ่งค่า หากต้องการตัวเลือกแบบลำดับชั้น ให้เปิด Cascading Options และตั้ง Parent Option ให้แถวลูก"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__share_url
 msgid "Share Url"
-msgstr ""
+msgstr "ลิงก์แชร์"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__visibility_mode__show_if_match
 msgid "Show If Match"
-msgstr ""
+msgstr "แสดงเมื่อเงื่อนไขตรง"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__use_conditional_options
 msgid "Show next-level options based on the selected option."
-msgstr ""
+msgstr "Show next-level options based on the selected option."
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__visibility_enabled
 msgid "Show or hide this component based on another component selection."
-msgstr ""
+msgstr "Show or hide this component based on another component selection."
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_form_form
 msgid "Shown after successful submission"
-msgstr ""
+msgstr "Shown after successful submission"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_form_form
 msgid "Shown when the public form is closed"
-msgstr ""
+msgstr "Shown when the public form is closed"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_form_form
 msgid "Shown when unique-check value already exists"
-msgstr ""
+msgstr "Shown when unique-check value already exists"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__signature
 msgid "Signature"
-msgstr ""
+msgstr "ลายเซ็น"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_line__submission_id
 msgid "Submission"
-msgstr ""
+msgstr "การส่ง"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__submission_count
 msgid "Submission Count"
-msgstr ""
+msgstr "จำนวนการส่ง"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__success_message
@@ -1378,13 +1390,13 @@ msgstr "ข้อความเมื่อส่งสำเร็จ"
 #. odoo-python
 #: code:addons/mobile_form_builder/models/confirm_wizard.py:0
 msgid "Submission confirmed."
-msgstr ""
+msgstr "Submission confirmed."
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/confirm_wizard.py:0
 msgid "Submission unconfirmed."
-msgstr ""
+msgstr "Submission unconfirmed."
 
 #. module: mobile_form_builder
 #. odoo-python
@@ -1403,7 +1415,7 @@ msgstr "ส่ง"
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__submit_date
 msgid "Submit Date"
-msgstr ""
+msgstr "วันที่ส่ง"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_thanks
@@ -1413,18 +1425,18 @@ msgstr "ส่งข้อมูลสำเร็จ"
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__display
 msgid "Text Display"
-msgstr ""
+msgstr "แสดงข้อความ"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__textarea
 msgid "Textarea"
-msgstr ""
+msgstr "กล่องข้อความ"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Unable to build share URL."
-msgstr ""
+msgstr "Unable to build share URL."
 
 #. module: mobile_form_builder
 #. odoo-javascript
@@ -1433,23 +1445,23 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_submission_form
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_submission_tree
 msgid "Unconfirm"
-msgstr ""
+msgstr "ยกเลิกการยืนยัน"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/confirm_wizard.py:0
 msgid "Unconfirmed"
-msgstr ""
+msgstr "ยังไม่ยืนยัน"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__age_min_action
 msgid "Under Minimum Action"
-msgstr ""
+msgstr "Under Minimum Action"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__age_min_message
 msgid "Under Minimum Message"
-msgstr ""
+msgstr "Under Minimum Message"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__unique_component_id_1
@@ -1462,6 +1474,7 @@ msgstr "ฟิลด์ตรวจสอบความไม่ซ้ำ 1"
 msgid ""
 "Unique Check Field 1 and Unique Check Field 2 cannot be the same field."
 msgstr ""
+"ฟิลด์ตรวจสอบความซ้ำซ้อน 1 และ 2 ต้องไม่เป็นฟิลด์เดียวกัน"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__unique_component_id_2
@@ -1471,27 +1484,27 @@ msgstr "ฟิลด์ตรวจสอบความไม่ซ้ำ 2"
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__unique_key1_value
 msgid "Unique Key1 Value"
-msgstr ""
+msgstr "ค่า Unique Key1"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__unique_key2_value
 msgid "Unique Key2 Value"
-msgstr ""
+msgstr "ค่า Unique Key2"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__key
 msgid "Unique key in form submission payload"
-msgstr ""
+msgstr "Unique key in form submission payload"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__case_mode__upper
 msgid "Uppercase"
-msgstr ""
+msgstr "ตัวพิมพ์ใหญ่"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__number_format_pattern
 msgid "Use 0 as digit placeholder, e.g. 000-00-000-0"
-msgstr ""
+msgstr "Use 0 as digit placeholder, e.g. 000-00-000-0"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form__confirm_component_id_1
@@ -1499,110 +1512,111 @@ msgid ""
 "Used for staff confirmation by scanning/entering a code. The value will be "
 "copied onto the submission record."
 msgstr ""
+"ใช้สำหรับเจ้าหน้าที่ยืนยันโดยสแกน/กรอกรหัส ค่านี้จะถูกคัดลอกไปยังรายการ submission"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_line__value_text
 msgid "Value Text"
-msgstr ""
+msgstr "ข้อความค่า"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__visibility_mode
 msgid "Visibility Mode"
-msgstr ""
+msgstr "โหมดการมองเห็น"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__visibility_source_component_id
 msgid "Visibility Source"
-msgstr ""
+msgstr "แหล่งกำหนดการมองเห็น"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Visibility Source is required when visibility rule is enabled."
-msgstr ""
+msgstr "Visibility Source is required when visibility rule is enabled."
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Visibility Source must be in the same form."
-msgstr ""
+msgstr "Visibility Source must be in the same form."
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__age_max_action__warn
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__age_min_action__warn
 msgid "Warn Only"
-msgstr ""
+msgstr "เตือนเท่านั้น"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__number_wheel_default
 msgid "Wheel Default"
-msgstr ""
+msgstr "ค่าเริ่มต้นวงล้อ"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Wheel Default must be between Wheel Min and Wheel Max."
-msgstr ""
+msgstr "Wheel Default must be between Wheel Min and Wheel Max."
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Wheel Default must follow Wheel Step."
-msgstr ""
+msgstr "Wheel Default must follow Wheel Step."
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__number_wheel_max
 msgid "Wheel Max"
-msgstr ""
+msgstr "ค่าสูงสุดวงล้อ"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__number_wheel_min
 msgid "Wheel Min"
-msgstr ""
+msgstr "ค่าต่ำสุดวงล้อ"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Wheel Min cannot be greater than Wheel Max."
-msgstr ""
+msgstr "Wheel Min cannot be greater than Wheel Max."
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__number_wheel_step
 msgid "Wheel Step"
-msgstr ""
+msgstr "ขั้นของวงล้อ"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Wheel Step must be greater than 0."
-msgstr ""
+msgstr "Wheel Step must be greater than 0."
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__date_format__yyyymmdd
 msgid "YYYYMMDD"
-msgstr ""
+msgstr "YYYYMMDD"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "form_id"
-msgstr ""
+msgstr "รหัสฟอร์ม"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_page
 msgid "image"
-msgstr ""
+msgstr "รูปภาพ"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.report_mobile_form_submission_document
 msgid "signature"
-msgstr ""
+msgstr "ลายเซ็น"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "xlsxwriter is required for Excel export."
-msgstr ""
+msgstr "xlsxwriter is required for Excel export."
 
 #. module: mobile_form_builder
 msgid "Sample Type Source"

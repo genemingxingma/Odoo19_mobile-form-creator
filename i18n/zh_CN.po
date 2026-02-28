@@ -19,22 +19,22 @@ msgstr ""
 #. module: mobile_form_builder
 #: model:ir.actions.report,print_report_name:mobile_form_builder.action_report_mobile_form_submission
 msgid "'Submission_%s' % (object.name or 'Form')"
-msgstr ""
+msgstr "'提交_%s' % (object.name or '表单')"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_form_component_settings_form
 msgid ".pdf,.jpg,image/*,application/pdf"
-msgstr ""
+msgstr ".pdf,.jpg,image/*,application/pdf"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_form_component_settings_form
 msgid "000-00-000-0"
-msgstr ""
+msgstr "000-00-000-0"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_page
 msgid "<option value=\"\">Please select</option>"
-msgstr ""
+msgstr "<option value=\"\">请选择</option>"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_page
@@ -42,84 +42,85 @@ msgid ""
 "<small class=\"mform-camera-tip\">Manual barcode entry is disabled. If a permission dialog appears, tap Allow and align barcode with the red line.</small>\n"
 "                                        <small class=\"mform-scan-status\"/>"
 msgstr ""
+"<small class=\"mform-camera-tip\">已禁用手动输入条码。如出现权限弹窗，请点击允许，并将条码对准红线。</small>\n                                        <small class=\"mform-scan-status\"/>"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.report_mobile_form_submission_document
 msgid "<strong>Client ID</strong>:"
-msgstr ""
+msgstr "<strong>客户端ID</strong>:"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.report_mobile_form_submission_document
 msgid "<strong>Confirmed At</strong>:"
-msgstr ""
+msgstr "<strong>确认时间</strong>:"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.report_mobile_form_submission_document
 msgid "<strong>Confirmed</strong>:"
-msgstr ""
+msgstr "<strong>已确认</strong>:"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.report_mobile_form_submission_document
 msgid "<strong>Form</strong>:"
-msgstr ""
+msgstr "<strong>表单</strong>:"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.report_mobile_form_submission_document
 msgid "<strong>Submission No.</strong>:"
-msgstr ""
+msgstr "<strong>提交编号</strong>:"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.report_mobile_form_submission_document
 msgid "<strong>Submitted At</strong>:"
-msgstr ""
+msgstr "<strong>提交时间</strong>:"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__access_token
 msgid "Access Token"
-msgstr ""
+msgstr "访问令牌"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_confirm_wizard__action
 msgid "Action"
-msgstr ""
+msgstr "动作"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__active
 msgid "Active"
-msgstr ""
+msgstr "启用"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__validation_mode
 msgid "Advanced Validation"
-msgstr ""
+msgstr "高级校验"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__age_auto
 msgid "Age (Auto)"
-msgstr ""
+msgstr "年龄（自动）"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Age is above the maximum requirement."
-msgstr ""
+msgstr "年龄高于最大要求。"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Age is below the minimum requirement."
-msgstr ""
+msgstr "年龄低于最小要求。"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__linked_date_component_id
 msgid "Age will be automatically calculated from this date component."
-msgstr ""
+msgstr "年龄将根据该日期组件自动计算。"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "All Match Options must belong to the selected Visibility Source."
-msgstr ""
+msgstr "所有匹配选项必须属于所选可见性来源。"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__allow_repeat_client_submit
@@ -129,47 +130,47 @@ msgstr "允许同一客户端重复提交"
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__file_accept
 msgid "Allowed File Types"
-msgstr ""
+msgstr "允许的文件类型"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_page
 msgid "Allowed:"
-msgstr ""
+msgstr "允许："
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__answer_json
 msgid "Answer Json"
-msgstr ""
+msgstr "答案 JSON"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_submission_form
 msgid "Answer Json (double-click to expand/collapse)"
-msgstr ""
+msgstr "答案 JSON（双击展开/折叠）"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__answer_preview
 msgid "Answer Preview"
-msgstr ""
+msgstr "答案预览"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.report_mobile_form_submission_document
 msgid "Application Form"
-msgstr ""
+msgstr "申请表单"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_mform_submission_confirm_wizard_form
 msgid "Apply"
-msgstr ""
+msgstr "应用"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_line__attachment_id
 msgid "Attachment"
-msgstr ""
+msgstr "附件"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_page
 msgid "Auto calculated"
-msgstr ""
+msgstr "自动计算"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_thanks
@@ -185,43 +186,43 @@ msgstr "返回表单（保留已填内容）"
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__age_max_action__block
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__age_min_action__block
 msgid "Block Submission"
-msgstr ""
+msgstr "阻止提交"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__barcode_scan
 msgid "Camera Barcode Scan"
-msgstr ""
+msgstr "摄像头条码扫描"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_mform_submission_confirm_wizard_form
 msgid "Cancel"
-msgstr ""
+msgstr "取消"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Cannot delete form '%s' because it already has submitted records."
-msgstr ""
+msgstr "无法删除表单“%s”，因为它已有提交记录。"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__case_mode
 msgid "Case Limit"
-msgstr ""
+msgstr "大小写限制"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__checkbox
 msgid "Checkbox"
-msgstr ""
+msgstr "复选框"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component_option__child_option_ids
 msgid "Child Options"
-msgstr ""
+msgstr "子选项"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_page
 msgid "Clear Signature"
-msgstr ""
+msgstr "清除签名"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_duplicate_page
@@ -231,7 +232,7 @@ msgstr "清空并返回表单"
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__client_identifier
 msgid "Client Identifier"
-msgstr ""
+msgstr "客户端标识"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_page
@@ -241,7 +242,7 @@ msgstr "关闭"
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_confirm_wizard__code
 msgid "Code"
-msgstr ""
+msgstr "编码"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__visibility_match_values
@@ -249,40 +250,41 @@ msgid ""
 "Comma or line separated values. Rule matches when source contains any of "
 "these values."
 msgstr ""
+"以逗号或换行分隔多个值。当来源包含任意这些值时，规则匹配。"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component_option__component_id
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_line__component_id
 msgid "Component"
-msgstr ""
+msgstr "控件"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_form_component_settings_form
 msgid "Component Settings"
-msgstr ""
+msgstr "控件设置"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__component_type
 msgid "Component Type"
-msgstr ""
+msgstr "控件类型"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_line__component_type_snapshot
 msgid "Component Type Snapshot"
-msgstr ""
+msgstr "控件类型快照"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Component cannot use itself as Visibility Source."
-msgstr ""
+msgstr "控件不能将自身作为可见性来源。"
 
 #. module: mobile_form_builder
 #: model:ir.model.constraint,message:mobile_form_builder.constraint_x_mobile_form_component_key_form_uniq
 msgid "Component key must be unique per form."
-msgstr ""
+msgstr "每个表单内控件键必须唯一。"
 
 #. module: mobile_form_builder
 #. odoo-python
@@ -291,12 +293,13 @@ msgid ""
 "Component key must start with a letter and contain only letters, numbers, or"
 " _."
 msgstr ""
+"控件键必须以字母开头，且只能包含字母、数字或下划线。"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__component_ids
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_form_form
 msgid "Components"
-msgstr ""
+msgstr "控件"
 
 #. module: mobile_form_builder
 #. odoo-javascript
@@ -304,7 +307,7 @@ msgstr ""
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_submission_confirm_wizard__action__confirm
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_submission_form
 msgid "Confirm"
-msgstr ""
+msgstr "确认"
 
 #. module: mobile_form_builder
 #. odoo-javascript
@@ -312,17 +315,17 @@ msgstr ""
 #: code:addons/mobile_form_builder/models/confirm_wizard.py:0
 #: code:addons/mobile_form_builder/static/src/js/submission_list_confirm.js:0
 msgid "Confirm Failed"
-msgstr ""
+msgstr "确认失败"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__confirm_key1_value
 msgid "Confirm Key1 Value"
-msgstr ""
+msgstr "确认键1值"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__confirm_key2_value
 msgid "Confirm Key2 Value"
-msgstr ""
+msgstr "确认键2值"
 
 #. module: mobile_form_builder
 #: model:ir.actions.act_window,name:mobile_form_builder.action_mform_submission_confirm_wizard
@@ -334,7 +337,7 @@ msgstr "确认提交"
 #. odoo-javascript
 #: code:addons/mobile_form_builder/static/src/xml/submission_list_confirm.xml:0
 msgid "Confirm by code..."
-msgstr ""
+msgstr "按编码确认..."
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__confirm_component_id_1
@@ -350,23 +353,23 @@ msgstr "确认字段 2"
 #. odoo-python
 #: code:addons/mobile_form_builder/models/confirm_wizard.py:0
 msgid "Confirmed"
-msgstr ""
+msgstr "已确认"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__confirmed_at
 msgid "Confirmed At"
-msgstr ""
+msgstr "确认时间"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__confirmed_by
 msgid "Confirmed By"
-msgstr ""
+msgstr "确认人"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/confirm_wizard.py:0
 msgid "Conflict: multiple submissions match this code."
-msgstr ""
+msgstr "冲突：有多条提交匹配该编码。"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__create_uid
@@ -376,7 +379,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_confirm_wizard__create_uid
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_line__create_uid
 msgid "Created by"
-msgstr ""
+msgstr "创建人"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__create_date
@@ -386,13 +389,13 @@ msgstr ""
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_confirm_wizard__create_date
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_line__create_date
 msgid "Created on"
-msgstr ""
+msgstr "创建时间"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__custom_regex
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__validation_mode__custom_regex
 msgid "Custom Regex"
-msgstr ""
+msgstr "自定义正则"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_form_component_settings_form
@@ -400,41 +403,42 @@ msgid ""
 "Custom regex example: use ^ for start and $ for end. Example "
 "^[A-Z]{2}\\d{6}$ means 2 uppercase letters + 6 digits (e.g. AB123456)."
 msgstr ""
+"自定义正则示例：使用 ^ 表示开始，$ 表示结束。例如 ^[A-Z]{2}\\d{6}$ 表示 2 个大写字母 + 6 位数字（如 AB123456）。"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__date_format__ddmmyyyy
 msgid "DDMMYYYY"
-msgstr ""
+msgstr "DDMMYYYY"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__date
 msgid "Date"
-msgstr ""
+msgstr "日期"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__date_format
 msgid "Date Format"
-msgstr ""
+msgstr "日期格式"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component_option__is_default
 msgid "Default"
-msgstr ""
+msgstr "默认"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__default_options_text
 msgid "Default Selection(s)"
-msgstr ""
+msgstr "默认选择"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__number_wheel_default
 msgid "Default selected value for Number Wheel."
-msgstr ""
+msgstr "数字滚轮默认选中值。"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__description
 msgid "Description"
-msgstr ""
+msgstr "描述"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__display_name
@@ -444,17 +448,17 @@ msgstr ""
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_confirm_wizard__display_name
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_line__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "显示名称"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__display_text
 msgid "Display Text"
-msgstr ""
+msgstr "显示文本"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__display_text
 msgid "Display content for text display block"
-msgstr ""
+msgstr "文本显示块的展示内容"
 
 #. module: mobile_form_builder
 #. odoo-javascript
@@ -481,23 +485,23 @@ msgstr "重复提交提示信息"
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_submission_form
 msgid "Edit Data"
-msgstr ""
+msgstr "编辑数据"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__email
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__validation_mode__email
 msgid "Email"
-msgstr ""
+msgstr "电子邮件"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__use_conditional_options
 msgid "Enable Cascading Options"
-msgstr ""
+msgstr "启用级联选项"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__visibility_enabled
 msgid "Enable Visibility Rule"
-msgstr ""
+msgstr "启用可见性规则"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__is_enabled
@@ -507,116 +511,116 @@ msgstr "公开可用"
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_form_component_settings_form
 msgid "Example: ^[A-Z]{2}\\\\d{6}$"
-msgstr ""
+msgstr "Example: ^[A-Z]{2}\\\\d{6}$"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__file_accept
 msgid "Examples: .pdf,.jpg,image/*,application/pdf"
-msgstr ""
+msgstr "Examples: .pdf,.jpg,image/*,application/pdf"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_submission_tree
 msgid "Export Excel"
-msgstr ""
+msgstr "导出 Excel"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_submission_tree
 msgid "Export PDF"
-msgstr ""
+msgstr "导出 PDF"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Field '%s' cannot exceed %s characters."
-msgstr ""
+msgstr "字段“%s”不能超过 %s 个字符。"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Field '%s' does not match custom regex."
-msgstr ""
+msgstr "字段“%s”不匹配自定义正则。"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Field '%s' exceeds max file size %.2f MB."
-msgstr ""
+msgstr "字段“%s”超过最大文件大小 %.2f MB。"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Field '%s' file type is not allowed. Allowed: %s"
-msgstr ""
+msgstr "字段“%s”文件类型不允许。允许：%s"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Field '%s' must be a valid email address."
-msgstr ""
+msgstr "字段“%s”必须是有效邮箱地址。"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Field '%s' must be a valid mobile phone number."
-msgstr ""
+msgstr "字段“%s”必须是有效手机号。"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Field '%s' must be an integer."
-msgstr ""
+msgstr "字段“%s”必须为整数。"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Field '%s' must be at least %s characters."
-msgstr ""
+msgstr "字段“%s”至少需要 %s 个字符。"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Field '%s' must be between %s and %s."
-msgstr ""
+msgstr "字段“%s”必须在 %s 与 %s 之间。"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Field '%s' must follow step %s."
-msgstr ""
+msgstr "字段“%s”必须符合步长 %s。"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Field '%s' must match format '%s'."
-msgstr ""
+msgstr "字段“%s”必须匹配格式“%s”。"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Field '%s' only allows digits."
-msgstr ""
+msgstr "字段“%s”仅允许数字。"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Field '%s' only allows letters and numbers."
-msgstr ""
+msgstr "字段“%s”仅允许字母和数字。"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Field '%s' only allows letters."
-msgstr ""
+msgstr "字段“%s”仅允许字母。"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__file_upload
 msgid "File Upload"
-msgstr ""
+msgstr "文件上传"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__options_text
 msgid "For radio/select/checkbox: one option per line"
-msgstr ""
+msgstr "用于单选/下拉/复选框：每行一个选项"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__default_options_text
@@ -624,13 +628,14 @@ msgid ""
 "For radio/select: one default option. For checkbox: multiple values split by"
 " comma or line."
 msgstr ""
+"单选/下拉：仅一个默认选项。复选框：可用逗号或换行分隔多个默认值。"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__form_id
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__form_id
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_confirm_wizard__form_id
 msgid "Form"
-msgstr ""
+msgstr "表单"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_closed
@@ -641,7 +646,7 @@ msgstr "表单已关闭"
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__form_preview_html
 msgid "Form Preview Html"
-msgstr ""
+msgstr "表单预览 HTML"
 
 #. module: mobile_form_builder
 #: model:ir.actions.act_window,name:mobile_form_builder.action_x_mobile_submission
@@ -651,12 +656,12 @@ msgstr "表单提交"
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_submission_form
 msgid "Form View"
-msgstr ""
+msgstr "表单视图"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__formatted_number
 msgid "Formatted Number"
-msgstr ""
+msgstr "格式化数字"
 
 #. module: mobile_form_builder
 #: model:ir.ui.menu,name:mobile_form_builder.menu_x_mobile_form
@@ -666,12 +671,12 @@ msgstr "表单"
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__help_text
 msgid "Help Text"
-msgstr ""
+msgstr "帮助文本"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__visibility_mode__hide_if_match
 msgid "Hide If Match"
-msgstr ""
+msgstr "匹配时隐藏"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__date_format
@@ -679,6 +684,7 @@ msgid ""
 "How the date value is stored/exported (input stays the standard HTML date "
 "control)."
 msgstr ""
+"定义日期值的存储/导出格式（输入控件仍为标准 HTML 日期控件）。"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__id
@@ -688,81 +694,81 @@ msgstr ""
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_confirm_wizard__id
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_line__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form__allow_repeat_client_submit
 msgid "If disabled, the same browser client can submit this form only once."
-msgstr ""
+msgstr "关闭后，同一浏览器客户端仅可提交一次。"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__include_in_export
 msgid "If enabled, this field will be exported as a column in Excel."
-msgstr ""
+msgstr "启用后，该字段将作为 Excel 列导出。"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__age_max
 msgid "If set, ages above this value will trigger the configured action."
-msgstr ""
+msgstr "设置后，年龄高于该值将触发已配置动作。"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__age_min
 msgid "If set, ages below this value will trigger the configured action."
-msgstr ""
+msgstr "设置后，年龄低于该值将触发已配置动作。"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form__unique_component_id_1
 msgid "If set, this field value must be unique within this form."
-msgstr ""
+msgstr "设置后，该字段值在此表单内必须唯一。"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__image
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__image
 msgid "Image"
-msgstr ""
+msgstr "图片"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__image_filename
 msgid "Image Filename"
-msgstr ""
+msgstr "图片文件名"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__image_url
 msgid "Image Url"
-msgstr ""
+msgstr "图片 URL"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__include_in_export
 msgid "Include in Excel Export"
-msgstr ""
+msgstr "包含在 Excel 导出"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__input
 msgid "Input"
-msgstr ""
+msgstr "输入"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Invalid custom regex on '%s': %s"
-msgstr ""
+msgstr "字段“%s”的自定义正则无效：%s"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__is_confirmed
 msgid "Is Confirmed"
-msgstr ""
+msgstr "是否已确认"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__key
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_line__key
 msgid "Key"
-msgstr ""
+msgstr "键"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__name
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_line__label
 msgid "Label"
-msgstr ""
+msgstr "标签"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__write_uid
@@ -772,7 +778,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_confirm_wizard__write_uid
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_line__write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "最后更新人"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__write_date
@@ -782,101 +788,101 @@ msgstr ""
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_confirm_wizard__write_date
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_line__write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "最后更新时间"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__validation_mode__alnum
 msgid "Letters + Numbers"
-msgstr ""
+msgstr "字母+数字"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__validation_mode__alpha
 msgid "Letters Only"
-msgstr ""
+msgstr "仅字母"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__line_ids
 msgid "Line"
-msgstr ""
+msgstr "行"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__linked_date_component_id
 msgid "Linked Date Component"
-msgstr ""
+msgstr "关联日期控件"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__case_mode__lower
 msgid "Lowercase"
-msgstr ""
+msgstr "小写"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_page
 msgid "MB."
-msgstr ""
+msgstr "MB."
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__date_format__mmddyyyy
 msgid "MMDDYYYY"
-msgstr ""
+msgstr "MMDDYYYY"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__visibility_match_option_ids
 msgid "Match Options"
-msgstr ""
+msgstr "匹配选项"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Match Options is required when visibility rule is enabled."
-msgstr ""
+msgstr "启用可见性规则时，必须设置匹配选项。"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__visibility_match_values
 msgid "Match Values"
-msgstr ""
+msgstr "匹配值"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__file_max_mb
 msgid "Max File Size (MB)"
-msgstr ""
+msgstr "最大文件大小（MB）"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Max File Size (MB) cannot be negative."
-msgstr ""
+msgstr "最大文件大小（MB）不能为负数。"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__max_length
 msgid "Max Length"
-msgstr ""
+msgstr "最大长度"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Max Length cannot be negative."
-msgstr ""
+msgstr "最大长度不能为负数。"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_page
 msgid "Max size:"
-msgstr ""
+msgstr "最大大小："
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__age_max
 msgid "Maximum Age"
-msgstr ""
+msgstr "最大年龄"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Maximum Age cannot be negative."
-msgstr ""
+msgstr "最大年龄不能为负数。"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form__success_message
 msgid "Message shown after user submits the form."
-msgstr ""
+msgstr "用户提交表单后显示的信息。"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form__closed_message
@@ -884,6 +890,7 @@ msgid ""
 "Message shown to public users when this form is not enabled for public "
 "access."
 msgstr ""
+"当此表单未启用公开访问时，向公开用户显示的提示信息。"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form__duplicate_message
@@ -891,85 +898,86 @@ msgid ""
 "Message shown when a submission is blocked due to duplicate unique-check "
 "field values."
 msgstr ""
+"当因唯一性校验字段值重复而阻止提交时显示的提示信息。"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__min_length
 msgid "Min Length"
-msgstr ""
+msgstr "最小长度"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Min Length cannot be greater than Max Length."
-msgstr ""
+msgstr "最小长度不能大于最大长度。"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Min Length cannot be negative."
-msgstr ""
+msgstr "最小长度不能为负数。"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__age_min
 msgid "Minimum Age"
-msgstr ""
+msgstr "最小年龄"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Minimum Age cannot be greater than Maximum Age."
-msgstr ""
+msgstr "最小年龄不能大于最大年龄。"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Minimum Age cannot be negative."
-msgstr ""
+msgstr "最小年龄不能为负数。"
 
 #. module: mobile_form_builder
 #: model:ir.model,name:mobile_form_builder.model_x_mobile_form
 msgid "Mobile Collection Form"
-msgstr ""
+msgstr "移动采集表单"
 
 #. module: mobile_form_builder
 #: model:res.groups,name:mobile_form_builder.group_mobile_form_admin
 msgid "Mobile Form Administrator"
-msgstr ""
+msgstr "移动表单管理员"
 
 #. module: mobile_form_builder
 #: model:ir.model,name:mobile_form_builder.model_x_mobile_form_component
 msgid "Mobile Form Component"
-msgstr ""
+msgstr "移动表单控件"
 
 #. module: mobile_form_builder
 #: model:ir.model,name:mobile_form_builder.model_x_mobile_form_component_option
 msgid "Mobile Form Component Option"
-msgstr ""
+msgstr "移动表单控件选项"
 
 #. module: mobile_form_builder
 #: model:ir.model,name:mobile_form_builder.model_x_mobile_form_submission
 msgid "Mobile Form Submission"
-msgstr ""
+msgstr "移动表单提交"
 
 #. module: mobile_form_builder
 #: model:ir.model,name:mobile_form_builder.model_x_mobile_form_submission_confirm_wizard
 msgid "Mobile Form Submission Confirmation Wizard"
-msgstr ""
+msgstr "移动表单提交确认向导"
 
 #. module: mobile_form_builder
 #: model:ir.model,name:mobile_form_builder.model_x_mobile_form_submission_line
 msgid "Mobile Form Submission Line"
-msgstr ""
+msgstr "移动表单提交行"
 
 #. module: mobile_form_builder
 #: model:ir.actions.report,name:mobile_form_builder.action_report_mobile_form_submission
 msgid "Mobile Form Submission PDF"
-msgstr ""
+msgstr "移动表单提交 PDF"
 
 #. module: mobile_form_builder
 #: model:res.groups,name:mobile_form_builder.group_mobile_form_user
 msgid "Mobile Form User"
-msgstr ""
+msgstr "移动表单用户"
 
 #. module: mobile_form_builder
 #: model:ir.actions.act_window,name:mobile_form_builder.action_x_mobile_form
@@ -980,19 +988,19 @@ msgstr "移动表单"
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__validation_mode__phone
 msgid "Mobile Phone"
-msgstr ""
+msgstr "手机号"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__multiline_text
 msgid "Multiline Text"
-msgstr ""
+msgstr "多行文本"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__name
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component_option__name
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__name
 msgid "Name"
-msgstr ""
+msgstr "名称"
 
 #. module: mobile_form_builder
 #. odoo-javascript
@@ -1000,39 +1008,39 @@ msgstr ""
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 #: code:addons/mobile_form_builder/static/src/xml/submission_list_confirm.xml:0
 msgid "New"
-msgstr ""
+msgstr "新建"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__age_max_action__none
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__age_min_action__none
 msgid "No Check"
-msgstr ""
+msgstr "不校验"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__validation_mode__none
 msgid "No Extra Validation"
-msgstr ""
+msgstr "无额外校验"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__case_mode__none
 msgid "No Limit"
-msgstr ""
+msgstr "无限制"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/confirm_wizard.py:0
 msgid "No submission found for this code."
-msgstr ""
+msgstr "未找到匹配此编码的提交记录。"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__number_format_pattern
 msgid "Number Format Pattern"
-msgstr ""
+msgstr "数字格式模式"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__number_wheel
 msgid "Number Wheel"
-msgstr ""
+msgstr "数字滚轮"
 
 #. module: mobile_form_builder
 #. odoo-python
@@ -1040,29 +1048,30 @@ msgstr ""
 msgid ""
 "Number Wheel has too many values. Please reduce range or increase step."
 msgstr ""
+"数字滚轮可选值过多。请缩小范围或增大步长。"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Number format pattern must include at least one 0 placeholder."
-msgstr ""
+msgstr "数字格式模式至少包含一个 0 占位符。"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Number format pattern only supports 0 and separators: - space . / ( )"
-msgstr ""
+msgstr "数字格式模式仅支持 0 和分隔符：- 空格 . / ( )"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__only_digits
 msgid "Only Digits"
-msgstr ""
+msgstr "仅数字"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Only one default option is allowed for radio/select."
-msgstr ""
+msgstr "单选/下拉仅允许一个默认选项。"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_form_form
@@ -1073,34 +1082,34 @@ msgstr "打开公开表单"
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Option 1"
-msgstr ""
+msgstr "选项 1"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Option 2"
-msgstr ""
+msgstr "选项 2"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__option_ids
 msgid "Option Lines"
-msgstr ""
+msgstr "选项行"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Option cannot reference itself as parent."
-msgstr ""
+msgstr "选项不能将自身设为父选项。"
 
 #. module: mobile_form_builder
 #: model:ir.model.constraint,message:mobile_form_builder.constraint_x_mobile_form_component_option_option_name_component_uniq
 msgid "Option names must be unique per component."
-msgstr ""
+msgstr "每个控件内选项名称必须唯一。"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__image_url
 msgid "Optional external image URL"
-msgstr ""
+msgstr "可选外部图片 URL"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form__confirm_component_id_2
@@ -1108,6 +1117,7 @@ msgid ""
 "Optional second confirmation field. Either field can match during "
 "confirmation."
 msgstr ""
+"可选的第二确认字段。确认时任一字段匹配即可。"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form__unique_component_id_2
@@ -1115,37 +1125,38 @@ msgid ""
 "Optional second unique field. Submission is blocked if either unique field "
 "value already exists."
 msgstr ""
+"可选的第二唯一字段。若任一唯一字段值已存在，则阻止提交。"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__options_text
 msgid "Options Text"
-msgstr ""
+msgstr "选项文本"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__age_max_action
 msgid "Over Maximum Action"
-msgstr ""
+msgstr "超过最大值动作"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__age_max_message
 msgid "Over Maximum Message"
-msgstr ""
+msgstr "超过最大值提示"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component_option__parent_option_id
 msgid "Parent Option"
-msgstr ""
+msgstr "父选项"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Parent option must belong to the same component."
-msgstr ""
+msgstr "父选项必须属于同一控件。"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__placeholder
 msgid "Placeholder"
-msgstr ""
+msgstr "占位文本"
 
 #. module: mobile_form_builder
 #. odoo-javascript
@@ -1212,13 +1223,13 @@ msgstr "导出 PDF（单文档）"
 #. odoo-python
 #: code:addons/mobile_form_builder/models/confirm_wizard.py:0
 msgid "Please input a code."
-msgstr ""
+msgstr "请输入编码。"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Please select at least one submission."
-msgstr ""
+msgstr "请至少选择一条提交记录。"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__closed_message
@@ -1228,37 +1239,37 @@ msgstr "表单关闭提示"
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__custom_regex
 msgid "Python regex used with full match, e.g. ^[A-Z]{2}\\d{6}$"
-msgstr ""
+msgstr "Python regex used with full match, e.g. ^[A-Z]{2}\\d{6}$"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__qr_code_fallback_html
 msgid "Qr Code Fallback Html"
-msgstr ""
+msgstr "二维码后备 HTML"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__radio
 msgid "Radio"
-msgstr ""
+msgstr "单选"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_thanks
 msgid "Reference:"
-msgstr ""
+msgstr "参考："
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__related_partner_id
 msgid "Related Party"
-msgstr ""
+msgstr "关联联系人"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form__related_partner_id
 msgid "Related company or individual from contacts."
-msgstr ""
+msgstr "来自联系人中的关联公司或个人。"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__required
 msgid "Required"
-msgstr ""
+msgstr "必填"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_page
@@ -1268,48 +1279,48 @@ msgstr "扫描条码或二维码"
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_mform_submission_confirm_wizard_form
 msgid "Scan or type code"
-msgstr ""
+msgstr "扫描或输入编码"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_submission_confirm_wizard__code
 msgid "Scan or type the confirmation code."
-msgstr ""
+msgstr "扫描或输入确认编码。"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_page
 msgid "Scan required (manual input disabled)"
-msgstr ""
+msgstr "必须扫码（禁用手动输入）"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__searchable_content
 msgid "Searchable Content"
-msgstr ""
+msgstr "可搜索内容"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__section
 msgid "Section"
-msgstr ""
+msgstr "分区"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__select
 msgid "Select"
-msgstr ""
+msgstr "下拉选择"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__visibility_match_option_ids
 msgid "Select source options that trigger this visibility rule."
-msgstr ""
+msgstr "选择触发该可见性规则的来源选项。"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__sequence
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component_option__sequence
 msgid "Sequence"
-msgstr ""
+msgstr "序号"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_line__sequence_snapshot
 msgid "Sequence Snapshot"
-msgstr ""
+msgstr "序号快照"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_form_component_settings_form
@@ -1318,56 +1329,57 @@ msgid ""
 "radio/select only one default is allowed. To build cascading options, enable"
 " Cascading Options and set Parent Option for child rows."
 msgstr ""
+"请在上表设置选项。勾选“默认”以预选值。单选/下拉仅允许一个默认值。若需级联选项，请启用“级联选项”并为子项设置“父选项”。"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__share_url
 msgid "Share Url"
-msgstr ""
+msgstr "分享链接"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__visibility_mode__show_if_match
 msgid "Show If Match"
-msgstr ""
+msgstr "匹配时显示"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__use_conditional_options
 msgid "Show next-level options based on the selected option."
-msgstr ""
+msgstr "根据已选选项显示下一级选项。"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__visibility_enabled
 msgid "Show or hide this component based on another component selection."
-msgstr ""
+msgstr "基于另一个控件的选择显示或隐藏此控件。"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_form_form
 msgid "Shown after successful submission"
-msgstr ""
+msgstr "提交成功后显示"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_form_form
 msgid "Shown when the public form is closed"
-msgstr ""
+msgstr "公开表单关闭时显示"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_form_form
 msgid "Shown when unique-check value already exists"
-msgstr ""
+msgstr "唯一性校验值已存在时显示"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__signature
 msgid "Signature"
-msgstr ""
+msgstr "签名"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_line__submission_id
 msgid "Submission"
-msgstr ""
+msgstr "提交"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__submission_count
 msgid "Submission Count"
-msgstr ""
+msgstr "提交数量"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__success_message
@@ -1378,13 +1390,13 @@ msgstr "提交成功提示"
 #. odoo-python
 #: code:addons/mobile_form_builder/models/confirm_wizard.py:0
 msgid "Submission confirmed."
-msgstr ""
+msgstr "提交已确认。"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/confirm_wizard.py:0
 msgid "Submission unconfirmed."
-msgstr ""
+msgstr "提交已取消确认。"
 
 #. module: mobile_form_builder
 #. odoo-python
@@ -1403,7 +1415,7 @@ msgstr "提交"
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__submit_date
 msgid "Submit Date"
-msgstr ""
+msgstr "提交日期"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_thanks
@@ -1413,18 +1425,18 @@ msgstr "提交成功"
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__display
 msgid "Text Display"
-msgstr ""
+msgstr "文本展示"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__textarea
 msgid "Textarea"
-msgstr ""
+msgstr "文本域"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Unable to build share URL."
-msgstr ""
+msgstr "无法构建分享链接。"
 
 #. module: mobile_form_builder
 #. odoo-javascript
@@ -1433,23 +1445,23 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_submission_form
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_submission_tree
 msgid "Unconfirm"
-msgstr ""
+msgstr "取消确认"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/confirm_wizard.py:0
 msgid "Unconfirmed"
-msgstr ""
+msgstr "未确认"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__age_min_action
 msgid "Under Minimum Action"
-msgstr ""
+msgstr "低于最小值动作"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__age_min_message
 msgid "Under Minimum Message"
-msgstr ""
+msgstr "低于最小值提示"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__unique_component_id_1
@@ -1462,6 +1474,7 @@ msgstr "唯一校验字段 1"
 msgid ""
 "Unique Check Field 1 and Unique Check Field 2 cannot be the same field."
 msgstr ""
+"唯一校验字段1和唯一校验字段2不能是同一字段。"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__unique_component_id_2
@@ -1471,27 +1484,27 @@ msgstr "唯一校验字段 2"
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__unique_key1_value
 msgid "Unique Key1 Value"
-msgstr ""
+msgstr "唯一键1值"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission__unique_key2_value
 msgid "Unique Key2 Value"
-msgstr ""
+msgstr "唯一键2值"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__key
 msgid "Unique key in form submission payload"
-msgstr ""
+msgstr "表单提交载荷中的唯一键"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__case_mode__upper
 msgid "Uppercase"
-msgstr ""
+msgstr "大写"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form_component__number_format_pattern
 msgid "Use 0 as digit placeholder, e.g. 000-00-000-0"
-msgstr ""
+msgstr "使用 0 作为数字占位符，例如 000-00-000-0"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form__confirm_component_id_1
@@ -1499,110 +1512,111 @@ msgid ""
 "Used for staff confirmation by scanning/entering a code. The value will be "
 "copied onto the submission record."
 msgstr ""
+"用于工作人员扫码/输入编码进行确认。该值会复制到提交记录中。"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_submission_line__value_text
 msgid "Value Text"
-msgstr ""
+msgstr "值文本"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__visibility_mode
 msgid "Visibility Mode"
-msgstr ""
+msgstr "可见性模式"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__visibility_source_component_id
 msgid "Visibility Source"
-msgstr ""
+msgstr "可见性来源"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Visibility Source is required when visibility rule is enabled."
-msgstr ""
+msgstr "启用可见性规则时，必须设置可见性来源。"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Visibility Source must be in the same form."
-msgstr ""
+msgstr "可见性来源必须在同一表单中。"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__age_max_action__warn
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__age_min_action__warn
 msgid "Warn Only"
-msgstr ""
+msgstr "仅警告"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__number_wheel_default
 msgid "Wheel Default"
-msgstr ""
+msgstr "滚轮默认值"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Wheel Default must be between Wheel Min and Wheel Max."
-msgstr ""
+msgstr "滚轮默认值必须介于最小值和最大值之间。"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Wheel Default must follow Wheel Step."
-msgstr ""
+msgstr "滚轮默认值必须符合滚轮步长。"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__number_wheel_max
 msgid "Wheel Max"
-msgstr ""
+msgstr "滚轮最大值"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__number_wheel_min
 msgid "Wheel Min"
-msgstr ""
+msgstr "滚轮最小值"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Wheel Min cannot be greater than Wheel Max."
-msgstr ""
+msgstr "滚轮最小值不能大于最大值。"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form_component__number_wheel_step
 msgid "Wheel Step"
-msgstr ""
+msgstr "滚轮步长"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "Wheel Step must be greater than 0."
-msgstr ""
+msgstr "滚轮步长必须大于 0。"
 
 #. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__date_format__yyyymmdd
 msgid "YYYYMMDD"
-msgstr ""
+msgstr "YYYYMMDD"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "form_id"
-msgstr ""
+msgstr "表单ID"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.mobile_form_page
 msgid "image"
-msgstr ""
+msgstr "图片"
 
 #. module: mobile_form_builder
 #: model_terms:ir.ui.view,arch_db:mobile_form_builder.report_mobile_form_submission_document
 msgid "signature"
-msgstr ""
+msgstr "签名"
 
 #. module: mobile_form_builder
 #. odoo-python
 #: code:addons/mobile_form_builder/models/form_builder.py:0
 msgid "xlsxwriter is required for Excel export."
-msgstr ""
+msgstr "导出 Excel 需要安装 xlsxwriter。"
 
 #. module: mobile_form_builder
 msgid "Sample Type Source"
