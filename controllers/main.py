@@ -485,6 +485,10 @@ class MobileFormController(http.Controller):
                     )
                     return self._set_client_cookie_if_needed(response, cookie_created, client_id)
 
+                # Normalize email values to lowercase before storing.
+                if is_visible and component.component_type == "email" and value:
+                    value = value.lower()
+
                 # Keep answer_json in raw value, but store formatted date string in line.value_text.
                 value_text = value
                 if is_visible and component.component_type == "date" and value:
