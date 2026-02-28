@@ -1180,6 +1180,21 @@ msgid "Qr Code Fallback Html"
 msgstr ""
 
 #. module: mobile_form_builder
+#: model:ir.model.fields,field_description:mobile_form_builder.field_x_mobile_form__qr_description
+msgid "QR Description"
+msgstr ""
+
+#. module: mobile_form_builder
+#: model:ir.model.fields,help:mobile_form_builder.field_x_mobile_form__qr_description
+msgid "Optional description rendered on the same QR image for sharing."
+msgstr ""
+
+#. module: mobile_form_builder
+#: model_terms:ir.ui.view,arch_db:mobile_form_builder.view_x_mobile_form_form
+msgid "Text shown under the QR image"
+msgstr ""
+
+#. module: mobile_form_builder
 #: model:ir.model.fields.selection,name:mobile_form_builder.selection__x_mobile_form_component__component_type__radio
 msgid "Radio"
 msgstr ""

@@ -37,6 +37,110 @@ class MobileFormController(http.Controller):
         "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAusB9s0l4wAAAABJRU5ErkJggg=="
     )
 
+    def _compose_qr_with_description(self, png_bytes, description):
+        desc = (description or "").strip()
+        if not desc or not png_bytes:
+            return png_bytes
+        try:
+            from PIL import Image, ImageDraw, ImageFont
+        except Exception:
+            return png_bytes
+
+        try:
+            qr_img = Image.open(io.BytesIO(png_bytes)).convert("RGB")
+            qr_w, qr_h = qr_img.size
+            pad = 18
+            text_box_width = max(qr_w, 280)
+            canvas_w = max(qr_w + pad * 2, text_box_width + pad * 2)
+            max_line_w = canvas_w - pad * 2
+
+            font = None
+            font_candidates = [
+                "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+                "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf",
+                "/usr/share/fonts/truetype/noto/NotoSans-Regular.ttf",
+                "/usr/share/fonts/truetype/noto/NotoSansCJK-Regular.ttc",
+                "/Library/Fonts/Arial Unicode.ttf",
+            ]
+            for font_path in font_candidates:
+                try:
+                    font = ImageFont.truetype(font_path, 18)
+                    break
+                except Exception:
+                    continue
+            if font is None:
+                font = ImageFont.load_default()
+
+            draw_probe = ImageDraw.Draw(Image.new("RGB", (10, 10), "white"))
+
+            def _text_width(text):
+                try:
+                    return int(draw_probe.textlength(text, font=font))
+                except Exception:
+                    bbox = draw_probe.textbbox((0, 0), text, font=font)
+                    return int(bbox[2] - bbox[0])
+
+            def _wrap_line(paragraph):
+                words = paragraph.split()
+                if len(words) <= 1:
+                    raw = paragraph.strip()
+                    if not raw:
+                        return [""]
+                    lines, current = [], ""
+                    for ch in raw:
+                        cand = f"{current}{ch}"
+                        if current and _text_width(cand) > max_line_w:
+                            lines.append(current)
+                            current = ch
+                        else:
+                            current = cand
+                    if current:
+                        lines.append(current)
+                    return lines
+                if not words:
+                    return [""]
+                lines, current = [], words[0]
+                for word in words[1:]:
+                    cand = f"{current} {word}"
+                    if _text_width(cand) <= max_line_w:
+                        current = cand
+                    else:
+                        lines.append(current)
+                        current = word
+                lines.append(current)
+                return lines
+
+            wrapped_lines = []
+            for para in desc.splitlines():
+                text = (para or "").strip()
+                if not text:
+                    continue
+                wrapped_lines.extend(_wrap_line(text))
+
+            if not wrapped_lines:
+                return png_bytes
+
+            sample_bbox = draw_probe.textbbox((0, 0), "Ag", font=font)
+            line_h = max(18, int(sample_bbox[3] - sample_bbox[1]) + 6)
+            text_h = line_h * len(wrapped_lines)
+            gap = 12
+            canvas_h = pad + qr_h + gap + text_h + pad
+            canvas = Image.new("RGB", (canvas_w, canvas_h), "white")
+            canvas.paste(qr_img, ((canvas_w - qr_w) // 2, pad))
+            draw = ImageDraw.Draw(canvas)
+            y = pad + qr_h + gap
+            for line in wrapped_lines:
+                line_w = _text_width(line)
+                x = max(pad, (canvas_w - line_w) // 2)
+                draw.text((x, y), line, fill="black", font=font)
+                y += line_h
+
+            out = io.BytesIO()
+            canvas.save(out, format="PNG")
+            return out.getvalue()
+        except Exception:
+            return png_bytes
+
     def _parse_browser_name_version(self, ua_text):
         ua = (ua_text or "").strip()
         if not ua:
@@ -623,8 +727,10 @@ class MobileFormController(http.Controller):
             if not form or not form.share_url:
                 return request.not_found()
             share_url = form.share_url
+            qr_description = form.qr_description or ""
         except Exception:
             share_url = ""
+            qr_description = ""
 
         if not share_url:
             headers = [("Content-Type", "image/png"), ("Cache-Control", "no-store")]
@@ -658,6 +764,7 @@ class MobileFormController(http.Controller):
             png_bytes = b""
 
         if png_bytes:
+            png_bytes = self._compose_qr_with_description(png_bytes, qr_description)
             headers = [("Content-Type", "image/png"), ("Cache-Control", "public, max-age=600")]
             return request.make_response(png_bytes, headers=headers)
 
@@ -686,6 +793,7 @@ class MobileFormController(http.Controller):
             headers = [("Content-Type", "image/png"), ("Cache-Control", "no-store")]
             return request.make_response(self.EMPTY_PNG, headers=headers)
 
+        png_bytes = self._compose_qr_with_description(png_bytes, qr_description)
         headers = [("Content-Type", "image/png"), ("Cache-Control", "public, max-age=600")]
         return request.make_response(png_bytes, headers=headers)
 

@@ -45,6 +45,7 @@
 	                        <group>
 	                            <field name="access_token" readonly="1"/>
 	                            <field name="share_url" widget="url" readonly="1"/>
+	                            <field name="qr_description" placeholder="Text shown under the QR image"/>
 	                            <field name="qr_code_fallback_html" widget="html" readonly="1"/>
                         </group>
                     </group>

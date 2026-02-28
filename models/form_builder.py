@@ -76,6 +76,10 @@ class MobileForm(models.Model):
         default="The submitted unique field value already exists.",
         help="Message shown when a submission is blocked due to duplicate unique-check field values.",
     )
+    qr_description = fields.Text(
+        string="QR Description",
+        help="Optional description rendered on the same QR image for sharing.",
+    )
     confirm_component_id_1 = fields.Many2one(
         "x_mobile.form.component",
         string="Confirmation Field 1",
