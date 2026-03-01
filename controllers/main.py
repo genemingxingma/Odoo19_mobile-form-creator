@@ -744,7 +744,7 @@ class MobileFormController(http.Controller):
 
                 drawing = createBarcodeDrawing("QR", value=share_url, width=320, height=320)
                 svg_bytes = drawing.asString("svg")
-                headers = [("Content-Type", "image/svg+xml"), ("Cache-Control", "public, max-age=600")]
+                headers = [("Content-Type", "image/svg+xml"), ("Cache-Control", "no-store, max-age=0")]
                 return request.make_response(svg_bytes, headers=headers)
             except Exception:
                 pass
@@ -765,7 +765,7 @@ class MobileFormController(http.Controller):
 
         if png_bytes:
             png_bytes = self._compose_qr_with_description(png_bytes, qr_description)
-            headers = [("Content-Type", "image/png"), ("Cache-Control", "public, max-age=600")]
+            headers = [("Content-Type", "image/png"), ("Cache-Control", "no-store, max-age=0")]
             return request.make_response(png_bytes, headers=headers)
 
         try:
@@ -794,7 +794,7 @@ class MobileFormController(http.Controller):
             return request.make_response(self.EMPTY_PNG, headers=headers)
 
         png_bytes = self._compose_qr_with_description(png_bytes, qr_description)
-        headers = [("Content-Type", "image/png"), ("Cache-Control", "public, max-age=600")]
+        headers = [("Content-Type", "image/png"), ("Cache-Control", "no-store, max-age=0")]
         return request.make_response(png_bytes, headers=headers)
 
     @http.route(["/mform/export/<int:form_id>"], type="http", auth="user")

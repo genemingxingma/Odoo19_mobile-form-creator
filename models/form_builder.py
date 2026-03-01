@@ -1,5 +1,6 @@
 import io
 import json
+import hashlib
 import re
 import uuid
 from html import escape
@@ -221,7 +222,9 @@ class MobileForm(models.Model):
             share_path = f"/mform/{record.access_token}"
             share = f"{base_url}{share_path}" if base_url else share_path
             record.share_url = share
-            local_qr_url = f"/mform/qr/{record.access_token}.png"
+            qr_version_base = f"{record.write_date or ''}|{record.qr_description or ''}|{record.share_url or ''}"
+            qr_version = hashlib.sha1(qr_version_base.encode("utf-8")).hexdigest()[:12]
+            local_qr_url = f"/mform/qr/{record.access_token}.png?v={qr_version}"
             record.qr_code_fallback_html = (
                 f'<div style="padding-top:8px;">'
                 f'<img src="{local_qr_url}" alt="QR Code" '
