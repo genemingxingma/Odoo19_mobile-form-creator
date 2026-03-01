@@ -2,8 +2,11 @@ import base64
 import hashlib
 import io
 import json
+import os
 import re
 import secrets
+import shutil
+import subprocess
 import threading
 import time
 import uuid
@@ -31,11 +34,86 @@ class MobileFormController(http.Controller):
     _decode_rate_by_ip = {}
     _decode_cache_lock = threading.Lock()
     _decode_result_cache = {}
+    _qr_font_cache = {}
+    _qr_font_cache_lock = threading.Lock()
     DECODE_CACHE_TTL_SECONDS = 3
     DECODE_CACHE_MAX_ITEMS = 1200
     EMPTY_PNG = base64.b64decode(
         "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAusB9s0l4wAAAABJRU5ErkJggg=="
     )
+
+    def _pick_qr_font_path(self, text):
+        content = text or ""
+        has_thai = bool(re.search(r"[\u0E00-\u0E7F]", content))
+        has_cjk = bool(re.search(r"[\u3400-\u4DBF\u4E00-\u9FFF\uF900-\uFAFF]", content))
+        bucket = "latin"
+        if has_thai:
+            bucket = "thai"
+        elif has_cjk:
+            bucket = "cjk"
+
+        with self._qr_font_cache_lock:
+            cached = self._qr_font_cache.get(bucket)
+            if cached is not None:
+                return cached
+
+        priority = {
+            "thai": [
+                "/usr/share/fonts/truetype/noto/NotoSansThai-Regular.ttf",
+                "/usr/share/fonts/opentype/noto/NotoSansThai-Regular.ttf",
+                "/usr/share/fonts/truetype/tlwg/Garuda.ttf",
+                "/usr/share/fonts/truetype/tlwg/Kinnari.ttf",
+                "/usr/share/fonts/truetype/tlwg/Loma.ttf",
+                "/usr/share/fonts/truetype/tlwg/Norasi.ttf",
+            ],
+            "cjk": [
+                "/usr/share/fonts/truetype/noto/NotoSansCJK-Regular.ttc",
+                "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc",
+                "/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc",
+                "/usr/share/fonts/truetype/arphic/uming.ttc",
+                "/usr/share/fonts/truetype/arphic/ukai.ttc",
+            ],
+            "latin": [],
+        }
+        common = [
+            "/usr/share/fonts/truetype/noto/NotoSans-Regular.ttf",
+            "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+            "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf",
+            "/Library/Fonts/Arial Unicode.ttf",
+        ]
+        candidates = priority.get(bucket, []) + common
+        for path in candidates:
+            if path and os.path.exists(path):
+                with self._qr_font_cache_lock:
+                    self._qr_font_cache[bucket] = path
+                return path
+
+        # Fallback: query fontconfig and choose by family keywords.
+        keywords = {
+            "thai": ("thai", "sarabun", "garuda", "tlwg", "noto sans thai"),
+            "cjk": ("cjk", "wenquanyi", "wqy", "source han", "noto sans cjk", "noto serif cjk"),
+            "latin": ("dejavu", "liberation", "noto sans"),
+        }
+        fc = shutil.which("fc-list")
+        if fc:
+            try:
+                proc = subprocess.run([fc, ":", "file", "family"], capture_output=True, text=True, timeout=2)
+                lines = proc.stdout.splitlines()
+                for line in lines:
+                    low = line.lower()
+                    if not any(k in low for k in keywords.get(bucket, ())):
+                        continue
+                    path = line.split(":", 1)[0].strip()
+                    if path and os.path.exists(path):
+                        with self._qr_font_cache_lock:
+                            self._qr_font_cache[bucket] = path
+                        return path
+            except Exception:
+                pass
+
+        with self._qr_font_cache_lock:
+            self._qr_font_cache[bucket] = ""
+        return ""
 
     def _compose_qr_with_description(self, png_bytes, description):
         desc = (description or "").strip()
@@ -55,19 +133,12 @@ class MobileFormController(http.Controller):
             max_line_w = canvas_w - pad * 2
 
             font = None
-            font_candidates = [
-                "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
-                "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf",
-                "/usr/share/fonts/truetype/noto/NotoSans-Regular.ttf",
-                "/usr/share/fonts/truetype/noto/NotoSansCJK-Regular.ttc",
-                "/Library/Fonts/Arial Unicode.ttf",
-            ]
-            for font_path in font_candidates:
+            selected_path = self._pick_qr_font_path(desc)
+            if selected_path:
                 try:
-                    font = ImageFont.truetype(font_path, 18)
-                    break
+                    font = ImageFont.truetype(selected_path, 18)
                 except Exception:
-                    continue
+                    font = None
             if font is None:
                 font = ImageFont.load_default()
 
