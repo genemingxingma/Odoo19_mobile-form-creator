@@ -36,6 +36,7 @@ class MobileFormController(http.Controller):
     _decode_result_cache = {}
     _qr_font_cache = {}
     _qr_font_cache_lock = threading.Lock()
+    _qr_font_negative_cache_ttl = 300
     DECODE_CACHE_TTL_SECONDS = 3
     DECODE_CACHE_MAX_ITEMS = 1200
     EMPTY_PNG = base64.b64decode(
@@ -52,10 +53,15 @@ class MobileFormController(http.Controller):
         elif has_cjk:
             bucket = "cjk"
 
+        now_ts = time.time()
         with self._qr_font_cache_lock:
             cached = self._qr_font_cache.get(bucket)
             if cached is not None:
-                return cached
+                cached_path, cached_ts = cached
+                if cached_path:
+                    return cached_path
+                if now_ts - cached_ts < self._qr_font_negative_cache_ttl:
+                    return ""
 
         priority = {
             "thai": [
@@ -85,7 +91,7 @@ class MobileFormController(http.Controller):
         for path in candidates:
             if path and os.path.exists(path):
                 with self._qr_font_cache_lock:
-                    self._qr_font_cache[bucket] = path
+                    self._qr_font_cache[bucket] = (path, now_ts)
                 return path
 
         # Fallback: query fontconfig and choose by family keywords.
@@ -106,13 +112,13 @@ class MobileFormController(http.Controller):
                     path = line.split(":", 1)[0].strip()
                     if path and os.path.exists(path):
                         with self._qr_font_cache_lock:
-                            self._qr_font_cache[bucket] = path
+                            self._qr_font_cache[bucket] = (path, now_ts)
                         return path
             except Exception:
                 pass
 
         with self._qr_font_cache_lock:
-            self._qr_font_cache[bucket] = ""
+            self._qr_font_cache[bucket] = ("", now_ts)
         return ""
 
     def _compose_qr_with_description(self, png_bytes, description):
@@ -603,6 +609,7 @@ class MobileFormController(http.Controller):
 
             submission_vals = []
             answer_payload = {}
+            pending_uploads = {}
             form_data = request.httprequest.form
             files_data = request.httprequest.files
 
@@ -624,18 +631,13 @@ class MobileFormController(http.Controller):
                             stream.seek(0)
                             content = stream.read()
                             stream.seek(0)
-                            attach = request.env["ir.attachment"].sudo().create(
-                                {
-                                    "name": upload.filename,
-                                    "type": "binary",
-                                    "datas": base64.b64encode(content),
-                                    "mimetype": upload.mimetype or "application/octet-stream",
-                                    "res_model": "x_mobile.form.submission.line",
-                                    "res_id": 0,
-                                }
-                            )
+                            pending_uploads[key] = {
+                                "name": upload.filename,
+                                "mimetype": upload.mimetype or "application/octet-stream",
+                                "datas": base64.b64encode(content),
+                            }
                             value = upload.filename
-                            attachment_id = attach.id
+                            attachment_id = False
                         else:
                             value = ""
                     elif component.component_type == "age_auto":
@@ -734,6 +736,14 @@ class MobileFormController(http.Controller):
                 unique_key2 = ""
 
             duplicate_fields = []
+            lock_keys = []
+            if unique_key1:
+                lock_keys.append(f"mform:{form.id}:u1:{unique_key1}")
+            if unique_key2:
+                lock_keys.append(f"mform:{form.id}:u2:{unique_key2}")
+            for lock_key in sorted(set(lock_keys)):
+                request.env.cr.execute("SELECT pg_advisory_xact_lock(hashtext(%s))", [lock_key])
+
             if unique_key1:
                 existed = request.env["x_mobile.form.submission"].sudo().search_count(
                     [("form_id", "=", form.id), ("unique_key1_value", "=", unique_key1)]
@@ -762,19 +772,70 @@ class MobileFormController(http.Controller):
                 response = self._render_duplicate_page(form, token, posted_values_multi, duplicate_fields=duplicate_fields)
                 return self._set_client_cookie_if_needed(response, cookie_created, client_id)
 
-            submission = request.env["x_mobile.form.submission"].sudo().create(
-                {
-                    "form_id": form.id,
-                    "client_identifier": client_id,
-                    "answer_json": json.dumps(answer_payload, ensure_ascii=False),
-                    "line_ids": [(0, 0, line) for line in submission_vals],
-                    "confirm_key1_value": confirm_key1,
-                    "confirm_key2_value": confirm_key2,
-                    "unique_key1_value": unique_key1,
-                    "unique_key2_value": unique_key2,
-                    **self._collect_client_env(),
-                }
-            )
+            try:
+                submission = request.env["x_mobile.form.submission"].sudo().create(
+                    {
+                        "form_id": form.id,
+                        "client_identifier": client_id,
+                        "answer_json": json.dumps(answer_payload, ensure_ascii=False),
+                        "line_ids": [(0, 0, line) for line in submission_vals],
+                        "confirm_key1_value": confirm_key1,
+                        "confirm_key2_value": confirm_key2,
+                        "unique_key1_value": unique_key1,
+                        "unique_key2_value": unique_key2,
+                        **self._collect_client_env(),
+                    }
+                )
+            except Exception:
+                # Handle potential race for unique values gracefully.
+                request.env.cr.rollback()
+                if unique_key1:
+                    existed = request.env["x_mobile.form.submission"].sudo().search_count(
+                        [("form_id", "=", form.id), ("unique_key1_value", "=", unique_key1)]
+                    )
+                    if existed:
+                        duplicate_fields.append(
+                            {
+                                "name": (form.unique_component_id_1.name or form.unique_component_id_1.key),
+                                "value": unique_key1,
+                            }
+                        )
+                if unique_key2:
+                    existed = request.env["x_mobile.form.submission"].sudo().search_count(
+                        [("form_id", "=", form.id), ("unique_key2_value", "=", unique_key2)]
+                    )
+                    if existed:
+                        duplicate_fields.append(
+                            {
+                                "name": (form.unique_component_id_2.name or form.unique_component_id_2.key),
+                                "value": unique_key2,
+                            }
+                        )
+                if duplicate_fields:
+                    response = self._render_duplicate_page(
+                        form, token, posted_values_multi, duplicate_fields=duplicate_fields
+                    )
+                    return self._set_client_cookie_if_needed(response, cookie_created, client_id)
+                raise
+
+            if pending_uploads:
+                line_map = {line.key: line for line in submission.line_ids}
+                attach_obj = request.env["ir.attachment"].sudo()
+                for key, upload_data in pending_uploads.items():
+                    line = line_map.get(key)
+                    if not line:
+                        continue
+                    attach = attach_obj.create(
+                        {
+                            "name": upload_data["name"],
+                            "type": "binary",
+                            "datas": upload_data["datas"],
+                            "mimetype": upload_data["mimetype"],
+                            "res_model": "x_mobile.form.submission.line",
+                            "res_id": line.id,
+                        }
+                    )
+                    line.sudo().write({"attachment_id": attach.id})
             values = {"form": form, "submission": submission}
             response = request.render("mobile_form_builder.mobile_form_thanks", values)
             return self._set_client_cookie_if_needed(response, cookie_created, client_id)
@@ -809,7 +870,7 @@ class MobileFormController(http.Controller):
 
         path = request.httprequest.path or ""
         as_svg = path.endswith(".svg")
-        if as_svg:
+        if as_svg and not qr_description:
             try:
                 from reportlab.graphics.barcode import createBarcodeDrawing
 
