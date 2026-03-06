@@ -28,6 +28,13 @@ On macOS (Homebrew):
 brew install zbar
 ```
 
+On Ubuntu/Debian server:
+
+```bash
+sudo apt-get update -y
+sudo apt-get install -y libzbar0
+```
+
 ## 3) PDF Export Requirement
 
 `Export PDF` requires `wkhtmltopdf` with patched qt.
@@ -110,6 +117,12 @@ And ensure `zbar` installed:
 
 ```bash
 brew install zbar
+```
+
+On Ubuntu:
+
+```bash
+sudo apt-get install -y libzbar0
 ```
 
 ### Error: `Unable to find Wkhtmltopdf on this system`
