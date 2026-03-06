@@ -2,6 +2,7 @@ import io
 import json
 import hashlib
 import re
+import zlib
 import uuid
 from html import escape
 
@@ -1094,6 +1095,32 @@ class MobileFormSubmission(models.Model):
             """
         )
 
+    def _advisory_lock_unique_values(self):
+        for rec in self:
+            keys = []
+            if rec.form_id and rec.unique_key1_value:
+                keys.append(f"mform:{rec.form_id.id}:u1:{rec.unique_key1_value}")
+            if rec.form_id and rec.unique_key2_value:
+                keys.append(f"mform:{rec.form_id.id}:u2:{rec.unique_key2_value}")
+            for lock_key in sorted(set(keys)):
+                self.env.cr.execute("SELECT pg_advisory_xact_lock(%s)", [zlib.crc32(lock_key.encode("utf-8"))])
+
+    def _check_unique_submission_values(self):
+        for rec in self:
+            if not rec.form_id:
+                continue
+            checks = [
+                ("unique_key1_value", rec.unique_key1_value, rec.form_id.unique_component_id_1),
+                ("unique_key2_value", rec.unique_key2_value, rec.form_id.unique_component_id_2),
+            ]
+            for field_name, value, component in checks:
+                if not value:
+                    continue
+                dom = [("id", "!=", rec.id), ("form_id", "=", rec.form_id.id), (field_name, "=", value)]
+                if self.sudo().search_count(dom):
+                    label = (component.name or component.key) if component else field_name
+                    raise ValidationError(_("Field '%s' already exists: %s") % (label, value))
+
     @api.model_create_multi
     def create(self, vals_list):
         seq = self.env["ir.sequence"].sudo()
@@ -1101,11 +1128,15 @@ class MobileFormSubmission(models.Model):
             if vals.get("name", _("New")) == _("New"):
                 vals["name"] = seq.next_by_code("x_mobile.form.submission") or _("New")
         records = super().create(vals_list)
+        records._advisory_lock_unique_values()
+        records._check_unique_submission_values()
         records._sync_answer_json_from_lines()
         return records
 
     def write(self, vals):
         result = super().write(vals)
+        self._advisory_lock_unique_values()
+        self._check_unique_submission_values()
         if "line_ids" in vals:
             self._sync_answer_json_from_lines()
         return result

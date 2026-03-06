@@ -773,22 +773,39 @@ class MobileFormController(http.Controller):
                 return self._set_client_cookie_if_needed(response, cookie_created, client_id)
 
             try:
-                submission = request.env["x_mobile.form.submission"].sudo().create(
-                    {
-                        "form_id": form.id,
-                        "client_identifier": client_id,
-                        "answer_json": json.dumps(answer_payload, ensure_ascii=False),
-                        "line_ids": [(0, 0, line) for line in submission_vals],
-                        "confirm_key1_value": confirm_key1,
-                        "confirm_key2_value": confirm_key2,
-                        "unique_key1_value": unique_key1,
-                        "unique_key2_value": unique_key2,
-                        **self._collect_client_env(),
-                    }
-                )
-            except Exception:
-                # Handle potential race for unique values gracefully.
-                request.env.cr.rollback()
+                with request.env.cr.savepoint():
+                    submission = request.env["x_mobile.form.submission"].sudo().create(
+                        {
+                            "form_id": form.id,
+                            "client_identifier": client_id,
+                            "answer_json": json.dumps(answer_payload, ensure_ascii=False),
+                            "line_ids": [(0, 0, line) for line in submission_vals],
+                            "confirm_key1_value": confirm_key1,
+                            "confirm_key2_value": confirm_key2,
+                            "unique_key1_value": unique_key1,
+                            "unique_key2_value": unique_key2,
+                            **self._collect_client_env(),
+                        }
+                    )
+                    if pending_uploads:
+                        line_map = {line.key: line for line in submission.line_ids}
+                        attach_obj = request.env["ir.attachment"].sudo()
+                        for key, upload_data in pending_uploads.items():
+                            line = line_map.get(key)
+                            if not line:
+                                continue
+                            attach = attach_obj.create(
+                                {
+                                    "name": upload_data["name"],
+                                    "type": "binary",
+                                    "datas": upload_data["datas"],
+                                    "mimetype": upload_data["mimetype"],
+                                    "res_model": "x_mobile.form.submission.line",
+                                    "res_id": line.id,
+                                }
+                            )
+                            line.sudo().write({"attachment_id": attach.id})
+            except ValidationError:
                 if unique_key1:
                     existed = request.env["x_mobile.form.submission"].sudo().search_count(
                         [("form_id", "=", form.id), ("unique_key1_value", "=", unique_key1)]
@@ -816,26 +833,23 @@ class MobileFormController(http.Controller):
                         form, token, posted_values_multi, duplicate_fields=duplicate_fields
                     )
                     return self._set_client_cookie_if_needed(response, cookie_created, client_id)
-                raise
-
-            if pending_uploads:
-                line_map = {line.key: line for line in submission.line_ids}
-                attach_obj = request.env["ir.attachment"].sudo()
-                for key, upload_data in pending_uploads.items():
-                    line = line_map.get(key)
-                    if not line:
-                        continue
-                    attach = attach_obj.create(
-                        {
-                            "name": upload_data["name"],
-                            "type": "binary",
-                            "datas": upload_data["datas"],
-                            "mimetype": upload_data["mimetype"],
-                            "res_model": "x_mobile.form.submission.line",
-                            "res_id": line.id,
-                        }
-                    )
-                    line.sudo().write({"attachment_id": attach.id})
+                response = self._render_form_page(
+                    form,
+                    error="Submission failed because uploaded files or unique values could not be saved.",
+                    form_values=posted_values,
+                    form_values_multi=posted_values_multi,
+                    has_form_values=True,
+                )
+                return self._set_client_cookie_if_needed(response, cookie_created, client_id)
+            except Exception:
+                response = self._render_form_page(
+                    form,
+                    error="Submission failed while saving uploaded files. Please try again.",
+                    form_values=posted_values,
+                    form_values_multi=posted_values_multi,
+                    has_form_values=True,
+                )
+                return self._set_client_cookie_if_needed(response, cookie_created, client_id)
             values = {"form": form, "submission": submission}
             response = request.render("mobile_form_builder.mobile_form_thanks", values)
             return self._set_client_cookie_if_needed(response, cookie_created, client_id)
@@ -870,7 +884,13 @@ class MobileFormController(http.Controller):
 
         path = request.httprequest.path or ""
         as_svg = path.endswith(".svg")
-        if as_svg and not qr_description:
+        if as_svg and qr_description:
+            query = request.httprequest.query_string.decode("utf-8") if request.httprequest.query_string else ""
+            target = f"/mform/qr/{token}.png"
+            if query:
+                target = f"{target}?{query}"
+            return request.redirect(target, code=302)
+        if as_svg:
             try:
                 from reportlab.graphics.barcode import createBarcodeDrawing
 
